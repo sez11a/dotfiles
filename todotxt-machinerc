@@ -1,0 +1,9 @@
+[settings]
+file = ~/Documents/todo/todo.txt
+archive = ~/Documents/todo/done.txt
+auto-save = True
+show-toolbar = True
+show-filter-panel = False
+enable-borders = True
+enable-word-wrap = True
+colorscheme = solarized-dark

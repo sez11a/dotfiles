@@ -1,0 +1,32 @@
+Installation:
+
+    git clone git://github.com/sez11a/dotvim.git ~/.vim
+
+Create symlinks:
+
+    ln -s ~/.vim/vimrc ~/.vimrc
+    ln -s ~/.vim/gvimrc ~/.gvimrc
+
+Switch to the `~/.vim` directory, and fetch submodules:
+
+    cd ~/.vim
+    git submodule init
+    git submodule update
+
+See http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/ for further info about installing. 
+
+My config uses several Vim plugins. They're installed as Git submodules and initialized via Pathogen. I primarily use Vim to write documentation, so there are some quirks to my setup. 
+
+The Airline plugin requires a font be installed Powerline Symbols. If you don't install this font, you'll get weird characters in the status line. https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
+
+Vim starts in what I call code mode. This lets you type on a line and doesn't break the line at 80 characters. Spell check is off. I use this for viewing/editing code and for Beamer slides. 
+
+I have a word processing mode which you can enter by typing :WP[enter]. You can easily see the difference between code mode and word processing mode because they use different color schemes. Word processing mode breaks lines at 80 characters and has spell checking turned on by default. If you want to go back to code mode from word processing mode, type :CODE[enter]. 
+
+Custom Commands: 
+
+F3: Brings up the NERDTree file browser. 
+F4: Toggle Focus mode. If you're using a GUI (gvim or qvim), maximizes the window, increases the font size, and removes UI elements. If you're using qvim, you can further type :fu[enter] to go to full-screen mode and :nofu[enter] to go back to windowed mode. I didn't make this happen automatically because qvim is not feature-complete and not a standard install in most distros. 
+F5: Run latexmk on the current file. This is accomplished using the LaTeX-Box plugin. I use this when creating Beamer slides. 
+
+Anyone is welcome to fork/clone this and use it as a starting point for their own Vim config. Enjoy! 

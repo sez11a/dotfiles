@@ -1,0 +1,25 @@
+- clean: ['~']
+
+- link:
+    ~/.profile: profile
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.bash_logout: bash_logout
+    ~/.conkyrc: conkyrc
+    ~/.festivalrc: festivalrc
+    ~/bin:
+        path: bin/
+        create: true
+    ~/.vim: 
+        path: vim/
+        create: true
+    ~/.config/nvim: vim
+    ~/.joe: joe
+    ~/.config/fontconfig: fontconfig
+    ~/.latexmkrc: latexmkrc
+    ~/.todo.cfg: todo.cfg
+    ~/.todo: 
+        path: todo/
+        create: true
+    ~/.todotxt-machinerc: todotxt-machinerc
+
