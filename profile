@@ -59,7 +59,8 @@ export VISUAL=nvim
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 # Experimenting with jayatana
-export JAVA_TOOL_OPTIONS="-javaagent:/usr/share/java/jayatanaag.jar $JAVA_TOOL_OPTIONS"
+# experiment over; it doesn't work
+#export JAVA_TOOL_OPTIONS="-javaagent:/usr/share/java/jayatanaag.jar $JAVA_TOOL_OPTIONS"
 
 PATH=$PATH:$HOME/bin:$ANT_HOME/bin:$IZPACK_HOME/bin
 
