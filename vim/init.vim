@@ -55,6 +55,7 @@ let g:airline#extensions#whitespace#enabled=0
 
 " Custom key combos
 nmap <silent> <F3> :NERDTreeToggle<CR>
+autocmd FileType markdown call WordProcessorMode()
 
 func! WordProcessorMode() 
   " setlocal formatoptions=1 
@@ -69,6 +70,8 @@ func! WordProcessorMode()
   colorscheme xoria256-blue
 "  colorscheme transparent
   filetype detect
+  nnoremap <Leader>w :NextWordy<CR>
+  nnoremap <Leader>q :NoWordy<CR>
 
 endfu 
 com! WP call WordProcessorMode()
