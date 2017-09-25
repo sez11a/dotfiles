@@ -55,7 +55,6 @@ let g:airline#extensions#whitespace#enabled=0
 
 " Custom key combos
 nmap <silent> <F3> :NERDTreeToggle<CR>
-autocmd FileType markdown call WordProcessorMode()
 
 func! WordProcessorMode() 
   " setlocal formatoptions=1 
@@ -94,6 +93,8 @@ com! CODE call CodeMode()
 " to the width of the screen. 
 "
 
-
 nnoremap <F4> :call ToggleFocusMode()<cr>
 nnoremap <F5> :Latexmk<cr>
+
+" This starts WP mode on markdown files, but it wreaks havoc with airline
+"autocmd FileType markdown call WordProcessorMode()
