@@ -71,6 +71,7 @@ func! WordProcessorMode()
   filetype detect
   nnoremap <Leader>w :NextWordy<CR>
   nnoremap <Leader>q :NoWordy<CR>
+  call pencil#init()
 
 endfu 
 com! WP call WordProcessorMode()
@@ -86,15 +87,16 @@ func! CodeMode()
 endfu
 com! CODE call CodeMode()
 
-" Idea: put a WRITE function here
-" that makes the font really big. Then 
-" vim can be maximized so the screen fills
-" with a minimalistic editor with abou 90 columns
-" to the width of the screen. 
-"
-
 nnoremap <F4> :call ToggleFocusMode()<cr>
 nnoremap <F5> :Latexmk<cr>
 
 " This starts WP mode on markdown files, but it wreaks havoc with airline
 "autocmd FileType markdown call WordProcessorMode()
+"
+"Here's another way I tried that also didn't work:
+"
+"augroup ws
+"    autocmd!
+"    autocmd FileType markdown,mkd call WordProcessorMode()
+"    autocmd FileType text         call WordProcessorMode()
+"augroup END
