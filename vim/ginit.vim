@@ -1,4 +1,6 @@
-Guifont! Nouveau_IBM Nerd Font:h12
+"Guifont! Nouveau_IBM Nerd Font:h12
+" The above font had some display problems.
+ Guifont! TerminessTTF Nerd Font Mono:h12
 """ FocusMode
 function! ToggleFocusMode()
 if (&foldcolumn != 12)
@@ -13,7 +15,8 @@ if (&foldcolumn != 12)
 
 "    if has ('nvim')
 "       Guifont Anonymous Pro for Powerline:h18 
-        Guifont! Nouveau_IBM Nerd Font:h18
+       " Guifont! Nouveau_IBM Nerd Font:h18 
+        Guifont! TerminessTTF Nerd Font Mono:h18
 "    else
 
 "        if has ('gui_running')
@@ -33,7 +36,8 @@ else
 
 "    if has ('gui_running')
 "            Guifont Anonymous Pro for Powerline:h12
-             Guifont! Nouveau_IBM Nerd Font:h12
+           "  Guifont! Nouveau_IBM Nerd Font:h12
+             Guifont! TerminessTTF Nerd Font Mono:h12
 "            set guioptions+=T
 "    endif
 

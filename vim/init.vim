@@ -7,7 +7,10 @@ filetype plugin indent on
 " Set the font and window size
 if has ('gui_running')
 "    set guifont=Anonymous\ Pro\ for\ Powerline\ 12
-    Guifont! Nouveau_IBM Nerd Font:h18
+"    The VGA font below doesn't have bold/italic variants and so had display
+"    problems.
+"    Guifont! Nouveau_IBM Nerd Font:h18
+    Guifont! TerminessTTF Nerd Font Mono:h12
 	set lines=50
 	set columns=100
 endif

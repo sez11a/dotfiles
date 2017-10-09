@@ -69,14 +69,15 @@ export ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS GRINDERPATH CLASSPATH
 # Use archlinux-java status to see which JDK is set as default
 # Use archlinux-java java-7-openjdk or archlinux-java java-8-jdk to set
 
-JPM_PACKAGES=/home/sezovr/jpm
-NPM_PACKAGES=/home/sezovr/.npm-packages
-NODE_PATH="$NPM_PACKAGES/lib/node_modules"
-PATH="$PATH:$JPM_PACKAGES/bin:$NPM_PACKAGES/bin"
+JPM_PACKAGES=~/jpm
+export NPM_CONFIG_PREFIX=~/.node_modules
+# NPM_PACKAGES=~/.node_modules
+# NODE_PATH="$NPM_PACKAGES/lib/node_modules"
+# PATH="$PATH:$JPM_PACKAGES/bin:$NPM_PACKAGES/bin"
 
 # Fix global menu support for Slack and Skype
 export ELECTRON_FORCE_WINDOW_MENU_BAR=1
 
-export JPM_PACKAGES NPM_PACKAGES NODE_PATH
+export JPM_PACKAGES 
 
 export PATH="$PATH:/home/sezovr/jpm/bin"
