@@ -70,7 +70,7 @@ export ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS GRINDERPATH CLASSPATH
 # Use archlinux-java java-7-openjdk or archlinux-java java-8-jdk to set
 
 JPM_PACKAGES=~/jpm
-export NPM_CONFIG_PREFIX=~/.node_modules
+export NPM_CONFIG_PREFIX=~/.node-packages
 # NPM_PACKAGES=~/.node_modules
 # NODE_PATH="$NPM_PACKAGES/lib/node_modules"
 # PATH="$PATH:$JPM_PACKAGES/bin:$NPM_PACKAGES/bin"
@@ -80,4 +80,4 @@ export ELECTRON_FORCE_WINDOW_MENU_BAR=1
 
 export JPM_PACKAGES 
 
-export PATH="$PATH:/home/sezovr/jpm/bin"
+export PATH=$PATH:~/jpm/bin:~/.node_modules/bin
