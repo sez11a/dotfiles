@@ -44,8 +44,8 @@ sudo fc-cache -f -v
 
 # Mouse Cursors
 
-#sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-2-any.pkg.tar.xz
-yaourt -S --noconfirm breeze-red-cursor-theme
+sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
+#yaourt -S --noconfirm breeze-red-cursor-theme
 
 # Syncthing
 
