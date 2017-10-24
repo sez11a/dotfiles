@@ -5,7 +5,7 @@
 
 sudo pacman -S --noconfirm kaccounts-providers kwalletmanager gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra
 
-yaourt -S --noconfirm plasma5-applets-active-window-control-git kdeplasma-applets-playbar2 neovim-qt-git syncthingtray
+yaourt -S --noconfirm plasma5-applets-active-window-control-git plasma5-applets-playbar2 neovim-qt-git syncthingtray
 
 # KDE Config
 
