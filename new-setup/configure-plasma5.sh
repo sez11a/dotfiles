@@ -3,7 +3,7 @@
 # Programs 
 # sudo pacman -U caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz 
 
-sudo pacman -S --noconfirm telepathy-kde-meta kaccounts-providers kwalletmanager gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive audex krename choqok smb4k bibletime kcharselect kamoso
+sudo pacman -S --noconfirm kaccounts-providers kwalletmanager gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra
 
 yaourt -S --noconfirm plasma5-applets-active-window-control-git kdeplasma-applets-playbar2 neovim-qt-git syncthingtray
 

@@ -3,7 +3,7 @@
 yaourt -S --noconfirm jdk squirrel-sql
 sudo archlinux-java set java-8-jdk
 
-sudo pacman -S --noconfirm qgit lazarus-qt fpc gdb nodejs npm eclipse-jee
+sudo pacman -S --noconfirm qgit lazarus-qt fpc gdb nodejs npm eclipse-jee kdiff3
 
 mkdir ~/.npm-packages
 NPM_PACKAGES=~/.npm-packages
