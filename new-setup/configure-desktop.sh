@@ -22,30 +22,46 @@
 sudo pacman-mirrors -g
 sudo pacman -Syu
 
-#sudo pacman -S infinality-bundle
+# Environment 
 
-# Editor 
+sudo pacman -S --noconfirm festival-english festival-us 
+function say { echo "$1" | festival --tts; }
+export -f say
+DIALOG=whiptail
+
+## Editor 
 
 sudo pacman -S --noconfirm neovim joe python-neovim
 sudo pacman -S --noconfirm ttf-linux-libertine ttf-gentium 
 
-# Fonts
-yaourt -S --noconfirm ttf-fantasque-sans ttf-mplus otf-vegur ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito
-sudo pacman -R noto-fonts ttf-droid ttf-inconsolata
-yaourt -S ttf-google-fonts-git
+## Mouse Cursors
 
-# sudo cp 35-repl-custom.conf /etc/fonts/conf.avail.infinality
+sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
+#yaourt -S --noconfirm breeze-red-cursor-theme
+
+## Fonts
+
+yaourt -S --noconfirm ttf-fantasque-sans ttf-mplus otf-vegur ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito
+
 sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
-
 sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
 
-# Mouse Cursors
+say "Do you want all the Google fonts?"
 
-sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
-#yaourt -S --noconfirm breeze-red-cursor-theme
+GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts?" 20 60 12 \
+    "y" "Plasma 5"  on \
+    "n" "XFCE"      off 2>&1 >/dev/tty)
+
+if echo "$GoogleFonts" | grep -iq "^y" ;then
+    echo "Installing Google Fonts!"
+    sudo pacman -R noto-fonts ttf-droid ttf-inconsolata
+    yaourt -S ttf-google-fonts-git
+else
+    echo "Skipping Google Fonts install...."
+fi
 
 # Syncthing
 
@@ -72,34 +88,40 @@ sudo cp startup-sound.sh /usr/bin
 sudo cp startupsound.service /etc/systemd/system
 sudo systemctl enable startupsound.service
 
-# Standard desktop stuff
+say "Install standard desktop apps?" 
+DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
+    "y" "Yes" on \
+    "n" "No" off 2>&1 >/dev/tty)
 
-sudo pacman -R --noconfirm libreoffice-still
-sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge synfigstudio kdiff3 dvgrab dvdauthor inkscape clementine festival-english festival-us conky libreoffice-fresh offlineimap dovecot chromium lha normalize pdfsam
+if echo "$DesktopApps" | grep -iq "^y" ;then
+    echo "Installing standard desktop apps...." 
 
-sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
+    # Standard desktop stuff
 
-# Apps in AUR
+    sudo pacman -R --noconfirm libreoffice-still
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge synfigstudio kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha normalize pdfsam
 
-yaourt -S --noconfirm jdk
-sudo archlinux-java set java-8-jdk
-yaourt -S --noconfirm kindlegen todotxt slack-desktop skypeforlinux-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz
-yaourt -S google-musicmanager google-talkplugin
-# Removed Moodbar from above because it pulls in all the old GStreamer stuff
+    sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
+
+    # Apps in AUR
+
+    yaourt -S --noconfirm jdk8
+    sudo archlinux-java set java-8-jdk
+    yaourt -S --noconfirm kindlegen todotxt slack-desktop skypeforlinux-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin
+    # Removed Moodbar from above because it pulls in all the old GStreamer stuff
+else
+    echo "Skipping standard desktop apps...."
+fi
 
 # Printers
 
 sudo pacman -U brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
 
-# Environment 
-
-function say { echo "$1" | festival --tts; }
-export -f say
+# Dotfiles
 
 ../install 
 
 say "Which desktop do you want to configure?"
-DIALOG=whiptail
 Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
     "p" "Plasma 5"  on \
     "x" "XFCE"      off 2>&1 >/dev/tty)
@@ -128,3 +150,4 @@ echo "All done! Please reboot your system now."
 say "All done! Please reboot your system now."
 
 exit 0;
+
