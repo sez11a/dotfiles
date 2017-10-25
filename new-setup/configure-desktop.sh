@@ -63,6 +63,15 @@ else
     echo "Skipping Google Fonts install...."
 fi
 
+## Console config
+
+say "Does this machine have a HIDPI screen?"
+if $DIALOG --yesno "HIDPI screen?" 20 60 ;then
+    sudo cp vconsole.conf /etc
+else 
+    echo "Nope." 
+fi
+
 # Syncthing
 
 sudo pacman -S --noconfirm syncthing syncthing-gtk syncthing-inotify
