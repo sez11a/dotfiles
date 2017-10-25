@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Theme Stuff 
-sudo pacman -U caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz 
+sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz 
 
 sudo pacman -S --noconfirm kaccounts-providers kwalletmanager gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra arc-kde kvantum-theme-arc
 

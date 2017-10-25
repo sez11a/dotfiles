@@ -24,7 +24,7 @@ sudo pacman -Syu
 
 # Environment 
 
-sudo pacman -S --noconfirm festival-english festival-us 
+sudo pacman -S --noconfirm festival festival-english festival-us 
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
@@ -52,8 +52,8 @@ sudo fc-cache -f -v
 say "Do you want all the Google fonts?"
 
 GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts?" 20 60 12 \
-    "y" "Plasma 5"  on \
-    "n" "XFCE"      off 2>&1 >/dev/tty)
+    "y" "Install Google Fonts"  on \
+    "n" "Too big; skip it"      off 2>&1 >/dev/tty)
 
 if echo "$GoogleFonts" | grep -iq "^y" ;then
     echo "Installing Google Fonts!"
@@ -108,7 +108,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge synfigstudio kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha normalize pdfsam
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge synfigstudio kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha normalize pdfsam zip unzip
 
     sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
 
@@ -124,7 +124,7 @@ fi
 
 # Printers
 
-sudo pacman -U brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
+sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
 
 # Dotfiles
 
