@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Programs 
-# sudo pacman -U caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz 
+# Theme Stuff 
+sudo pacman -U caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz 
 
 sudo pacman -S --noconfirm kaccounts-providers kwalletmanager gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra
 
@@ -15,8 +15,21 @@ cp kde/konsole/*.colorscheme ~/.local/share/konsole
 cp kde/color-schemes/*.colors ~/.local/share/color-schemes
 cp kde/yakuakerc ~/.config
 cp kde/yakuake.notifyrc ~/.config
-cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
-cp kde/plasmashellrc ~/.config
+
+# Desktop Configuration
+
+say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
+if $DIALOG --yesno "Hybrid desktop?" 20 60 ;then
+    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt4 libdbusmenu-qt5 appmenu-qt4 appmenu-gtk-module 
+    cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
+    cp kde/plasmashellrc ~/.config
+    kwriteconfig5 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
+    kwriteconfig5 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
+    kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
+    kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
+else 
+    echo "Nope."; 
+fi
 
 #KWin
 kwriteconfig5 --file kwinrc --group Compositing --key Backend OpenGL
@@ -26,10 +39,6 @@ kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled true
 kwriteconfig5 --file kwinrc --group Plugins --key minimizeanimationEnabled false
 kwriteconfig5 --file kwinrc --group Plugins --key windowgeometryEnabled false
 kwriteconfig5 --file kwinrc --group Plugins --key wobblywindowsEnabled true
-kwriteconfig5 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
-kwriteconfig5 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
-kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
-kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
 
 # Breeze
 kwriteconfig5 --file breezerc --group Common --key ShadowSize 64

@@ -41,7 +41,7 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
 
 ## Fonts
 
-yaourt -S --noconfirm ttf-fantasque-sans ttf-mplus otf-vegur ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito
+yaourt -S --noconfirm otf-fantasque-sans-mono ttf-mplus otf-vegur ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito
 
 sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
