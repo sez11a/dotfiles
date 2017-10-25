@@ -12,73 +12,6 @@ MidButton;NoModifier=org.kde.paste
 RightButton;NoModifier=org.kde.contextmenu
 wheel:Vertical;NoModifier=org.kde.switchdesktop
 
-[Containments][1]
-activityId=
-formfactor=2
-immutability=1
-lastScreen=0
-location=4
-plugin=org.kde.panel
-wallpaperplugin=org.kde.image
-
-[Containments][1][Applets][2]
-immutability=1
-plugin=org.kde.plasma.kickoff
-
-[Containments][1][Applets][2][Configuration][General]
-favorites=firefox.desktop,org.kde.dolphin.desktop,org.kde.konversation.desktop,cantata.desktop,org.kde.konsole.desktop,octopi.desktop,systemsettings.desktop
-
-[Containments][1][Applets][2][Configuration][Shortcuts]
-global=Alt+F1
-
-[Containments][1][Applets][2][Shortcuts]
-global=Alt+F1
-
-[Containments][1][Applets][3]
-immutability=1
-plugin=org.kde.plasma.pager
-
-[Containments][1][Applets][38]
-immutability=1
-plugin=org.kde.plasma.showActivityManager
-
-[Containments][1][Applets][39]
-immutability=1
-plugin=org.kde.plasma.activitybar
-
-[Containments][1][Applets][4]
-immutability=1
-plugin=org.kde.plasma.icontasks
-
-[Containments][1][Applets][4][Configuration][General]
-launchers=file:///usr/share/applications/org.kde.dolphin.desktop?wmClass=dolphin,file:///usr/share/applications/firefox.desktop?wmClass=firefox
-
-[Containments][1][Applets][5]
-immutability=1
-plugin=org.kde.plasma.showdesktop
-
-[Containments][1][Applets][6]
-immutability=1
-plugin=org.kde.plasma.trash
-
-[Containments][1][Applets][7]
-immutability=1
-plugin=
-
-[Containments][1][Applets][7][Configuration]
-SystrayContainmentId=8
-
-[Containments][1][Applets][7][Configuration][Containments][8]
-formfactor=2
-location=4
-
-[Containments][1][Applets][8]
-immutability=1
-plugin=
-
-[Containments][1][General]
-AppletOrder=2;38;3;4;5;6;39
-
 [Containments][18]
 activityId=
 formfactor=0
@@ -101,6 +34,11 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.activeWindowControl
 
+[Containments][36][Applets][37][Configuration][AppMenu]
+appmenuEnabled=true
+appmenuFillHeight=true
+appmenuNextToButtons=true
+
 [Containments][36][Applets][37][Configuration][Appearance]
 autoFillWidth=true
 buttonSize=0.8
@@ -109,8 +47,8 @@ showMaximize=true
 showMinimize=true
 
 [Containments][36][Applets][37][Configuration][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
+DialogHeight=702
+DialogWidth=1079
 
 [Containments][36][Applets][40]
 immutability=1
@@ -127,9 +65,12 @@ sources=cpu%2Fsystem%2FTotalLoad
 immutability=1
 plugin=org.kde.plasma.systemmonitor.memory
 
-[Containments][36][Applets][42]
-immutability=1
-plugin=org.kde.plasma.systemmonitor.net
+[Containments][36][Applets][41][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][36][Applets][41][Configuration][General]
+sources=mem%2Fphysical%2Fapplication
 
 [Containments][36][Applets][43]
 immutability=1
@@ -151,11 +92,11 @@ immutability=1
 plugin=audoban.applet.playbar
 
 [Containments][36][ConfigDialog]
-DialogHeight=82
-DialogWidth=1744
+DialogHeight=84
+DialogWidth=1624
 
 [Containments][36][General]
-AppletOrder=37;40;41;42;55;54;43;53
+AppletOrder=37;40;41;55;54;43;53
 
 [Containments][44]
 activityId=
@@ -198,12 +139,24 @@ plugin=org.kde.plasma.battery
 immutability=1
 plugin=org.kde.plasma.networkmanagement
 
-[Containments][44][General]
-extraItems=org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.networkmanagement,org.kde.plasma.volume
-knownItems=org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.networkmanagement,org.kde.plasma.volume
+[Containments][44][Applets][58]
+immutability=1
+plugin=martchus.syncthingplasmoid
 
-[Containments][56]
-activityId=2548ee1c-a02f-4c4e-9a01-b12aec6a4b81
+[Containments][44][Applets][58][Configuration]
+selectedConfig=0
+
+[Containments][44][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][44][General]
+extraItems=org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.networkmanagement,org.kde.plasma.volume,martchus.syncthingplasmoid
+knownItems=org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.networkmanagement,org.kde.plasma.volume,martchus.syncthingplasmoid
+shownItems=octopi-notifier
+
+[Containments][57]
+activityId=998e5613-9b5c-4b17-b347-2fa4a155249b
 formfactor=0
 immutability=1
 lastScreen=0
@@ -211,17 +164,20 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][56][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
+[Containments][57][ConfigDialog]
+DialogHeight=773
+DialogWidth=1197
 
-[Containments][56][General]
+[Containments][57][General]
+ToolBoxButtonState=top
+ToolBoxButtonX=1524
+ToolBoxButtonY=32
 arrangement=1
+positions=1,7,desktop:/Home.desktop,0,0,desktop:/trash.desktop,0,1
 sortMode=-1
 
-[Containments][56][Wallpaper][org.kde.image][General]
-height=791
-width=1496
+[Containments][57][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/Caledonia/contents/images/1920x1200.jpeg
 
 [Containments][8]
 activityId=
