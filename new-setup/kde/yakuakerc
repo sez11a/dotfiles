@@ -1,5 +1,4 @@
 [Appearance]
-Skin=velours-yakuake
 SkinInstalledWithKns=true
 
 [Desktop Entry]
@@ -16,5 +15,6 @@ Width 1920=700
 Favorites=
 
 [Window]
-Height=90
+Height=100
 KeepOpen=false
+Width=100
