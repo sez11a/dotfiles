@@ -130,6 +130,8 @@ sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
 
 zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout
 rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout
+git submodule init
+git submodule update
 ../install 
 
 say "Which desktop do you want to configure?"
