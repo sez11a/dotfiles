@@ -23,8 +23,9 @@ if $DIALOG --yesno "Hybrid desktop?" 20 60 ;then
     sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt4 libdbusmenu-qt5 appmenu-qt4 appmenu-gtk-module 
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config
+    mkdir ~/.local/share/plasma
     mkdir ~/.local/share/plasma/look-and-feel
-    unzip hybrid.desktop.zip -d ~/.local/share/plasma/look-and-feel/
+    unzip hybrid-desktop.zip -d ~/.local/share/plasma/look-and-feel/
     kwriteconfig5 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
     kwriteconfig5 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
     kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
