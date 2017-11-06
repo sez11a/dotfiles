@@ -3,7 +3,7 @@
 # Theme Stuff 
 sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz 
 
-sudo pacman -S --noconfirm kaccounts-providers kwalletmanager gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra arc-kde kvantum-theme-arc qupzilla
+sudo pacman -S --noconfirm kaccounts-providers kwalletmanager gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra arc-kde kvantum-theme-arc qupzilla unzip
 
 yaourt -S --noconfirm plasma5-applets-active-window-control-git plasma5-applets-playbar2 neovim-qt-git syncthingtray xfce-theme-greybird plasma5-applets-netspeed
 
