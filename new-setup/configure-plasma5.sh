@@ -21,12 +21,15 @@ cp kde/yakuake.notifyrc ~/.config
 say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
 if $DIALOG --yesno "Hybrid desktop?" 20 60 ;then
     sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt4 libdbusmenu-qt5 appmenu-qt4 appmenu-gtk-module 
-    cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
-    cp kde/plasmashellrc ~/.config
+    #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
+    #cp kde/plasmashellrc ~/.config
+    mkdir ~/.local/share/plasma/look-and-feel
+    unzip hybrid.desktop.zip -d ~/.local/share/plasma/look-and-feel/
     kwriteconfig5 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
     kwriteconfig5 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
     kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
     kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
+    kwriteconfig5 --file plasmarc --group Theme --key name default
 else 
     echo "Nope."; 
 fi
