@@ -76,7 +76,7 @@ export NPM_CONFIG_PREFIX=~/.node-packages
 # PATH="$PATH:$JPM_PACKAGES/bin:$NPM_PACKAGES/bin"
 
 # Fix global menu support for Slack and Skype
-export ELECTRON_FORCE_WINDOW_MENU_BAR=1
+#export ELECTRON_FORCE_WINDOW_MENU_BAR=1
 
 export JPM_PACKAGES 
 

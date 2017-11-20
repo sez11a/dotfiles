@@ -19,7 +19,7 @@
 #cat /etc/pacman.conf infinality-repos.txt > font-repos.txt
 #sudo cp font-repos.txt /etc/pacman.conf
 
-sudo pacman-mirrors -g
+sudo pacman-mirrors -f 0
 sudo pacman -Syu
 
 # Environment 
