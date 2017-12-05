@@ -32,7 +32,6 @@ DIALOG=whiptail
 ## Editor 
 
 sudo pacman -S --noconfirm neovim joe python-neovim
-sudo pacman -S --noconfirm ttf-linux-libertine ttf-gentium 
 
 ## Mouse Cursors
 
@@ -41,7 +40,8 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
 
 ## Fonts
 
-yaourt -S --noconfirm otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito
+sudo pacman -S --noconfirm ttf-linux-libertine ttf-gentium 
+yaourt -S --noconfirm otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito otf-exo
 
 sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
