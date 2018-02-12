@@ -87,6 +87,7 @@ func! CodeMode()
         set textwidth=0
         colorscheme xoria256
         filetype detect
+        :NoPencil
 endfu
 com! CODE call CodeMode()
 
