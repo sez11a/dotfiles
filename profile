@@ -80,4 +80,4 @@ export NPM_CONFIG_PREFIX=~/.node-packages
 
 export JPM_PACKAGES 
 
-export PATH=$PATH:~/jpm/bin:~/.node_modules/bin
+export PATH=$PATH:~/jpm/bin:~/.node-packages/bin
