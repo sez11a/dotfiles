@@ -53,7 +53,7 @@ filetype plugin on
 set ofu=syntaxcomplete#Complete
 
 let g:vim_markdown_folding_disabled=1
-
+let g:markdown_composer_autostart=0
 let g:airline#extensions#whitespace#enabled=0
 
 " Custom key combos
@@ -93,6 +93,7 @@ com! CODE call CodeMode()
 
 nnoremap <F4> :call ToggleFocusMode()<cr>
 nnoremap <F5> :Latexmk<cr>
+nnoremap <F8> :ComposerStart<cr>
 
 " This starts WP mode on markdown files, but it wreaks havoc with airline
 "autocmd FileType markdown call WordProcessorMode()
