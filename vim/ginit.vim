@@ -1,7 +1,8 @@
 "Guifont! Nouveau_IBM Nerd Font:h12
 " The above font had some display problems.
 " Guifont! TerminessTTF Nerd Font Mono:h12
-Guifont! Edlo:h12
+" Guifont! Edlo:h12
+Guifont! Anonymous Pro for Powerline:h12
 """ FocusMode
 function! ToggleFocusMode()
 if (&foldcolumn != 12)
@@ -14,20 +15,10 @@ if (&foldcolumn != 12)
     hi LineNr ctermfg=0 ctermbg=none
     hi NonText ctermfg=0
 
-"    if has ('nvim')
-"       Guifont Anonymous Pro for Powerline:h18 
-       " Guifont! Nouveau_IBM Nerd Font:h18 
-       " Guifont! TerminessTTF Nerd Font Mono:h18
-       Guifont! Edlo:h12
-"    else
-
-"        if has ('gui_running')
-"           set guifont=Anonymous\ Pro\ for\ Powerline\ 18
-"           set guioptions-=T
-"        endif
-
-"    endif
-
+    Guifont! Anonymous Pro for Powerline:h18 
+    " Guifont! Nouveau_IBM Nerd Font:h18 
+    " Guifont! TerminessTTF Nerd Font Mono:h18
+    " Guifont! Edlo:h12
 else
     set laststatus=2
     set numberwidth=4
@@ -36,13 +27,8 @@ else
     set number
     execute 'colorscheme ' . g:colors_name
 
-"    if has ('gui_running')
-"            Guifont Anonymous Pro for Powerline:h12
-           "  Guifont! Nouveau_IBM Nerd Font:h12
-           " Guifont! TerminessTTF Nerd Font Mono:h12
-             Guifont! Edlo:h12
+            Guifont! Anonymous Pro for Powerline:h12
 "            set guioptions+=T
-"    endif
 
 endif
 
