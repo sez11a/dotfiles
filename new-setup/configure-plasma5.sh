@@ -21,6 +21,7 @@ cp kde/yakuake.notifyrc ~/.config
 say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
 if $DIALOG --yesno "Hybrid desktop?" 20 60 ;then
     sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt4 libdbusmenu-qt5 appmenu-qt4 appmenu-gtk-module 
+    yaourt -S gmenu-dbusmenu-proxy-git 
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config
     mkdir ~/.local/share/plasma
