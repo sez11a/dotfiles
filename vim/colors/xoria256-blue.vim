@@ -39,7 +39,7 @@ let colors_name = "xoria256-blue"
 " My blue
 hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=17  guibg=#142c63 cterm=none gui=none
 " Amiga Blue
-"hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=17  guibg=#0055aa cterm=none gui=none
+" hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=17  guibg=#0055aa cterm=none gui=none
 " WordStar Blue
 "hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=17  guibg=#0000aa cterm=none gui=none
 hi Cursor                                 ctermbg=214 guibg=#ffaf00
