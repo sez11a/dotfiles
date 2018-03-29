@@ -67,3 +67,6 @@
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular
+[submodule "vim/bundle/vim-javacomplete2"]
+	path = vim/bundle/vim-javacomplete2
+	url = https://github.com/artur-shaik/vim-javacomplete2
