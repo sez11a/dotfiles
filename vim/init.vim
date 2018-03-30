@@ -25,6 +25,7 @@ set encoding=utf-8
 "let g:airline#extensions#whitespace#enabled
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='murmur'
 set laststatus=2
 
 set backspace=indent,eol,start

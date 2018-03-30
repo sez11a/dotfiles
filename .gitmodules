@@ -64,3 +64,6 @@
 [submodule "vim/bundle/vim-markdown-composer"]
 	path = vim/bundle/vim-markdown-composer
 	url = https://github.com/euclio/vim-markdown-composer
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular
