@@ -99,7 +99,7 @@ sudo systemctl enable startupsound.service
 
 # Undelete Files 
 
-sudo pacman -S --noconfirm extundelete ext4magic
+sudo pacman -S --noconfirm extundelete ext4magic testdisk
 yaourt -S --noconfirm r-linux
 
 say "Install standard desktop apps?" 
