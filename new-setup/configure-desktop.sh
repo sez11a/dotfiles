@@ -97,6 +97,11 @@ sudo cp startup-sound.sh /usr/bin
 sudo cp startupsound.service /etc/systemd/system
 sudo systemctl enable startupsound.service
 
+# Undelete Files 
+
+sudo pacman -S --noconfirm extundelete ext4magic
+yaourt -S --noconfirm r-linux
+
 say "Install standard desktop apps?" 
 DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
     "y" "Yes" on \

@@ -57,6 +57,9 @@ let g:vim_markdown_folding_disabled=1
 let g:markdown_composer_autostart=0
 let g:airline#extensions#whitespace#enabled=0
 
+" Javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 " Custom key combos
 nmap <silent> <F3> :NERDTreeToggle<CR>
 
