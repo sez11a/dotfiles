@@ -24,7 +24,7 @@ sudo pacman -Syu
 
 # Environment 
 
-sudo pacman -S --noconfirm festival festival-english festival-us 
+sudo pacman -S --noconfirm festival festival-english festival-us pacaur yaourt
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
