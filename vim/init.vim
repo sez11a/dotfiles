@@ -56,6 +56,7 @@ set ofu=syntaxcomplete#Complete
 let g:vim_markdown_folding_disabled=1
 let g:markdown_composer_autostart=0
 let g:airline#extensions#whitespace#enabled=0
+let g:editmode=0
 
 " Javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -79,6 +80,7 @@ func! WordProcessorMode()
   nnoremap <Leader>w :NextWordy<CR>
   nnoremap <Leader>q :NoWordy<CR>
   call pencil#init()
+  let g:editmode=1
 
 endfu 
 com! WP call WordProcessorMode()
@@ -92,13 +94,23 @@ func! CodeMode()
         colorscheme xoria256
         filetype detect
         :NoPencil
+        let g:editmode=0
 endfu
+
+function! ToggleWP()
+    if g:editmode == 0
+        call WordProcessorMode()
+    else
+        call CodeMode()
+    endif
+endfu
+
 com! CODE call CodeMode()
 
 nnoremap <F4> :call ToggleFocusMode()<cr>
 nnoremap <F5> :Latexmk<cr>
 nnoremap <F8> :ComposerStart<cr>
-
+nnoremap <F9> :call ToggleWP()<cr>
 " This starts WP mode on markdown files, but it wreaks havoc with airline
 "autocmd FileType markdown call WordProcessorMode()
 "
