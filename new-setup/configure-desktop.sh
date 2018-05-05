@@ -24,7 +24,7 @@ sudo pacman -Syu
 
 # Environment 
 
-sudo pacman -S --noconfirm festival festival-english festival-us 
+sudo pacman -S --noconfirm festival festival-english festival-us pacaur yaourt
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
@@ -45,6 +45,8 @@ yaourt -S --noconfirm otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness
 
 sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
+sudo mkdir /usr/share/fonts/TTF
+sudo mkdir /usr/share/fonts/OTF
 sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
@@ -97,6 +99,11 @@ sudo cp startup-sound.sh /usr/bin
 sudo cp startupsound.service /etc/systemd/system
 sudo systemctl enable startupsound.service
 
+# Undelete Files 
+
+sudo pacman -S --noconfirm extundelete ext4magic testdisk
+yaourt -S --noconfirm r-linux
+
 say "Install standard desktop apps?" 
 DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
     "y" "Yes" on \
@@ -108,7 +115,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge synfigstudio kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha normalize pdfsam zip unzip
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha pdfsam zip unzip
 
     sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
 
@@ -128,8 +135,8 @@ sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
 
 # Dotfiles
 
-zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout
-rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout
+zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
 git submodule init
 git submodule update
 ../install 
