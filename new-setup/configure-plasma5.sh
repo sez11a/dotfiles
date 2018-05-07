@@ -56,7 +56,7 @@ kwriteconfig5 --file dolphinrc --group General --key GlobalViewProps true
 kwriteconfig5 --file dolphinrc --group General --key ShowFullPath true
 
 # Input
-kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme Breeze_Red
+kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme oxy-red-argentina
 
 # KDE Globals
 kwriteconfig5 --file kdeglobals --group General --key ColorScheme Hybrid

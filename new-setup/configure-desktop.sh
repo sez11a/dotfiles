@@ -35,7 +35,7 @@ sudo pacman -S --noconfirm neovim joe python-neovim
 
 ## Mouse Cursors
 
-sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
+sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.10.5-1-any.pkg.tar.xz
 #yaourt -S --noconfirm breeze-red-cursor-theme
 
 ## Fonts
