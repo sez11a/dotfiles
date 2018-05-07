@@ -76,7 +76,7 @@ fi
 
 # Syncthing
 
-sudo pacman -S --noconfirm syncthing syncthing-gtk syncthing-inotify
+sudo pacman -S --noconfirm syncthing syncthing-gtk 
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
 
 # Grub
