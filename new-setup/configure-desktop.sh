@@ -123,7 +123,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     yaourt -S --noconfirm jdk8
     sudo archlinux-java set java-8-jdk
-    yaourt -S --noconfirm kindlegen todotxt slack-desktop skypeforlinux-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin
+    yaourt -S --noconfirm kindlegen todotxt slack-desktop skypeforlinux-stable-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin
     # Removed Moodbar from above because it pulls in all the old GStreamer stuff
 else
     echo "Skipping standard desktop apps...."
