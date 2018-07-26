@@ -54,6 +54,7 @@ filetype plugin on
 set ofu=syntaxcomplete#Complete
 
 let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_auto_insert_bullets=0
 let g:markdown_composer_autostart=0
 let g:airline#extensions#whitespace#enabled=0
 let g:editmode=0
