@@ -28,6 +28,7 @@ alias to='todotxt-machine'
 alias sudo='sudo -E'
 alias ws='jstar -text_color white+bg_blue'
 alias gitpr='~/Documents/code/git-tools/git-pull-request/git-pull-request.sh'
+alias emacs='emacs.sh'
 fixnpm() {
         git ls-files modules | grep -F package.json | xargs -I {} dirname {} | xargs -I {} rm -rf {}/node_modules
 }

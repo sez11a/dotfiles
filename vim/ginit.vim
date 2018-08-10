@@ -2,9 +2,9 @@
 " The above font had some display problems.
 " Guifont! TerminessTTF Nerd Font Mono:h12
 " Guifont! Edlo:h12
-" Guifont! Anonymous Pro for Powerline:h12
+Guifont! Anonymous Pro for Powerline:h12
 " Guifont! Space Mono:h12
- Guifont! ProFontUnified Nerd Font:h13
+" Guifont! ProFontUnified Nerd Font:h13
 """ FocusMode
 function! ToggleFocusMode()
 if (&foldcolumn != 12)

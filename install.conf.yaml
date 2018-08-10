@@ -23,4 +23,5 @@
         path: todo/
         create: true
     ~/.todotxt-machinerc: todotxt-machinerc
+    ~/.spacemacs: spacemacs
 
