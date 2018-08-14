@@ -332,6 +332,8 @@ you should place your code here."
         (major-mode)
         (word-count)
         (buffer-position)))
+
+  (menu-bar-mode 1)
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
