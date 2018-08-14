@@ -32,7 +32,8 @@ else
     execute 'colorscheme ' . g:colors_name
 
             " Guifont! Anonymous Pro for Powerline:h12
-            Guifont! Space Mono:h12
+           " Guifont! Space Mono:h12
+            Guifont! Luxi Mono:h12
             set guioptions+=T
 
 endif
