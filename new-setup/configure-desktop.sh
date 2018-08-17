@@ -22,6 +22,13 @@
 sudo pacman-mirrors -f 0
 sudo pacman -Syu
 
+# AUR Helper
+# Presumably, if we've gone through the AUI Arch install, we already
+# have our AUR helper. On Manjaro, it's in the repo, so we can just
+# call the installer and get it. 
+
+sudo pacman -S --noconfirm trizen
+
 # Environment 
 
 sudo pacman -S --noconfirm festival festival-english festival-us pacaur yaourt
@@ -36,12 +43,12 @@ sudo pacman -S --noconfirm neovim joe python-neovim
 ## Mouse Cursors
 
 sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.10.5-1-any.pkg.tar.xz
-#yaourt -S --noconfirm breeze-red-cursor-theme
+#trizen -S --noconfirm --noedit breeze-red-cursor-theme
 
 ## Fonts
 
 sudo pacman -S --noconfirm ttf-linux-libertine ttf-gentium 
-yaourt -S --noconfirm otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito 
+trizen -S --noconfirm --noedit otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito 
 
 sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
@@ -60,7 +67,7 @@ GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts?" 20 60 12 \
 if echo "$GoogleFonts" | grep -iq "^y" ;then
     echo "Installing Google Fonts!"
     sudo pacman -R noto-fonts ttf-droid ttf-inconsolata
-    yaourt -S ttf-google-fonts-git
+    trizen -S ttf-google-fonts-git
 else
     echo "Skipping Google Fonts install...."
 fi
@@ -81,7 +88,7 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-overrid
 
 # Grub
 
-yaourt -S --noconfirm grub2-theme-dharma-mod
+trizen -S --noconfirm --noedit grub2-theme-dharma-mod
 
 sudo cp grub /etc/default
 sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -102,7 +109,7 @@ sudo systemctl enable startupsound.service
 # Undelete Files 
 
 sudo pacman -S --noconfirm extundelete ext4magic testdisk
-yaourt -S --noconfirm r-linux
+trizen -S --noconfirm --noedit r-linux
 
 say "Install standard desktop apps?" 
 DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
@@ -121,9 +128,9 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Apps in AUR
 
-    yaourt -S --noconfirm jdk8
+    trizen -S --noconfirm --noedit jdk8
     sudo archlinux-java set java-8-jdk
-    yaourt -S --noconfirm kindlegen todotxt slack-desktop skypeforlinux-stable-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin
+    trizen -S --noconfirm --noedit kindlegen todotxt slack-desktop skypeforlinux-stable-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin
     # Removed Moodbar from above because it pulls in all the old GStreamer stuff
 else
     echo "Skipping standard desktop apps...."
