@@ -31,7 +31,7 @@ sudo pacman -S --noconfirm trizen
 
 # Environment 
 
-sudo pacman -S --noconfirm festival festival-english festival-us pacaur yaourt
+sudo pacman -S --noconfirm festival festival-english festival-us 
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
