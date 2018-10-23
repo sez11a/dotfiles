@@ -31,6 +31,7 @@ sudo pacman -S --noconfirm trizen
 
 # Environment 
 
+cp desktop/Home.desktop ~/Desktop
 sudo pacman -S --noconfirm festival festival-english festival-us 
 function say { echo "$1" | festival --tts; }
 export -f say

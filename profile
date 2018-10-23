@@ -37,13 +37,13 @@ export -f say
 export QT_QPA_PLATFORMTHEME=appmenu-qt5
 #JAVA_HOME=/usr/lib64/jvm/java-8-jdk
 ANT_HOME=/apps/apache-ant-1.9.6
-ANT_OPTS="-Xms4096M -Xmx4096M -XX:MaxPermSize=1024M -XX:-UseGCOverheadLimit"
+ANT_OPTS="-Xms4096M -Xmx4096M -XX:-UseGCOverheadLimit"
 ANT_ARGS="-logger org.apache.tools.ant.listener.AnsiColorLogger"
 
 #M3_HOME=/apps/apache-maven-3.0.3
 #M3=$M3_HOME/bin
 M2_HOME=/opt/maven
-MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=1024m"
+MAVEN_OPTS="-Xmx1024m"
 
 IZPACK_HOME=/apps/IzPack
 
