@@ -14,8 +14,9 @@ black=$(tput setaf 0)
 white=$(tput setaf 7)
 bold=$(tput bold)
 reset=$(tput sgr0)
-PS1='\[$green$bold\]\u@\h\[$reset\]:\[$red$bold\]\w\[$reset\]\n\[$yellow$bold\]$(__git_ps1 "(%s)") \[$reset\]$ '
 
+# Non Powerline Prompt
+PS1='\[$green$bold\]\u@\h\[$reset\]:\[$red$bold\]\w\[$reset\]\n\[$yellow$bold\]$(__git_ps1 "(%s)") \[$reset\]$ '
 
 #if [ -f ~/.dir_colors]; then
 #    eval `dircolors ~/.dir_colors`
@@ -82,3 +83,11 @@ export NPM_CONFIG_PREFIX=~/.node-packages
 export JPM_PACKAGES 
 
 export PATH=$PATH:~/jpm/bin:~/.node-packages/bin
+
+# Start Powerline
+#export XDG_CONFIG_HOME=~/.config
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+powerline-daemon -q
+. /usr/share/powerline/bindings/bash/powerline.sh
+

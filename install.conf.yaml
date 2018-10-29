@@ -11,10 +11,6 @@
     ~/bin:
         path: bin/
         create: true
-    ~/.vim: 
-        path: vim/
-        create: true
-    ~/.config/nvim: vim
     ~/.joe: joe
     ~/.config/fontconfig: fontconfig
     ~/.latexmkrc: latexmkrc
@@ -24,4 +20,6 @@
         create: true
     ~/.todotxt-machinerc: todotxt-machinerc
     ~/.spacemacs: spacemacs
-
+    ~/.config/powerline:
+        path: powerline
+        create: true
