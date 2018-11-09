@@ -37,6 +37,24 @@ function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
 
+# Questions
+
+say "Do you want all the Google fonts?"
+
+GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts (takes a long time to install)?" 20 60 12 \
+    "y" "Install Google Fonts"  on \
+    "n" "Too big; skip it"      off 2>&1 >/dev/tty)
+
+say "Install standard desktop apps?" 
+DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
+    "y" "Yes" on \
+    "n" "No" off 2>&1 >/dev/tty)
+
+say "Which desktop do you want to configure?"
+Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
+    "p" "Plasma 5"  on \
+    "x" "XFCE"      off 2>&1 >/dev/tty)
+
 ## Editor 
 
 sudo pacman -S --noconfirm neovim joe python-neovim
@@ -58,12 +76,6 @@ sudo mkdir /usr/share/fonts/OTF
 sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
-
-say "Do you want all the Google fonts?"
-
-GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts?" 20 60 12 \
-    "y" "Install Google Fonts"  on \
-    "n" "Too big; skip it"      off 2>&1 >/dev/tty)
 
 if echo "$GoogleFonts" | grep -iq "^y" ;then
     echo "Installing Google Fonts!"
@@ -112,10 +124,6 @@ sudo systemctl enable startupsound.service
 sudo pacman -S --noconfirm extundelete ext4magic testdisk
 trizen -S --noconfirm --noedit r-linux
 
-say "Install standard desktop apps?" 
-DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
-    "y" "Yes" on \
-    "n" "No" off 2>&1 >/dev/tty)
 
 if echo "$DesktopApps" | grep -iq "^y" ;then
     echo "Installing standard desktop apps...." 
@@ -149,10 +157,6 @@ git submodule init
 git submodule update
 ../install 
 
-say "Which desktop do you want to configure?"
-Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
-    "p" "Plasma 5"  on \
-    "x" "XFCE"      off 2>&1 >/dev/tty)
 
 if echo "$Desktop" | grep -iq "^p" ;then
     echo "Plasma 5"
@@ -170,7 +174,7 @@ say "Do you need LaTeX?"
 if $DIALOG --yesno "Install LaTeX?" 20 60 ;then
     source ./install-latex.sh; else echo "Nope."; fi
 
-say "Do you want to instal emulators for vintage computing?"
+say "Do you want to install emulators for vintage computing?"
 if $DIALOG --yesno "Install emulators?" 20 60 ;then
     source ./install-emulators.sh; else echo "Nope."; fi
 
