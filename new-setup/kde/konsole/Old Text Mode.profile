@@ -1,7 +1,10 @@
 [Appearance]
 ColorScheme=Commodore
-Font=TopazPlus a500a1000a2000,18,-1,5,50,0,0,0,0,0
+Font=PxPlus_IBM_VGA9 Nerd Font,18,-1,5,50,0,0,0,0,0,Book
 
 [General]
 Name=Old Text Mode
 Parent=FALLBACK/
+
+[Scrolling]
+HistoryMode=2
