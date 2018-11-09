@@ -56,9 +56,9 @@ Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
     "x" "XFCE"      off 2>&1 >/dev/tty)
 
 say "Do you want the VimStar config?" 
-VimStar=$($DIALOG --radiolist "Do you want the VimStar Vim/NeoVim config?" 20 60 12 \ 
-	"y" "Yes" on \
-	"n" "No; I have my own Vim config" off 2>&1 >/dev/tty)
+VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 \
+    "y" "Install VimStar"  on \
+    "n" "I already have my own Vim config"      off 2>&1 >/dev/tty)
 
 ## Editor 
 
