@@ -70,6 +70,3 @@
 [submodule "joe/syntax"]
 	path = joe/syntax
 	url = https://github.com/cmur2/joe-syntax
-[submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
