@@ -39,8 +39,16 @@ DIALOG=whiptail
 
 # Questions
 
-say "Do you want all the Google fonts?"
+## Console config
 
+say "Does this machine have a HIDPI screen?"
+if $DIALOG --yesno "HIDPI screen?" 20 60 ;then
+    sudo cp vconsole.conf /etc
+else 
+    echo "Nope." 
+fi
+
+say "Do you want all the Google fonts?"
 GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts (takes a long time to install)?" 20 60 12 \
     "y" "Install Google Fonts"  on \
     "n" "Too big; skip it"      off 2>&1 >/dev/tty)
@@ -97,14 +105,6 @@ else
     echo "Skipping Google Fonts install...."
 fi
 
-## Console config
-
-say "Does this machine have a HIDPI screen?"
-if $DIALOG --yesno "HIDPI screen?" 20 60 ;then
-    sudo cp vconsole.conf /etc
-else 
-    echo "Nope." 
-fi
 
 # Syncthing
 
