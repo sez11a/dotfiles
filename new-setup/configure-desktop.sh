@@ -55,9 +55,21 @@ Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
     "p" "Plasma 5"  on \
     "x" "XFCE"      off 2>&1 >/dev/tty)
 
+say "Do you want the VimStar config?" 
+VimStar=$($DIALOG --radiolist "Do you want the VimStar Vim/NeoVim config?" 20 60 12 \ 
+	"y" "Yes" on \
+	"n" "No; I have my own Vim config" off 2>&1 >/dev/tty)
+
 ## Editor 
 
 sudo pacman -S --noconfirm neovim joe python-neovim
+
+if echo "$VimStar" | grep -iq "^y" ;then
+    echo "Installing VimStar!"
+	curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
+else
+    echo "Skipping VimStar install...."
+fi
 
 ## Mouse Cursors
 
