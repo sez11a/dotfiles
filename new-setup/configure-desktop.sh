@@ -151,8 +151,8 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     trizen -S --noconfirm --noedit jdk8
     sudo archlinux-java set java-8-jdk
-    trizen -S --noconfirm --noedit kindlegen todotxt slack-desktop skypeforlinux-stable-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin
-    # Removed Moodbar from above because it pulls in all the old GStreamer stuff
+    trizen -S --noconfirm --noedit kindlegen todotxt slack-desktop skypeforlinux-stable-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar
+
 else
     echo "Skipping standard desktop apps...."
 fi
