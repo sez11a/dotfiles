@@ -32,7 +32,7 @@ sudo pacman -S --noconfirm trizen
 # Environment 
 
 cp desktop/Home.desktop ~/Desktop
-sudo pacman -S --noconfirm festival festival-english festival-us 
+sudo pacman -S --noconfirm festival festival-english festival-us powerline python-powerline
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
@@ -143,7 +143,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha pdfsam zip unzip powerline python-powerline
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha pdfsam zip unzip 
 
     sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
 
