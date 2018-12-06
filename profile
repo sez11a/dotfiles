@@ -84,6 +84,9 @@ export JPM_PACKAGES
 
 export PATH=$PATH:~/jpm/bin:~/.node-packages/bin
 
+# Make LibreOffice honor Plasma 5 dark mode
+SAL_USE_VCLPLUGIN=qt5
+
 # Start Powerline
 #export XDG_CONFIG_HOME=~/.config
 POWERLINE_BASH_CONTINUATION=1
