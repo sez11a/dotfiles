@@ -145,13 +145,13 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     sudo pacman -R --noconfirm libreoffice-still
     sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot chromium lha pdfsam zip unzip 
 
-    sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
+    sudo pacman -S --noconfirm virtualbox
 
     # Apps in AUR
 
     trizen -S --noconfirm --noedit jdk8
     sudo archlinux-java set java-8-jdk
-    trizen -S --noconfirm --noedit kindlegen todotxt slack-desktop skypeforlinux-stable-bin gitter pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar
+    trizen -S --noconfirm --noedit kindlegen todotxt slack-desktop pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar
 
 else
     echo "Skipping standard desktop apps...."
