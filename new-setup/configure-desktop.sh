@@ -149,8 +149,6 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Apps in AUR
 
-    trizen -S --noconfirm --noedit jdk8
-    sudo archlinux-java set java-8-jdk
     trizen -S --noconfirm --noedit kindlegen todotxt slack-desktop pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar
 
 else

@@ -1,2 +1,1 @@
-prefix=~/.node-packages 
-prefix=/home/sezovr/.npm-packages
+prefix=~/.npm-packages

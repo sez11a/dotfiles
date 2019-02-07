@@ -650,3 +650,5 @@ _isroot=false
 #}}}
 source ~/.profile
 
+
+export PATH="$PATH:/home/sezovr/jpm/bin"

@@ -94,3 +94,5 @@ POWERLINE_BASH_SELECT=1
 powerline-daemon -q
 . /usr/share/powerline/bindings/bash/powerline.sh
 
+
+export PATH="$PATH:/home/sezovr/jpm/bin"

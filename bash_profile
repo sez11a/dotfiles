@@ -6,3 +6,5 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 
+
+export PATH="$PATH:/home/sezovr/jpm/bin"
