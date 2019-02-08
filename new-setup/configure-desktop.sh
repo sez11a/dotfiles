@@ -33,6 +33,7 @@ sudo pacman -S --noconfirm trizen
 
 cp desktop/Home.desktop ~/Desktop
 sudo pacman -S --noconfirm festival festival-english festival-us powerline python-powerline
+trizen -S --noconfirm python-powerline-gitstatus
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail

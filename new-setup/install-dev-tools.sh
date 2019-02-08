@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yaourt -S --noconfirm jdk8-openjdk squirrel-sql
+trizen -S --noconfirm jdk8-openjdk squirrel-sql
 sudo archlinux-java set java-8-openjdk
 
 sudo pacman -S --noconfirm qgit lazarus-qt5 fpc gdb nodejs npm eclipse-jee kdiff3
