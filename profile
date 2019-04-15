@@ -36,9 +36,11 @@ fixnpm() {
 function say { echo "$1" | festival --tts; }
 export -f say
 export QT_QPA_PLATFORMTHEME=appmenu-qt5
-#JAVA_HOME=/usr/lib64/jvm/java-8-jdk
-ANT_HOME=/apps/apache-ant-1.9.6
+JAVA_HOME=/usr/lib/jvm/default
+#ANT_HOME=/apps/apache-ant-1.9.6
 ANT_OPTS="-Xms4096M -Xmx4096M -XX:-UseGCOverheadLimit"
+# To debug Ant tasks: 
+# ANT_OPTS="-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=y -Xms4096M -Xmx4096M -XX:-UseGCOverheadLimit"
 ANT_ARGS="-logger org.apache.tools.ant.listener.AnsiColorLogger"
 
 #M3_HOME=/apps/apache-maven-3.0.3
@@ -66,7 +68,7 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 PATH=$PATH:$HOME/bin:$ANT_HOME/bin:$IZPACK_HOME/bin
 
-export ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS GRINDERPATH CLASSPATH
+export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS GRINDERPATH CLASSPATH
 
 # Use archlinux-java status to see which JDK is set as default
 # Use archlinux-java java-7-openjdk or archlinux-java java-8-jdk to set
@@ -85,7 +87,10 @@ export JPM_PACKAGES
 export PATH=$PATH:~/jpm/bin:~/.node-packages/bin
 
 # Make LibreOffice honor Plasma 5 dark mode
-SAL_USE_VCLPLUGIN=qt5
+#SAL_USE_VCLPLUGIN=qt5
+
+# Integrate GTK apps eith KDE
+export GTK_USE_PORTAL=1
 
 # Start Powerline
 #export XDG_CONFIG_HOME=~/.config
@@ -96,3 +101,14 @@ powerline-daemon -q
 
 
 export PATH="$PATH:/home/sezovr/jpm/bin"
+
+function fineFinder() {
+    find -name *.${1:-java} -print0 | xargs -0 grep -l --color=auto "${2:-@review}"
+
+    echo _____________________________________________________
+    echo REMINDER: *fineFinder* is a function that uses find 
+    echo and grep. The actual command run was 
+    echo *find -name *.${1:-java} -print0 \| xargs -0 grep -l --color=auto "${2:-@review}"
+    echo _____________________________________________________
+
+}

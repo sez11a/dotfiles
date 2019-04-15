@@ -12,5 +12,5 @@
 
 [[ -f ~/.extend.xprofile ]] && . ~/.extend.xprofile
 
-export SAL_USE_VCLPLUGIN=gtk
+#export SAL_USE_VCLPLUGIN=qt5
 
