@@ -103,12 +103,12 @@ powerline-daemon -q
 export PATH="$PATH:/home/sezovr/jpm/bin"
 
 function fineFinder() {
-    find -name *.${1:-java} -print0 | xargs -0 grep -l --color=auto "${2:-@review}"
+    find -name "*.${1:-java}" -print0 | xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
 
-    echo _____________________________________________________
-    echo REMINDER: *fineFinder* is a function that uses find 
-    echo and grep. The actual command run was 
-    echo *find -name *.${1:-java} -print0 \| xargs -0 grep -l --color=auto "${2:-@review}"
-    echo _____________________________________________________
 
+echo _________________________________________________________________________________________
+echo REMINDER: *fineFinder* is a function that uses find and grep. The actual command run was
+echo    
+echo    find -name "*.${1:-java}" -print0 \| xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
+echo _________________________________________________________________________________________
 }
