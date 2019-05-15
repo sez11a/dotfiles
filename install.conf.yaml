@@ -23,4 +23,7 @@
     ~/.config/powerline:
         path: powerline
         create: true
+    ~/.config/vifm:
+        path: vifm
+        create: true
     ~/.npmrc: npmrc
