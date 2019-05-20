@@ -9,6 +9,10 @@
 	/home/sezovr/
 	..
 1554142799
+'v
+	/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	00-oauth2-intro.markdown
+1557944228
 
 # Bookmarks:
 
@@ -22,51 +26,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2
-	06-upgrading-the-liferay-database
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2/06-upgrading-the-liferay-database
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2
-	06-upgrading-the-liferay-database
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2/06-upgrading-the-liferay-database
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
-	05-upgrading-to-liferay-7-2
-4
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2
-	06-upgrading-the-liferay-database
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2/06-upgrading-the-liferay-database
-	05-upgrading-modules-using-gogo-shell.markdown
-2
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/05-upgrading-to-liferay-7-2
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment
-	articles
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs
-	developer
-5
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
-	frameworks
-4
 d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
 	articles
 1
@@ -320,8 +279,53 @@ d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/articles/04-securing
 	..
 0
 d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/articles/04-securing-liferay
-	09-cas-authentication.markdown
-10
+	15-oauth2
+2
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/articles/04-securing-liferay/15-oauth2
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/articles/04-securing-liferay
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/articles
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment
+	images
+5
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/discover
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt
+	liferay-docs
+4
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs
+	developer
+5
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
+	frameworks
+3
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
+	articles
+1
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles
+	140-application-security
+8
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/140-application-security
+	02-application-permissions
+1
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/140-application-security/02-application-permissions
+	01-application-permissions-intro.markdown
+1
 d
 
 # Right window history (oldest to newest):
@@ -412,6 +416,99 @@ D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment
 D/home/sezovr/Documents/lrdocs-wt/liferay-docs
 	deployment
 4
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment
+	articles
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
+	04-securing-liferay
+4
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay
+	01-liferay-security-intro.markdown
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
+	04-securing-liferay
+4
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay
+	15-oauth2
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	15-oauth2
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2/15-oauth2
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	15-oauth2
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2/15-oauth2
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay
+	15-oauth2
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	15-oauth2
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2/15-oauth2
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay
+	15-oauth2
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment
+	images
+5
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/images
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment
+	articles
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
+	04-securing-liferay
+4
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay
+	15-oauth2
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2
+	
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs
+	developer
+5
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
+	appdev
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev
+	articles
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
+	01-application-development-intro.markdown
+2
 D
 
 # Command line history (oldest to newest):
@@ -426,17 +523,28 @@ p01-intro.markdown
 p02-adding-ldap-servers.markdown
 p02-configuring-ldap.markdown
 p01-ldap-servers-intro.markdown
+p00-oauth2-intro.markdown
+p03-authorizing-access.markdown
+p02-scopes.markdown
+p01-oauth2-intro.markdown
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/articles/04-securing-liferay/09-cas-authentication.markdown
+""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-flow.png
+""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-new-application.png
+""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-revoke-access.png
+""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-scopes-tab.png
+""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-service-access-policy.png
+""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-user-apps.png
 
 # Directory stack (oldest to newest):
 
 # Trash content:
 t/home/sezovr/.local/share/vifm/Trash/000_01-ui-development
 	/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/01-ui-development
+t/home/sezovr/.local/share/vifm/Trash/000_15-oauth2
+	/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2/15-oauth2
 
 # State:
 f
