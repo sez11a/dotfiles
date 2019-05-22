@@ -17,7 +17,7 @@
 # Bookmarks:
 
 # TUI:
-ar
+al
 q0
 v2
 ov
@@ -26,54 +26,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
-	articles
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles
-	07-web-experience-management
-6
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/07-web-experience-management
-	01-developing-fragments
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/07-web-experience-management/01-developing-fragments
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/07-web-experience-management
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs
-	discover
-6
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/discover
-	portal
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/discover/portal
-	articles
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/discover/portal/articles
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/discover/portal
-	articles
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/discover/portal/articles
-	XX-segmentation-and-personalization
-1
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs/discover/portal/articles/XX-segmentation-and-personalization
-	..
-0
-d/home/sezovr/Documents/lrdocs-wt/liferay-docs
-	developer
-5
 d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
 	frameworks
 4
@@ -324,11 +276,65 @@ d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/140
 	02-application-permissions
 1
 d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/140-application-security/02-application-permissions
-	01-application-permissions-intro.markdown
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/140-application-security
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/liferay-docs
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt
+	7.1.x
+3
+d/home/sezovr/Documents/lrdocs-wt/7.1.x
+	develop
+4
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop
+	tutorials
+3
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials
+	articles
 1
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials/articles
+	150-web-services
+10
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials/articles/150-web-services
+	04-consuming-web-services
+1
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials/articles/150-web-services/04-consuming-web-services
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials/articles/150-web-services
+	..
+0
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials/articles
+	150-web-services
+10
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials/articles/150-web-services
+	05-service-builder-web-services
+2
+d/home/sezovr/Documents/lrdocs-wt/7.1.x/develop/tutorials/articles/150-web-services/05-service-builder-web-services
+	05-invoking-json-web-services.markdown
+6
 d
 
 # Right window history (oldest to newest):
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles-dxp
+	01-saml
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles-dxp/01-saml
+	01-intro.markdown
+1
 D/home/sezovr/Documents/code/liferay-portal
 	..
 0
@@ -507,8 +513,53 @@ D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev
 	articles
 1
 D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
-	01-application-development-intro.markdown
+	01-web-front-ends
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/01-web-front-ends
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
+	02-services-development
 2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/02-services-development
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
+	02-services-development
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/02-services-development
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
+	01-web-front-ends
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/01-web-front-ends
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
+	02-services-development
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/02-services-development
+	01-service-builder
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/02-services-development/01-service-builder
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/02-services-development
+	03-rest-builder
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/02-services-development/03-rest-builder
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/02-services-development
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev
+	articles
+1
 D
 
 # Command line history (oldest to newest):
@@ -527,6 +578,7 @@ p00-oauth2-intro.markdown
 p03-authorizing-access.markdown
 p02-scopes.markdown
 p01-oauth2-intro.markdown
+p02-service-builder
 
 # Local filter history (oldest to newest):
 
