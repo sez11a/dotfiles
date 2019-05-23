@@ -17,7 +17,7 @@
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
 v2
 ov
@@ -558,7 +558,52 @@ D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
 	..
 0
 D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
+	frameworks
+3
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
 	articles
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles
+	160-search
+9
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/160-search
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
+	appdev
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev
+	articles
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev
+	..
+0
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer
+	frameworks
+3
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks
+	articles
+1
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles
+	160-search
+9
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/160-search
+	02-aggregations
+2
+D/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/160-search/02-aggregations
+	01-aggregations-intro.markdown
 1
 D
 
@@ -579,16 +624,12 @@ p03-authorizing-access.markdown
 p02-scopes.markdown
 p01-oauth2-intro.markdown
 p02-service-builder
+p01-front-end-development
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-flow.png
-""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-new-application.png
-""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-revoke-access.png
-""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-scopes-tab.png
-""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-service-access-policy.png
-""/home/sezovr/Documents/lrdocs-wt/7.1.x/discover/deployment/images/oauth-user-apps.png
+""/home/sezovr/.local/share/vifm/Trash/000_01-intro.markdown
 
 # Directory stack (oldest to newest):
 
@@ -597,6 +638,8 @@ t/home/sezovr/.local/share/vifm/Trash/000_01-ui-development
 	/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/appdev/articles/01-ui-development
 t/home/sezovr/.local/share/vifm/Trash/000_15-oauth2
 	/home/sezovr/Documents/lrdocs-wt/liferay-docs/deployment/articles/04-securing-liferay/15-oauth2/15-oauth2
+t/home/sezovr/.local/share/vifm/Trash/000_01-intro.markdown
+	/home/sezovr/Documents/lrdocs-wt/liferay-docs/developer/frameworks/articles/160-search/01-intro.markdown
 
 # State:
 f
