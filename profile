@@ -61,6 +61,7 @@ CLASSPATH=$GRINDERPATH/lib/grinder.jar:$CLASSPATH
 export EDITOR=nvim
 export VISUAL=nvim
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+export JAVA_DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000"
 
 # Experimenting with jayatana
 # experiment over; it doesn't work

@@ -82,7 +82,7 @@ fi
 
 ## Mouse Cursors
 
-sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.10.5-1-any.pkg.tar.xz
+sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.16.2-1-any.pkg.tar.xz
 #trizen -S --noconfirm --noedit breeze-red-cursor-theme
 
 ## Fonts
@@ -120,9 +120,9 @@ sudo cp grub /etc/default
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Plymouth 
-
-sudo cp plymouthd.conf /etc/plymouth
-sudo plymouth-set-default-theme -R spinner
+# Commented out below because Plymouth is no longer installed by default.
+#sudo cp plymouthd.conf /etc/plymouth
+#sudo plymouth-set-default-theme -R spinner
 
 # Startup Sound
 
@@ -144,7 +144,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha pdfsam zip unzip 
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha pdfsam zip unzip vifm
 
     sudo pacman -S --noconfirm virtualbox
 
