@@ -28,6 +28,7 @@ alias to='todotxt-machine'
 #complete -F _todo t
 alias sudo='sudo -E'
 alias ws='jstar -text_color white+bg_blue'
+alias wt='WordTsar'
 alias gitpr='~/Documents/code/git-tools/git-pull-request/git-pull-request.sh'
 # alias emacs='emacs.sh'
 fixnpm() {
