@@ -5,7 +5,7 @@ sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledon
 
 sudo pacman -S --noconfirm kaccounts-providers kio-gdrive kwalletmanager neovim-qt gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdesvn kdenlive frei0r-plugins audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra arc-kde kvantum-theme-arc falkon unzip kio-gdrive flameshot krita opencolorio krita-plugin-gmic libheif
 
-trizen -S --noconfirm --noedit plasma5-applets-active-window-control-git plasma5-applets-playbar2 syncthingtray xfce-theme-greybird plasma5-applets-netspeed
+trizen -S --noconfirm --noedit plasma5-applets-active-window-control-git plasma5-applets-window-appmenu plasma5-applets-window-buttons plasma5-applets-window-title plasma5-applets-playbar2 syncthingtray xfce-theme-greybird plasma5-applets-netspeed
 
 # KDE Config
 
@@ -21,7 +21,7 @@ cp kde/yakuake.notifyrc ~/.config
 say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
 if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System Settings." 20 60 ;then
     sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module 
-    trizen -S --noconfirm --noedit gmenu-dbusmenu-proxy-git 
+    # trizen -S --noconfirm --noedit gmenu-dbusmenu-proxy-git 
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config
     mkdir ~/.local/share/plasma
@@ -61,7 +61,7 @@ kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme oxy-red-argentin
 # KDE Globals
 kwriteconfig5 --file kdeglobals --group General --key ColorScheme Hybrid
 kwriteconfig5 --file kdeglobals --group General --key Name Breeze
-kwriteconfig5 --file kdeglobals --group General --key fixed Anonymous\ Pro\ for\ Powerline,11,-1,5,50,0,0,0,0,0
+kwriteconfig5 --file kdeglobals --group General --key fixed Monospace,11,-1,5,50,0,0,0,0,0
 kwriteconfig5 --file kdeglobals --group General --key font Sans\ Serif,11,-1,5,50,0,0,0,0,0
 kwriteconfig5 --file kdeglobals --group General --key menuFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 kwriteconfig5 --file kdeglobals --group General --key smallestReadableFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
