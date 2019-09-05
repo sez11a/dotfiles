@@ -114,10 +114,10 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-overrid
 
 # Grub
 
-trizen -S --noconfirm --noedit grub2-theme-dharma-mod
+# trizen -S --noconfirm --noedit grub2-theme-dharma-mod
 
-sudo cp grub /etc/default
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+# sudo cp grub /etc/default
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Plymouth 
 # Commented out below because Plymouth is no longer installed by default.
