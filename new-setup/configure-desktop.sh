@@ -164,6 +164,7 @@ sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
 
 zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
 rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+mv old-config-files.zip ~
 git submodule init
 git submodule update
 ../install 
