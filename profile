@@ -23,13 +23,14 @@ PS1='\[$green$bold\]\u@\h\[$reset\]:\[$red$bold\]\w\[$reset\]\n\[$yellow$bold\]$
 #fi
 
 alias vi='nvim'
+alias nv='nvim-qt'
 alias t='todo.sh'
 alias to='todotxt-machine'
 #complete -F _todo t
 alias sudo='sudo -E'
 alias ws='jstar -text_color white+bg_blue'
 alias wt='WordTsar'
-alias gitpr='~/Documents/code/git-tools/git-pull-request/git-pull-request.sh'
+# alias gitpr='~/Documents/code/git-tools/git-pull-request/git-pull-request.sh'
 # alias emacs='emacs.sh'
 fixnpm() {
         git ls-files modules | grep -F package.json | xargs -I {} dirname {} | xargs -I {} rm -rf {}/node_modules
@@ -114,3 +115,6 @@ echo
 echo    find -name "*.${1:-java}" -print0 \| xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
 echo _________________________________________________________________________________________
 }
+
+# systemctl --user import-environment
+# dbus-update-activation-environment --systemd --all
