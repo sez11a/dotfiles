@@ -11,5 +11,5 @@ if echo "$Vchip" | grep -iq "^n" ;then
 	xrandr --output eDP-1-1 --auto --output HDMI-1-1 --auto --panning 3840x2160+3840+0 --scale 2x2 --right-of eDP-1-1
 else
     echo "Intel"
-	xrandr --output eDP1 --auto --output HDMI1 --auto --panning 3840x2160+3840+0 --scale 2x2 --right-of eDP1
+	xrandr --output eDP-1 --auto --output HDMI-1 --auto --panning 3840x2160+3840+0 --scale 2x2 --right-of eDP-1
 fi
