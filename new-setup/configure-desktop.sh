@@ -27,14 +27,14 @@ sudo pacman -Syu
 # have our AUR helper. On Manjaro, it's in the repo, so we can just
 # call the installer and get it. 
 
-sudo pacman -S --noconfirm trizen
+sudo pacman -S --noconfirm yay
 
 # AUR Performance
 # Install the multicore compression utilities. 
 # Rename makepkg.conf and replace it with the multicore version.
 
 sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip 
-trizen -S --noconfirm pxz 
+yay -S --noconfirm pxz 
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp makepkg.conf /etc/makepkg.conf
 
@@ -42,7 +42,7 @@ sudo cp makepkg.conf /etc/makepkg.conf
 
 cp desktop/Home.desktop ~/Desktop
 sudo pacman -S --noconfirm festival festival-english festival-us powerline python-powerline
-trizen -S --noconfirm python-powerline-gitstatus
+yay -S --noconfirm python-powerline-gitstatus
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
@@ -92,12 +92,12 @@ fi
 ## Mouse Cursors
 
 sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.16.2-1-any.pkg.tar.xz
-#trizen -S --noconfirm --noedit breeze-red-cursor-theme
+#yay -S --noconfirm  breeze-red-cursor-theme
 
 ## Fonts
 
 sudo pacman -S --noconfirm ttf-linux-libertine ttf-gentium 
-trizen -S --noconfirm --noedit otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito ttf-iosevka ttf-iosevka-slab
+yay -S --noconfirm  otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito ttf-iosevka ttf-iosevka-slab
 
 sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
@@ -110,7 +110,7 @@ sudo fc-cache -f -v
 if echo "$GoogleFonts" | grep -iq "^y" ;then
     echo "Installing Google Fonts!"
     sudo pacman -R noto-fonts ttf-droid ttf-inconsolata
-    trizen -S ttf-google-fonts-git
+    yay -S ttf-google-fonts-git
 else
     echo "Skipping Google Fonts install...."
 fi
@@ -123,7 +123,7 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-overrid
 
 # Grub
 
-# trizen -S --noconfirm --noedit grub2-theme-dharma-mod
+# yay -S --noconfirm  grub2-theme-dharma-mod
 
 # sudo cp grub /etc/default
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -144,7 +144,7 @@ sudo systemctl enable startupsound.service
 # Undelete Files 
 
 sudo pacman -S --noconfirm extundelete ext4magic testdisk
-trizen -S --noconfirm --noedit r-linux
+yay -S --noconfirm  r-linux
 
 
 if echo "$DesktopApps" | grep -iq "^y" ;then
@@ -159,7 +159,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Apps in AUR
 
-    trizen -S --noconfirm --noedit kindlegen todotxt slack-desktop pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar boomaga-qt5
+    yay -S --noconfirm  kindlegen todotxt slack-desktop pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar boomaga-qt5
 
 else
     echo "Skipping standard desktop apps...."

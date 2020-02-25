@@ -1,9 +1,9 @@
 #!/bin/sh
 
-trizen -S --noconfirm jdk8-openjdk squirrel-sql
+yay -S --noconfirm jdk8-openjdk squirrel-sql
 sudo archlinux-java set java-8-openjdk
 
-sudo pacman -S --noconfirm source-highlight qgit lazarus-qt5 fpc gdb nodejs npm eclipse-jee kdiff3
+sudo pacman -S --noconfirm source-highlight qgit lazarus-qt5 fpc gdb nodejs npm eclipse-jee kdiff3 netbeans
 
 mkdir ~/.npm-packages
 NPM_PACKAGES=~/.npm-packages
