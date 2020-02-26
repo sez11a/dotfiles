@@ -167,7 +167,8 @@ fi
 
 # Printers
 
-sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
+#sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
+yay -S --noconfirm cnrdrvcups-lb
 
 # Dotfiles
 
