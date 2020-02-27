@@ -97,7 +97,9 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-c
 ## Fonts
 
 sudo pacman -S --noconfirm ttf-linux-libertine ttf-gentium 
-yay -S --noconfirm  otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-caladea ttf-carlito ttf-iosevka ttf-iosevka-slab
+yay -S --noconfirm  otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris otf-hermit ttf-anonymice-powerline-git ttf-carlito ttf-iosevka ttf-iosevka-slab
+
+## Removed Caladea from above because it conflicted with Google Fonts
 
 sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
