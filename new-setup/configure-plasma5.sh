@@ -32,6 +32,35 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
     kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
     kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
     kwriteconfig5 --file plasmarc --group Theme --key name default
+	# KWin
+	kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_scaleinEnabled true
+	kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled true
+	kwriteconfig5 --file kwinrc --group Plugins --key minimizeanimationEnabled false
+	kwriteconfig5 --file kwinrc --group Plugins --key windowgeometryEnabled false
+	kwriteconfig5 --file kwinrc --group Plugins --key wobblywindowsEnabled true
+	# Breeze
+	kwriteconfig5 --file breezerc --group Common --key ShadowSize 64
+	kwriteconfig5 --file breezerc --group Common --key ShadowStrength 163
+	kwriteconfig5 --file breezerc --group Windeco --key TitleAlignment AlignLeft
+	# KDE Globals
+	kwriteconfig5 --file kdeglobals --group General --key ColorScheme Hybrid
+	kwriteconfig5 --file kdeglobals --group General --key Name Breeze
+	kwriteconfig5 --file kdeglobals --group General --key fixed Monospace,11,-1,5,50,0,0,0,0,0
+	kwriteconfig5 --file kdeglobals --group General --key font Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig5 --file kdeglobals --group General --key menuFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig5 --file kdeglobals --group General --key smallestReadableFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig5 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig5 --file kdeglobals --group General --key shadeSortColumn true
+	kwriteconfig5 --file kdeglobals --group General --key widgetStyle Breeze
+	kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
+	kwriteconfig5 --file kdeglobals --group KDE --key ColorScheme Hybrid
+	kwriteconfig5 --file kdeglobals --group KDE --key widgetStyle breeze
+	kwriteconfig5 --file kdeglobals --group KDE --key SingleClick false
+	# KSplash
+	kwriteconfig5 --file ksplashrc --group KSplash --key Engine KSplashQML
+	kwriteconfig5 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
+	# Input
+	kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme oxy-red-argentina
 else 
     echo "Nope."; 
 fi
@@ -39,47 +68,18 @@ fi
 #KWin
 kwriteconfig5 --file kwinrc --group Compositing --key Backend OpenGL
 kwriteconfig5 --file kwinrc --group Compositing --key Enabled true
-kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_scaleinEnabled true
-kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled true
-kwriteconfig5 --file kwinrc --group Plugins --key minimizeanimationEnabled false
-kwriteconfig5 --file kwinrc --group Plugins --key windowgeometryEnabled false
-kwriteconfig5 --file kwinrc --group Plugins --key wobblywindowsEnabled true
 
-# Breeze
-kwriteconfig5 --file breezerc --group Common --key ShadowSize 64
-kwriteconfig5 --file breezerc --group Common --key ShadowStrength 163
-kwriteconfig5 --file breezerc --group Windeco --key TitleAlignment AlignLeft
 
 # Dolphin
 kwriteconfig5 --file dolphinrc --group General --key EditableUrl true
 kwriteconfig5 --file dolphinrc --group General --key GlobalViewProps true
 kwriteconfig5 --file dolphinrc --group General --key ShowFullPath true
 
-# Input
-kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme oxy-red-argentina
-
-# KDE Globals
-kwriteconfig5 --file kdeglobals --group General --key ColorScheme Hybrid
-kwriteconfig5 --file kdeglobals --group General --key Name Breeze
-kwriteconfig5 --file kdeglobals --group General --key fixed Monospace,11,-1,5,50,0,0,0,0,0
-kwriteconfig5 --file kdeglobals --group General --key font Sans\ Serif,11,-1,5,50,0,0,0,0,0
-kwriteconfig5 --file kdeglobals --group General --key menuFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
-kwriteconfig5 --file kdeglobals --group General --key smallestReadableFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
-kwriteconfig5 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
-kwriteconfig5 --file kdeglobals --group General --key shadeSortColumn true
-kwriteconfig5 --file kdeglobals --group General --key widgetStyle Breeze
-kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
-kwriteconfig5 --file kdeglobals --group KDE --key ColorScheme Hybrid
-kwriteconfig5 --file kdeglobals --group KDE --key widgetStyle breeze
-kwriteconfig5 --file kdeglobals --group KDE --key SingleClick false
 
 # Konsole
 kwriteconfig5 --file konsolerc --group Desktop\ Entry --key DefaultProfile Commodore.profile
 kwriteconfig5 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\ 3.profile,8086.profile,Commodore.profile,NewGray.profile,Old\ Text\ Mode.profile
 
-# KSplash
-kwriteconfig5 --file ksplashrc --group KSplash --key Engine KSplashQML
-kwriteconfig5 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
 
 # Keyboard
 kwriteconfig5 --file kxkbrc --group Layout --key Options ctrl:swapcaps

@@ -4,7 +4,7 @@ archive = ~/Documents/pim/todo/done.txt
 auto-save = True
 show-toolbar = True
 show-filter-panel = False
-enable-borders = True
+enable-borders = False
 enable-word-wrap = True
 colorscheme = myawesometheme
 
