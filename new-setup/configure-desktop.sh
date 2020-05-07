@@ -34,7 +34,6 @@ sudo pacman -S --noconfirm yay
 # Rename makepkg.conf and replace it with the multicore version.
 
 sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip 
-yay -S --noconfirm pxz 
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp makepkg.conf /etc/makepkg.conf
 
