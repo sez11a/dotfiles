@@ -47,7 +47,7 @@ ANT_ARGS="-logger org.apache.tools.ant.listener.AnsiColorLogger"
 
 #M3_HOME=/apps/apache-maven-3.0.3
 #M3=$M3_HOME/bin
-M2_HOME=/opt/maven
+#M2_HOME=/opt/maven
 MAVEN_OPTS="-Xmx1024m"
 
 IZPACK_HOME=/apps/IzPack
