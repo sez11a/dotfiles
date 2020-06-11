@@ -38,6 +38,7 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
 	kwriteconfig5 --file kwinrc --group Plugins --key minimizeanimationEnabled false
 	kwriteconfig5 --file kwinrc --group Plugins --key windowgeometryEnabled false
 	kwriteconfig5 --file kwinrc --group Plugins --key wobblywindowsEnabled true
+	kwriteconfig5 --file kwinrc --group Windows --key Placement UnderMouse
 	# Breeze
 	kwriteconfig5 --file breezerc --group Common --key ShadowSize 64
 	kwriteconfig5 --file breezerc --group Common --key ShadowStrength 163
