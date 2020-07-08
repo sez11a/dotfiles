@@ -623,7 +623,7 @@ _isroot=false
 
   #}}}
   # ENTER AND LIST DIRECTORY{{{
-    function cd() { builtin cd -- "$@" && { [ "$PS1" = "" ] || ls -hrt --color; }; }
+    function cd() { builtin cd -- "$@" && { [ "$PS1" = "" ] || ls -h --group-directories-first --color; }; }
   #}}}
   # SYSTEMD SUPPORT {{{
     if which systemctl &>/dev/null; then
@@ -649,6 +649,3 @@ _isroot=false
   #}}}
 #}}}
 source ~/.profile
-
-
-export PATH="$PATH:/home/sezovr/jpm/bin"
