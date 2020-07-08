@@ -9,12 +9,16 @@ yay -S --noconfirm  plasma5-applets-active-window-control-git plasma5-applets-wi
 
 # KDE Config
 
-mkdir ~/.local/share/color-schemes
+mkdir -p ~/.local/share/color-schemes
 cp kde/konsole/*.profile ~/.local/share/konsole
 cp kde/konsole/*.colorscheme ~/.local/share/konsole
 cp kde/color-schemes/*.colors ~/.local/share/color-schemes
 cp kde/yakuakerc ~/.config
 cp kde/yakuake.notifyrc ~/.config
+mkdir -p ~/.local/share/plasma/desktoptheme
+tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
+mkdir -p ~/.local/share/aurorae/themes
+tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
 
 # Desktop Configuration
 
@@ -24,8 +28,7 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
     # yay -S --noconfirm  gmenu-dbusmenu-proxy-git 
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config
-    mkdir ~/.local/share/plasma
-    mkdir ~/.local/share/plasma/look-and-feel
+    mkdir -p ~/.local/share/plasma/look-and-feel
 	tar xvfz hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
     kwriteconfig5 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
     kwriteconfig5 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
