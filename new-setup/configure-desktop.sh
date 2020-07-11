@@ -79,7 +79,7 @@ VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 
 
 ## Editor 
 
-sudo pacman -S --noconfirm neovim joe python-neovim ctags xclip wl-clipboard
+sudo pacman -S --noconfirm neovim joe python-neovim xclip wl-clipboard
 
 if echo "$VimStar" | grep -iq "^y" ;then
     echo "Installing VimStar!"
@@ -154,13 +154,13 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha pdfsam zip unzip vifm xdg-desktop-portal filelight
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha pdfsam zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd
 
     sudo pacman -S --noconfirm virtualbox
 
     # Apps in AUR
 
-    yay -S --noconfirm  kindlegen todotxt slack-desktop pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar boomaga-qt5
+    yay -S --noconfirm  kindlegen todotxt slack-desktop pepper-flash freeplane todotxt-machine-git deb2targz google-talkplugin moodbar boomaga-qt5 universal-ctags-git
 
 else
     echo "Skipping standard desktop apps...."
