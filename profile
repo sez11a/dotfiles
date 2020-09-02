@@ -99,8 +99,8 @@ export GTK_USE_PORTAL=1
 export XDG_CONFIG_HOME=~/.config
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-powerline-daemon -q
-. /usr/share/powerline/bindings/bash/powerline.sh
+# powerline-daemon -q
+# . /usr/share/powerline/bindings/bash/powerline.sh
 
 
 export PATH="$PATH:/home/sezovr/jpm/bin"
