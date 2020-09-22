@@ -1,5 +1,5 @@
 conky.config= {
-    alignment='bottom_right',
+    alignment='top_right',
     border_width=0,
     default_color='white',
     default_outline_color='white',
@@ -24,5 +24,5 @@ conky.config= {
 }
 
 conky.text = [[
-    ${execpi 120 todo.sh -d ~/.todo/config-conky ls @liferay}
+    ${execpi 120 todo.sh -d ~/.todo/config-conky ls @today}
 ]]
