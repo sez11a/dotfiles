@@ -1,7 +1,7 @@
 #!/bin/sh
 
-yay -S --noconfirm jdk8-openjdk squirrel-sql eclipse-common eclipse-jee
-sudo archlinux-java set java-8-openjdk
+yay -S --noconfirm zulu-11-bin zulu-8-bin squirrel-sql 
+sudo archlinux-java set zulu-11
 
 sudo pacman -S --noconfirm source-highlight qgit lazarus-qt5 fpc gdb nodejs npm kdiff3 netbeans
 
