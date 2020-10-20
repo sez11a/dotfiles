@@ -1,0 +1,825 @@
+#! /bin/python3
+
+### =============== Licence: GPL v3 ========================================== #
+#
+# Authors:
+#   Dan Johansen <strit@manjaro.org>
+#   Marcus Britanicus <marcusbritanicus@gmail.com>
+#
+
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA 02110-1301, USA.
+#
+### ========================================================================== #
+
+import os, sys
+import locale
+
+import urllib.request as wget
+from lzma import LZMAFile
+
+from PyQt5.QtCore import QProcess, QThread, QCoreApplication, pyqtSignal, QDir, Qt, QTimer
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication, QProgressBar, QMainWindow, QComboBox, QPushButton, QStyleFactory, QFrame, QFileDialog
+from PyQt5.QtWidgets import QGridLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QWidget, QMessageBox, QScrollArea
+from blkinfo import BlkDiskInfo
+
+from bs4 import BeautifulSoup as BS
+import requests
+from typing import List
+from typing import Tuple
+
+BLOCKSIZE = 4 * 1024 * 1024             # 4 MiB
+
+burl = "https://osdn.net"
+
+proxies = {
+	"http": os.getenv( "HTTP_PROXY" ),
+	"https": os.getenv( "HTTPS_PROXY" ),
+}
+
+__all__ = [
+	"DirLister"
+]
+
+def formattedSize( size ):
+
+	if size <= 1024:
+		return f"{size} B"
+
+	elif size <= 1024 * 1024:
+		return "%0.2f kiB" % (size/1024.)
+
+	elif size <= 1024 * 1024 * 1024:
+		return "%0.2f MiB" % (size/1024./1024.)
+
+	elif size <= 1024 * 1024 * 1024 * 1024:
+		return "%0.2f GiB" % (size/1024./1024./1024.)
+
+	else:
+		return "%0.2f TiB" % (size/1024./1024./1024./1024.)
+
+
+class DirLister( QThread ):
+	"""A remote directory lister.
+	This class is inspired by mtf.py script that scrapes osdn.net to
+	obtain the torrent files for manjaro devices.
+	"""
+
+	imageFound = pyqtSignal( str )
+	folderFound = pyqtSignal( str )
+
+	def __init__( self, url = "", details = "all" ):
+		super( DirLister, self ).__init__()
+
+		self.fileUrls = []
+		self.seen = []
+
+		self.details = details[:]
+
+		self.toBeWalked = [ url ]
+
+		self.mResults = []
+
+	def start( self ):
+		self.running = True
+		QThread.start( self )
+
+	def stop( self ):
+		self.running = False
+		self.waitForFinished( -1 )
+
+	def results( self ):
+
+		return self.mResults
+
+	def __extractUrlFromTableRow( self, trrow ):
+		"""Extracts the url for the file from the table row, trrow."""
+		url = None
+		row = BS( str( trrow ), "lxml" )
+		tds = row.find_all( "td" )
+		for td in tds:
+			atts = td.attrs
+			if atts is not None and "class" in atts and atts["class"][0] == "name":
+				link = td.find( "a" )
+				if "( Parent folder )" != link.get_text().strip():
+					url = link["href"]
+		return url
+
+	def __extractUrlByClass( self, row ):
+		"""Extracts the url if the class is file or dir."""
+		url = None
+		xclass = None
+		atts = row.attrs
+		if atts is not None and "class" in atts:
+			xclass = atts["class"][0]
+			if xclass in ["file", "dir"]:
+				url = self.__extractUrlFromTableRow( row )
+		return ( url, xclass )
+
+	def scrape( self, url ):
+
+		r = requests.get( url, proxies = proxies )
+		hpage = BS( r.text, "lxml" )
+		rows = hpage.find_all( "tr" )
+
+		if ( r.status_code != 200 ):
+			return;
+
+		for row in rows:
+			if not self.running:
+				break;
+
+			xurl, xclass = self.__extractUrlByClass( row )
+
+			if ( xurl == None ):
+				continue;
+
+			if xclass == "file":
+				furl = burl[:]
+				if xurl.startswith( "/" ):
+					furl = f"{furl}{xurl}"
+
+				else:
+					furl = f"{furl}/{xurl}"
+
+				if ( self.details == "all" or self.details == "files" ):
+					if ( furl.endswith( ".img.xz" ) ):
+						self.fileUrls.append( furl )
+						self.imageFound.emit( furl )
+						self.mResults.append( furl )
+
+			elif xclass == "dir":
+				yurl = ""
+				if xurl.startswith( "/" ):
+					yurl = f"{burl}{xurl}"
+
+				else:
+					yurl = f"{burl}/{xurl}"
+
+				if len( yurl ) >= len( url ):
+					self.folderFound.emit( yurl )
+					self.mResults.append( yurl )
+
+				if ( self.details == "all" ):
+					self.toBeWalked.append( yurl )
+
+	def run( self ):
+
+		while( len( self.toBeWalked ) ):
+			if ( not self.running ):
+				break
+
+			url = self.toBeWalked.pop( 0 )
+			if url in self.seen:
+				continue
+
+			self.seen.append( url )
+			self.scrape( url )
+
+
+def flashImage( imagePath, targetFile ):
+	"""A simple function to flash @imagePath to @targetFile
+
+	Note: @targetFile can be a file, a partition or even a device.
+
+	This function will require root privileges for flashing to devices living in /dev/
+	"""
+
+	print( "Flashing %s to the %s." % ( imagePath, targetFile ) )
+	print( "This process will take time.." )
+	print( "Please wait patiently..." )
+
+	imgFileSize = os.path.getsize( imagePath )
+	fmtSize = imgFileSize / ( 1024 * 1024 * 1024 )
+
+	print( "Compressed image size: %0.2f GiB (%d B)" % ( fmtSize, imgFileSize ) )
+
+	xz = LZMAFile( imagePath, "rb" )    # Assume @imagePath is the full path of the image file
+										# and it opens without problems [no check performed for now]
+
+	dev = open( targetFile, 'wb' )      # Assume @targetFile is the full path of the target
+										# and we have write permission for it [no check performed for now]
+
+	buf = b"\x00";
+	while len( buf ) > 0 :              # Keep looping till we have completely read the image in blocks of 4 MiB
+
+		buf = xz.read( BLOCKSIZE )      # Read 1 BLOCKSIZE bytes of uncompressed data at once
+		dev.write( buf )                # Write the just read data ro the file
+		dev.flush()
+
+		sys.stdout.write( "%d %d\n" % ( xz.tell(), len( buf ) ) )
+		sys.stdout.flush()
+
+	dev.flush()
+	dev.close()
+
+
+class ManjaroArmFlasher( QMainWindow ):
+	"""
+	Download a manjaro image suitable for a given device and flash it.
+	"""
+
+	def __init__( self ) :
+		"""Class initializer
+		"""
+
+		QMainWindow.__init__( self )
+
+		self.urlSkel = "https://osdn.net/frs/redir.php?m=acc&f=/storage/g/m/ma/manjaro-arm/%s/%s/%s/%s"
+		self.abort = False
+		self.downloading = False
+
+		self.title = 'Manjaro ARM Flasher'
+		self.haveLocalImage = False
+
+		self.createUI()
+
+		QTimer.singleShot( 1000, self.checkNetwork )
+
+	def checkNetwork( self ) :
+		"""checkNetwork() -> None
+
+		Check the internet connectivity
+
+		@return None
+		"""
+
+		self.progressBar.setRange( 0, 0 )
+		self.progressLabel.setText( "Checking network connectivity..." )
+
+		QApplication.processEvents()
+
+		ping = QProcess()
+		## ping osdn.net 10s timeout, 5 pings
+		ping.start( "ping", [ "-w", "10", "-c", "5", "osdn.net" ] )
+		ping.waitForFinished( -1 )
+
+		if ping.exitCode():
+			self.progressLabel.setText( "ERROR!!!" )
+			QApplication.processEvents()
+
+			QMessageBox.information(
+				self,
+				"Manjaro ARM Flasher | Network Error",
+				"There seems to be a problem connecting to the internet. "
+				"You'll be able to flash local images only. "
+				"If you want to download remote images, please check your connectivity "
+				"and try again."
+			)
+
+			self.deviceCB.setDisabled( True )
+			self.progressLabel.setText( "Network inaccessible. Please choose a local image." )
+
+		else:
+			self.progressLabel.setText( "Loading device list..." )
+			QApplication.processEvents()
+
+			dl = DirLister( f"{burl}/projects/manjaro-arm/storage", "dirs" )
+			dl.start()
+			dl.wait()
+
+			devices = []
+			for url in dl.results():
+				devices.append( os.path.basename( url ) )
+
+
+			self.deviceCB.addItems( devices )
+			self.deviceCB.setCurrentIndex( -1 )
+			self.deviceCB.currentIndexChanged[ int ].connect( self.loadEditions )
+
+			self.downloadBtn.setDisabled( True )
+			self.progressLabel.setText( "Choose device..." )
+			QApplication.processEvents()
+
+
+		self.setEnabled( True )
+		self.progressBar.setRange( 0, 1 )
+
+	def getImageFile( self ):
+		title = "Manjaro ARM Flasher | Open Image File"
+		self.fileName, self.ext = QFileDialog.getOpenFileName(
+			self,
+			title,
+			QDir.homePath(),
+			"Image Files (*.img.xz) (*.img.xz)"
+		)
+
+		if self.fileName :
+			print( f"Ready to flash: {self.fileName}" )
+			self.downloadBtn.setEnabled( True )
+			self.haveLocalImage = True
+
+	def createUI( self ) :
+		"""createUI() -> None
+
+		Create the user interface
+
+		@return None
+		"""
+
+		# We can hard-code the list of devices available.
+		# This will improve the speed of the app tremendously.
+		self.devices = {
+			'edgev':		'Khadas Edge V',
+			'on2':			'Odroid N2',
+			'pbpro':		'Pinebook Pro',
+			'pinebook': 	'Pinebook',
+			'pinephone':	'PinePhone',
+			'pinetab':		'PineTab',
+			'rockpi4b':		'Rock Pi 4B',
+			'rockpro64':	'RockPro64',
+			'rpi4':			'Raspberry Pi 4',
+			'vim1':			'Khadas Vim 1',
+			'vim2':			'Khadas Vim 2',
+			'vim3':			'Khadas Vim 3'
+		}
+
+		# self.editions = {}
+		# self.editions[ "Xfce" ] = "xfce"
+		# self.editions[ "KDE Plasma" ] = "kde-plasma"
+		# self.editions[ "Plasma Mobile" ] = "plasma-mobile"
+
+		# self.versions = {}
+		# self.versions[ '20.04' ] = '20.04'
+		# self.versions[ '20.02' ] = '20.02'
+		# self.versions[ '19.12' ] = '19.12'
+		# self.versions[ '19.10' ] = '19.10'
+		# self.versions[ 'Alpha 5' ] = 'alpha5'
+
+		# Probe for drives without mounted partitions
+		disks_info = BlkDiskInfo()
+		filters = {
+			'is_mounted': False
+		}
+		unmounted_disks = disks_info.get_disks(filters)
+		disks = [ info[ 'name' ] for info in unmounted_disks ]
+
+		self.browseBtn = QPushButton( "&Browse" )
+		self.browseBtn.clicked.connect( self.getImageFile )
+
+		self.deviceCB = QComboBox()
+
+		self.editionCB = QComboBox()
+		self.editionCB.setDisabled( True )
+		self.editionCB.currentIndexChanged[ int ].connect( self.loadVersions )
+
+		self.versionCB = QComboBox()
+		self.versionCB.setDisabled( True )
+		# self.versionCB.currentIndexChanged[ int ].connect( self.loadVersions )
+
+		self.targetCB = QComboBox()
+		self.targetCB.addItems( disks )
+
+		self.progressBar = QProgressBar();
+		# Looks nice: A nice thick progressbar: Disable this for a native look
+		self.progressBar.setStyle( QStyleFactory.create( "Fusion" ) )
+
+		self.progressLabel = QLabel()
+		self.progressLabel.setAlignment( Qt.AlignCenter )
+
+		self.downloadBtn = QPushButton( QIcon.fromTheme( ":/icons/icon.png" ), "&Start" )
+		self.downloadBtn.clicked.connect( self.downloadAndFlash )
+		self.downloadBtn.setDisabled( True )
+
+		self.cancelBtn = QPushButton( QIcon.fromTheme( "dialog-cancel" ), "&Cancel" )
+		self.cancelBtn.clicked.connect( self.cancelDownload )
+		self.cancelBtn.setDisabled( True )
+
+		self.quitBtn = QPushButton( QIcon.fromTheme( "application-exit" ), "&Quit" )
+		self.quitBtn.clicked.connect( self.quitApp )
+
+		# For auto-layout (vertical on mobile and horizontal on pc)
+		size = QApplication.instance().primaryScreen().size()
+
+		# Layout for comboboxes
+		baseLyt = QGridLayout()
+
+		# Landscape mode
+		if ( size.width() > size.height() ):
+			baseLyt.addWidget( QLabel( "Choose a local image:" ), 0, 0 )
+			baseLyt.addWidget( self.browseBtn, 0, 1 )
+			baseLyt.addWidget( QLabel( "Or select a remote image:" ), 1, 0 )
+			baseLyt.addWidget( QLabel( "Device" ), 2, 0 )
+			baseLyt.addWidget( self.deviceCB, 3, 0 )
+			baseLyt.addWidget( QLabel( "Edition" ), 2, 1 )
+			baseLyt.addWidget( self.editionCB, 3, 1 )
+			baseLyt.addWidget( QLabel( "Version" ), 2, 2 )
+			baseLyt.addWidget( self.versionCB, 3, 2 )
+			baseLyt.addWidget( QLabel( "Target Block Device" ), 2, 3 )
+			baseLyt.addWidget( self.targetCB, 3, 3 )
+
+			baseLyt.addItem( QSpacerItem( 10, 20, QSizePolicy.Fixed, QSizePolicy.MinimumExpanding ), 2, 0, 1, 4 )
+			baseLyt.addWidget( self.progressBar, 4, 0, 1, 4 )
+			baseLyt.addWidget( self.progressLabel, 5, 0, 1, 4 )
+
+			btnLyt = QHBoxLayout()
+			btnLyt.addWidget( self.quitBtn )
+			btnLyt.addStretch()
+			btnLyt.addWidget( self.cancelBtn )
+			btnLyt.addWidget( self.downloadBtn )
+
+			baseLyt.addLayout( btnLyt, 6, 0, 1, 4 )
+
+			base = QWidget()
+			base.setLayout( baseLyt )
+
+			self.setCentralWidget( base )
+
+		# Portait mode
+		else:
+			baseLyt.addWidget( QLabel( "Choose a local image:" ), 0, 0 )
+			baseLyt.addWidget( self.browseBtn, 1, 0 )
+			baseLyt.addWidget( QLabel( "Or select a remote image:" ), 2, 0 )
+			baseLyt.addWidget( QLabel( "Device" ), 3, 0 )
+			baseLyt.addWidget( self.deviceCB, 4, 0 )
+			baseLyt.addWidget( QLabel( "Edition" ), 5, 0 )
+			baseLyt.addWidget( self.editionCB, 6, 0 )
+			baseLyt.addWidget( QLabel( "Version" ), 7, 0 )
+			baseLyt.addWidget( self.versionCB, 8, 0 )
+			baseLyt.addWidget( QLabel( "Target Block Device" ), 9, 0 )
+			baseLyt.addWidget( self.targetCB, 10, 0 )
+
+			baseLyt.addItem( QSpacerItem( 10, 20, QSizePolicy.Fixed, QSizePolicy.MinimumExpanding ), 11, 0 )
+			baseLyt.addWidget( self.progressBar, 12, 0 )
+			baseLyt.addWidget( self.progressLabel, 13, 0 )
+
+			sep = QFrame()
+			sep.setFrameShape( QFrame.HLine )
+
+			baseLyt.addWidget( self.downloadBtn, 14, 0 )
+			baseLyt.addWidget( self.cancelBtn, 15, 0 )
+			baseLyt.addWidget( sep, 16, 0 )
+			baseLyt.addWidget( self.quitBtn, 17, 0  )
+
+			base = QWidget()
+			base.setLayout( baseLyt )
+
+			scroll = QScrollArea()
+			scroll.setWidgetResizable( True )
+			scroll.setWidget( base )
+
+			self.setCentralWidget( scroll )
+
+		self.setDisabled( True )
+
+	def loadEditions( self ) :
+
+		device = self.deviceCB.currentText()
+		if device:
+			# Clear the list; we will store all values from all devices
+			self.editionCB.clear()
+
+			self.progressBar.setRange( 0, 0 )
+			QApplication.instance().processEvents()
+
+			dl = DirLister( f"{burl}/projects/manjaro-arm/storage/{device}", "dirs" )
+			dl.start()
+			dl.wait()
+
+			editions = []
+			for url in dl.results():
+				editions.append( os.path.basename( url ) )
+
+			if ( self.editionCB.receivers( self.editionCB.currentIndexChanged ) ):
+				self.editionCB.currentIndexChanged.disconnect()
+
+			self.editionCB.setEnabled( True )
+			self.editionCB.addItems( editions )
+			self.editionCB.setCurrentIndex( -1 )
+
+			self.editionCB.currentIndexChanged[ int ].connect( self.loadVersions )
+			self.progressBar.setRange( 0, 1 )
+			self.progressLabel.setText( "Choose edition..." )
+			QApplication.instance().processEvents()
+
+		self.downloadBtn.setDisabled( True )
+
+	def loadVersions( self ) :
+
+		device = self.deviceCB.currentText()
+		edition = self.editionCB.currentText()
+		if device and edition:
+			self.versionCB.clear()
+
+			self.progressBar.setRange( 0, 0 )
+			QApplication.instance().processEvents()
+
+			dl = DirLister( f"{burl}/projects/manjaro-arm/storage/{device}/{edition}", "dirs" )
+			dl.start()
+			dl.wait()
+
+			versions = []
+			for url in dl.results():
+				versions.append( os.path.basename( url ) )
+
+			self.versionCB.setEnabled( True )
+			self.versionCB.addItems( versions )
+			self.versionCB.setCurrentIndex( -1 )
+
+			self.progressBar.setRange( 0, 1 )
+			self.progressLabel.setText( "Choose version..." )
+			QApplication.instance().processEvents()
+
+			def prepareDnF() :
+				self.downloadBtn.setEnabled( True )
+				self.progressLabel.setText( "Ready to download..." )
+				QApplication.instance().processEvents()
+
+			self.versionCB.currentIndexChanged.connect( prepareDnF )
+
+		self.downloadBtn.setDisabled( True )
+
+	def downloadAndFlash( self ) :
+		"""downloadAndFlash() -> None
+
+		Begin the download of the file and optionally flash it to a device
+
+		@return None
+		"""
+
+		#  outputname = QFileDialog.getSaveFileName( self, "Save File", QDir.homePath(), "All files (*.*)" );
+		self.downloadBtn.setDisabled( True )
+		self.cancelBtn.setEnabled( True )
+
+		deviceValue  = "" if self.haveLocalImage else self.deviceCB.currentText()
+		editionValue = "" if self.haveLocalImage else self.editionCB.currentText()
+		versionValue = "" if self.haveLocalImage else self.versionCB.currentText()
+
+		imageLocation = "/var/tmp/"
+		outputname = "Manjaro-ARM-" + editionValue + "-" + deviceValue + "-" + versionValue + ".img.xz"
+
+		if not self.haveLocalImage:
+			self.fileName = imageLocation + outputname
+			print( f"Starting image download - storing it in {self.fileName}." )
+
+		#  url = "https://osdn.net/frs/redir.php?m=acc&f=/storage/g/m/ma/manjaro-arm/" + deviceValue + "/" +
+		#                                                 editionValue + "/" + versionValue + "/" + outputname
+
+		url = self.urlSkel % ( deviceValue, editionValue, versionValue, outputname )
+
+		# I guess this is needed only for testing purposes
+		# print("Device = " + deviceValue)
+		# print("Edition = " + editionValue)
+		# print("Version = " + versionValue)
+		# print("Image file = " + self.fileName)
+
+		self.progressBar.setRange( 0, 0 )
+		self.abort = False
+		self.downloading = True
+
+		QApplication.instance().processEvents()
+
+		## Download and flash a remote image
+		if not self.haveLocalImage:
+			try:
+				wget.urlretrieve( url, self.fileName, self.showDownloadProgress )  # added reporthook callback
+
+			except Exception as e:
+				print( e )
+				QMessageBox.warning(
+					self,
+					"Download aborted",
+					"The download was aborted before it could be completed. Following error was returned: <p><tt>%s</tt></p>" % e
+				)
+
+				self.progressBar.setRange( 0, 1 )
+				self.progressBar.setValue( -1 )
+				self.downloadBtn.setEnabled( True )
+				self.cancelBtn.setDisabled( True )
+
+				self.abort = False
+				self.downloading = False
+
+				return
+
+			else:
+				self.progressBar.setRange( 0, 1 )
+				self.progressBar.setValue( 1 )
+				self.progressLabel.setText( "Ready to flash..." )
+				ret = QMessageBox.information(
+					self,
+					"Download complete",
+					"The download was completed successfully. Click Ok to flash the image to the device.",
+					QMessageBox.Ok, QMessageBox.Abort
+				)
+
+				if ( ret == QMessageBox.Abort ) :
+					self.close()
+					return
+
+				self.flash()
+
+		## A local image is available, so flash it
+		else:
+			ret = QMessageBox.information(
+				self,
+				"Local file chosen",
+				"You have chosen a local file to be flashed. Click Ok to flash the image to the device.",
+				QMessageBox.Ok, QMessageBox.Abort
+			)
+
+			if ( ret == QMessageBox.Abort ) :
+				self.close()
+				return
+
+			self.flash()
+
+	def flash( self ):
+		"""flash() -> None
+
+		Flash the given file to a device
+
+		@return None
+		"""
+
+		targetValue = self.targetCB.currentText()
+		# print("SD/eMMC/USB = " + targetValue)
+
+		self.browseBtn.setDisabled( True )
+		self.deviceCB.setDisabled( True )
+		self.editionCB.setDisabled( True )
+		self.versionCB.setDisabled( True )
+		self.downloadBtn.setDisabled( True )
+		self.cancelBtn.setDisabled( True )
+		self.quitBtn.setDisabled( True )
+
+		xz = QProcess()
+		xz.start( "xz", [ "--list", self.fileName ] )
+		xz.waitForFinished( -1 )
+
+		## Some assumption:
+		#  There will be one and only one stream.
+		#  It will give us the uncompressed file size
+		#  Typical output:
+		#      Strms  Blocks   Compressed Uncompressed  Ratio  Check   Filename
+		#          1     229  1,116.9 MiB  5,493.0 MiB  0.203  CRC64   Man.....
+
+		res = xz.readAll().data().decode()
+		res = res.strip().split( "\n" )
+		sizeLine = res[ 1 ].strip().split()
+		size = 0
+		try:
+			size = locale.atof( sizeLine[ 4 ] )
+			size = int( size * 1024 )
+
+		except ValueError:
+			pass
+
+		self.downloading = False
+		exec_ = os.path.realpath( sys.argv[ 0 ] )
+		args = ( exec_, "--flash", self.fileName, "/dev/" + targetValue )
+
+		## Begin the flashing: Use QProcess to initiate the flashing as root.
+		## All users have permissions to flash as root, since we've added that rule.
+
+		self.flashProc = QProcess()
+		self.flashProc.readyReadStandardOutput.connect( self.showFlashProgress )
+		self.flashProc.finished.connect( self.showFlashComplete )
+
+		## We cannot still get the uncompressed image size
+		## So we'll not show 0 - 100% progress
+		self.progressBar.setRange( 0, size )
+
+		self.flashProc.start( "sudo", args )
+
+	def cancelDownload( self ) :
+		"""cancelDownload() -> None
+
+		Cancel the download of the file
+
+		@return None
+		"""
+
+		reply = QMessageBox.question(
+			self,
+			"Abort?",
+			"If you abort now, you cannot continue from where you left off. You will have to start again. Continue?",
+			QMessageBox.Yes, QMessageBox.No
+		)
+
+		if ( reply == QMessageBox.Yes ):
+			self.abort = True
+			QApplication.instance().processEvents()
+			if not self.haveLocalImage:
+				os.remove(self.fileName)
+
+	def quitApp( self ) :
+		"""quitApp() -> None
+
+		Cancel the download and quit the app
+
+		@return None
+		"""
+
+		if self.downloading:
+			reply = QMessageBox.question(
+				self,
+				"Abort?",
+				"If you quit now, the download will be aborted. You cannot continue from where you left off. "
+				"You will have to start again. Continue?",
+				QMessageBox.Yes, QMessageBox.No
+			)
+
+			if ( reply == QMessageBox.Yes ):
+				self.abort = True
+				QApplication.instance().processEvents()
+				if not self.haveLocalImage:
+					os.remove(self.fileName)
+
+		self.close()
+
+	def showDownloadProgress( self, blocks, blocksize, filesize ) :
+		"""showDownloadProgress() -> None
+
+		Show the progress of the download
+
+		@return None
+		"""
+
+		QApplication.instance().processEvents()
+
+		if self.abort:
+			raise Exception( "User aborted the download!" )
+
+		self.progressBar.setRange( 0, filesize )
+		self.progressBar.setValue( blocks * blocksize )
+
+		self.progressLabel.setText( f"Downloaded {formattedSize( blocks * blocksize )} of {formattedSize( filesize )}" )
+
+		QApplication.instance().processEvents()
+
+	def showFlashProgress( self ):
+
+		QApplication.instance().processEvents()
+
+		# Our program is not mature to obtain the uncompressed image size yet
+		data = self.flashProc.readAll().data().decode( "utf8" ).strip()
+		try:
+			xdata = data.split()
+			bytes = int( xdata[ 0 ] )
+			self.progressBar.setValue( bytes // 1024 )
+			self.progressLabel.setText( "Data written " + formattedSize( bytes ) )
+
+		except:
+			print( data )
+
+		QApplication.instance().processEvents()
+
+	def showFlashComplete( self, exitCode, exitStatus ):
+
+		self.close()
+
+		print( self.flashProc.readAll().data().decode( "utf8" ).strip() )
+
+		print( "Exit code:  ", exitCode )
+		print( "Exit status:", exitStatus )
+
+		if exitCode or exitStatus:
+			QMessageBox.information(
+				self,
+				"Flashing failed",
+				"It appears there was some problem in flashing the image to your device. Please check the logs or try again later."
+			)
+			if not self.haveLocalImage:
+				os.remove(self.fileName)
+
+		else:
+			QMessageBox.information(
+				self,
+				"Flashing successful",
+				"The image was flashed successfully to your device."
+			)
+			if not self.haveLocalImage:
+				os.remove(self.fileName)
+
+if __name__ == '__main__' :
+
+	if ( "--flash" in sys.argv ) :
+		flashImage( sys.argv[ 2 ], sys.argv[ 3 ] )
+		sys.exit( 0 )
+
+	else:
+		app = QApplication( sys.argv )
+
+		Gui = ManjaroArmFlasher();
+		Gui.show()
+
+		sys.exit( app.exec_() )

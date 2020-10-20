@@ -86,7 +86,7 @@ export NPM_CONFIG_PREFIX=~/.node-packages
 #export ELECTRON_FORCE_WINDOW_MENU_BAR=1
 
 export JPM_PACKAGES 
-
+PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 export PATH=$PATH:~/jpm/bin:~/.node-packages/bin
 
 # Make LibreOffice honor Plasma 5 dark mode
