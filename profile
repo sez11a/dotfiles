@@ -30,7 +30,7 @@ alias to='todotxt-machine'
 alias sudo='sudo -E'
 alias ws='jstar -text_color white+bg_blue'
 alias wt='WordTsar'
-# alias gitpr='~/Documents/code/git-tools/git-pull-request/git-pull-request.sh'
+alias gitpr='~/.dotfiles/git-tools/git-pull-request/git-pull-request.sh'
 # alias emacs='emacs.sh'
 fixnpm() {
         git ls-files modules | grep -F package.json | xargs -I {} dirname {} | xargs -I {} rm -rf {}/node_modules
@@ -77,7 +77,7 @@ export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS GRINDERPATH 
 # Use archlinux-java java-7-openjdk or archlinux-java java-8-jdk to set
 
 JPM_PACKAGES=~/jpm
-export NPM_CONFIG_PREFIX=~/.node-packages
+export NPM_CONFIG_PREFIX=~/.npm-global
 # NPM_PACKAGES=~/.node_modules
 # NODE_PATH="$NPM_PACKAGES/lib/node_modules"
 # PATH="$PATH:$JPM_PACKAGES/bin:$NPM_PACKAGES/bin"
@@ -87,7 +87,7 @@ export NPM_CONFIG_PREFIX=~/.node-packages
 
 export JPM_PACKAGES 
 PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
-export PATH=$PATH:~/jpm/bin:~/.node-packages/bin
+export PATH=$PATH:~/jpm/bin:~/.npm-global/bin
 
 # Make LibreOffice honor Plasma 5 dark mode
 #SAL_USE_VCLPLUGIN=qt5
