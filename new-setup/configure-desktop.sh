@@ -39,7 +39,7 @@ sudo cp makepkg.conf /etc/makepkg.conf
 
 # Environment 
 
-cp desktop/Home.desktop ~/Desktop
+cp desktop/*.desktop ~/Desktop
 sudo pacman -S --noconfirm festival festival-english festival-us powerline python-powerline
 yay -S --noconfirm python-powerline-gitstatus
 function say { echo "$1" | festival --tts; }
