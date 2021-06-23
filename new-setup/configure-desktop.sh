@@ -37,6 +37,9 @@ sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp makepkg.conf /etc/makepkg.conf
 
+# Build Stuff
+sudo pacman -S --noconfirm base-devel
+
 # Environment 
 
 cp desktop/*.desktop ~/Desktop
@@ -96,7 +99,9 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-c
 ## Fonts
 
 sudo pacman -S --noconfirm gentium-plus-font
-yay -S --noconfirm  otf-fantasque-sans-mono ttf-mplus otf-vegur otf-tenderness ttf-exljbris nerd-fonts-hermit ttf-anonymice-powerline-git ttf-carlito ttf-iosevka ttf-iosevka-slab ttf-gidole otf-libertinus
+yay -S --noconfirm  otf-fantasque-sans-mono ttf-mplus nerd-fonts-hermit ttf-anonymice-powerline-git ttf-carlito ttf-iosevka ttf-iosevka-slab ttf-gidole otf-libertinus
+# Moved Vegur to its own line because it's currently broken in AUR
+yay -S --noconfirm otf-vegur otf-tenderness ttf-exljbris 
 
 ## Removed Caladea from above because it conflicted with Google Fonts
 
@@ -144,8 +149,8 @@ sudo systemctl enable startupsound.service
 
 # Undelete Files 
 
-sudo pacman -S --noconfirm extundelete ext4magic testdisk
-yay -S --noconfirm  r-linux
+sudo pacman -S --noconfirm ext4magic testdisk
+yay -S --noconfirm  r-linux extundelete 
 
 
 if echo "$DesktopApps" | grep -iq "^y" ;then
@@ -154,13 +159,13 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha pdfsam zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes smtube
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes smtube ctags
 
     sudo pacman -S --noconfirm virtualbox
 
     # Apps in AUR
 
-    yay -S --noconfirm  kindlegen todotxt slack-desktop pepper-flash freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 universal-ctags-git libbdplus
+    yay -S --noconfirm  kindlegen todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 libbdplus pdfsam 
 
 else
     echo "Skipping standard desktop apps...."

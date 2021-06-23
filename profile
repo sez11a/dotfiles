@@ -82,6 +82,9 @@ POWERLINE_BASH_SELECT=1
 # powerline-daemon -q
 # . /usr/share/powerline/bindings/bash/powerline.sh
 
+# Ruby Environment
+eval "$(rbenv init -)"
+
 function fineFinder() {
     find -name "*.${1:-java}" -print0 | xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
 
