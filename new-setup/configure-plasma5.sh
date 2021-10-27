@@ -43,8 +43,8 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
 	kwriteconfig5 --file kwinrc --group Plugins --key wobblywindowsEnabled true
 	kwriteconfig5 --file kwinrc --group Windows --key Placement UnderMouse
 	# Breeze
-	kwriteconfig5 --file breezerc --group Common --key ShadowSize 64
-	kwriteconfig5 --file breezerc --group Common --key ShadowStrength 163
+	# kwriteconfig5 --file breezerc --group Common --key ShadowSize 64
+	# kwriteconfig5 --file breezerc --group Common --key ShadowStrength 163
 	kwriteconfig5 --file breezerc --group Windeco --key TitleAlignment AlignLeft
 	# KDE Globals
 	kwriteconfig5 --file kdeglobals --group General --key ColorScheme Hybrid
@@ -57,7 +57,7 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
 	kwriteconfig5 --file kdeglobals --group General --key smallestReadableFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 	kwriteconfig5 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 	kwriteconfig5 --file kdeglobals --group General --key shadeSortColumn true
-	kwriteconfig5 --file kdeglobals --group General --key widgetStyle Breeze
+	# kwriteconfig5 --file kdeglobals --group General --key widgetStyle Breeze
 	kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
 	kwriteconfig5 --file kdeglobals --group KDE --key ColorScheme Hybrid
 	kwriteconfig5 --file kdeglobals --group KDE --key SingleClick false
@@ -95,4 +95,3 @@ kwriteconfig5 --file oxygenrc --group InactiveShadow --key ShadowSize 99
 kwriteconfig5 --file oxygenrc --group InactiveShadow --key VerticalOffset 0
 kwriteconfig5 --file oxygenrc --group Windeco --key TitleAlignment AlignLeft
 kwriteconfig5 --file oxygenrc --group Windeco --key UseWindowColors false
-
