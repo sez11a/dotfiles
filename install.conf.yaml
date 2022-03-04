@@ -8,6 +8,7 @@
     ~/.xprofile: xprofile
     ~/.conkyrc: conkyrc
     ~/.festivalrc: festivalrc
+    ~/.config/goneovim/settings.toml: goneovim/settings.toml
     ~/bin:
         path: bin/
         create: true
