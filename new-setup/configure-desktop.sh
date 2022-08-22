@@ -161,8 +161,6 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     sudo pacman -R --noconfirm libreoffice-still
     sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes smtube ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 wl-clipboard
 
-    sudo pacman -S --noconfirm virtualbox
-
     # Apps in AUR
 
     yay -S --noconfirm  kindlegen todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 libbdplus pdfsam ted
