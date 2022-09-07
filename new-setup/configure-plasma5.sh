@@ -20,6 +20,15 @@ tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
 mkdir -p ~/.local/share/aurorae/themes
 tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
 
+# Email/PIM
+
+say "Do you want the KDE PIM apps?"
+if $DIALOG --yesno "Install PIM Apps?" 20 60 ;then
+	sudo pacman -S --noconfirm kde-pim-meta
+else
+	echo "Nope."
+fi
+
 # Desktop Configuration
 
 say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
