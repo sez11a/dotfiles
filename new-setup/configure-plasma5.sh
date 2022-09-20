@@ -25,7 +25,18 @@ mkdir -p ~/.local/share/aurorae/themes
 tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
 
 # Syncthing must sync first for below to work
-cp -r ~/config/icons/kora/* ~/.local/share/icons
+# cp -r ~/config/icons/kora/* ~/.local/share/icons
+
+# Get Kora icons from the Internet instead
+# git clone https://github.com/bikass/kora.git ~/kora-icons
+
+# cp -r ~/kora-icons/kora ~/.local/share/icons
+# cp -r ~/kora-icons/kora-light ~/.local/share/icons
+# cp -r ~/kora-icons/kora-light-panel ~/.local/share/icons
+# cp -r ~/kora-icons/kora-pgrey ~/.local/share/icons
+
+# Even better: AUR has kora icons
+yay -S --noconfirm kora-icon-theme
 
 # Email/PIM
 
@@ -49,7 +60,7 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
     kwriteconfig5 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
     kwriteconfig5 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
     kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
-    kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
+    kwriteconfig --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
     kwriteconfig5 --file plasmarc --group Theme --key name default
 	# KWin
 	kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_scaleinEnabled true

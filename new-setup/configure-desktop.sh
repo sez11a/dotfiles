@@ -113,18 +113,10 @@ sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
 
-if echo "$GoogleFonts" | grep -iq "^y" ;then
-    echo "Installing Google Fonts!"
-    sudo pacman -R noto-fonts ttf-droid ttf-inconsolata
-    yay -S ttf-google-fonts-git
-else
-    echo "Skipping Google Fonts install...."
-fi
-
 
 # Syncthing
 
-sudo pacman -S --noconfirm syncthing syncthing-gtk 
+sudo pacman -S --noconfirm syncthing 
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
 
 # Grub
@@ -159,11 +151,11 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape clementine conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes smtube ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 wl-clipboard
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre neovide mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes smtube ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord
 
     # Apps in AUR
 
-    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 libbdplus pdfsam ted
+    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 libbdplus pdfsam ted brave-bin
 
 else
     echo "Skipping standard desktop apps...."
@@ -203,6 +195,14 @@ if $DIALOG --yesno "Install LaTeX?" 20 60 ;then
 say "Do you want to install emulators for vintage computing?"
 if $DIALOG --yesno "Install emulators?" 20 60 ;then
     source ./install-emulators.sh; else echo "Nope."; fi
+
+if echo "$GoogleFonts" | grep -iq "^y" ;then
+    echo "Installing Google Fonts!"
+    sudo pacman -R noto-fonts ttf-droid ttf-inconsolata
+    yay -S ttf-google-fonts-git
+else
+    echo "Skipping Google Fonts install...."
+fi
 
 echo "All done! Please reboot your system now."
 say "All done! Please reboot your system now."
