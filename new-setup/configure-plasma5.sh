@@ -20,6 +20,9 @@ tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
 mkdir -p ~/.local/share/aurorae/themes
 tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
 
+# Syncthing must sync first for below to work
+cp -r ~/config/icons/kora/* ~/.local/share/icons
+
 # Email/PIM
 
 say "Do you want the KDE PIM apps?"
@@ -67,7 +70,12 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
 	kwriteconfig5 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 	kwriteconfig5 --file kdeglobals --group General --key shadeSortColumn true
 	# kwriteconfig5 --file kdeglobals --group General --key widgetStyle Breeze
-	kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
+	if [ -d "~/.local/share/icons/kora-light" ]
+	then
+		kwriteconfig5 --file kdeglobals --group Icons --key Theme kora-light
+	else
+		kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
+	fi
 	kwriteconfig5 --file kdeglobals --group KDE --key ColorScheme Hybrid
 	kwriteconfig5 --file kdeglobals --group KDE --key SingleClick false
 	# KSplash
