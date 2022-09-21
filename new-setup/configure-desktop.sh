@@ -198,7 +198,6 @@ if $DIALOG --yesno "Install emulators?" 20 60 ;then
 
 if echo "$GoogleFonts" | grep -iq "^y" ;then
     echo "Installing Google Fonts!"
-    sudo pacman -R noto-fonts ttf-droid ttf-inconsolata
     yay -S ttf-google-fonts-git
 else
     echo "Skipping Google Fonts install...."
