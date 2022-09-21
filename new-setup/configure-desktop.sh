@@ -1,15 +1,15 @@
 #!/bin/sh
 
-## Add this to /etc/pacman.conf first 
+## Add this to /etc/pacman.conf first
 
-#[infinality-bundle] 
-#Server = http://bohoomil.com/repo/$arch 
+#[infinality-bundle]
+#Server = http://bohoomil.com/repo/$arch
 
-#[infinality-bundle-multilib] 
-#Server = http://bohoomil.com/repo/multilib/$arch 
+#[infinality-bundle-multilib]
+#Server = http://bohoomil.com/repo/multilib/$arch
 
-#[infinality-bundle-fonts] 
-#Server = http://bohoomil.com/repo/fonts 
+#[infinality-bundle-fonts]
+#Server = http://bohoomil.com/repo/fonts
 
 # Infinality Fonts
 
@@ -25,26 +25,25 @@ sudo pacman -Syu
 # AUR Helper
 # Presumably, if we've gone through the AUI Arch install, we already
 # have our AUR helper. On Manjaro, it's in the repo, so we can just
-# call the installer and get it. 
+# call the installer and get it.
 
 sudo pacman -S --noconfirm yay
 
 # AUR Performance
-# Install the multicore compression utilities. 
+# Install the multicore compression utilities.
 # Rename makepkg.conf and replace it with the multicore version.
 
-sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip 
+sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp makepkg.conf /etc/makepkg.conf
 
 # Build Stuff
 sudo pacman -S --noconfirm base-devel
 
-# Environment 
+# Environment
 
 cp desktop/*.desktop ~/Desktop
-sudo pacman -S --noconfirm festival festival-english festival-us powerline python-powerline
-yay -S --noconfirm python-powerline-gitstatus
+sudo pacman -S --noconfirm festival festival-english festival-us
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
@@ -56,8 +55,8 @@ DIALOG=whiptail
 say "Does this machine have a HIDPI screen?"
 if $DIALOG --yesno "HIDPI screen?" 20 60 ;then
     sudo cp vconsole.conf /etc
-else 
-    echo "Nope." 
+else
+    echo "Nope."
 fi
 
 say "Do you want all the Google fonts?"
@@ -65,7 +64,7 @@ GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts (takes a lon
     "y" "Install Google Fonts"  on \
     "n" "Too big; skip it"      off 2>&1 >/dev/tty)
 
-say "Install standard desktop apps?" 
+say "Install standard desktop apps?"
 DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
     "y" "Yes" on \
     "n" "No" off 2>&1 >/dev/tty)
@@ -75,12 +74,12 @@ Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
     "p" "Plasma 5"  on \
     "x" "XFCE"      off 2>&1 >/dev/tty)
 
-say "Do you want the VimStar config?" 
+say "Do you want the VimStar config?"
 VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 \
     "y" "Install VimStar"  on \
     "n" "I already have my own Vim config"      off 2>&1 >/dev/tty)
 
-## Editor 
+## Editor
 
 sudo pacman -S --noconfirm neovim joe python-neovim xclip wl-clipboard
 
@@ -101,7 +100,7 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-c
 sudo pacman -S --noconfirm gentium-plus-font
 yay -S --noconfirm  otf-fantasque-sans-mono ttf-mplus nerd-fonts-hermit ttf-anonymice-powerline-git ttf-carlito ttf-iosevka ttf-iosevka-slab ttf-gidole otf-libertinus
 # Moved Vegur to its own line because it's currently broken in AUR
-yay -S --noconfirm otf-vegur otf-tenderness ttf-exljbris 
+yay -S --noconfirm otf-vegur otf-tenderness ttf-exljbris
 
 ## Removed Caladea from above because it conflicted with Google Fonts
 
@@ -113,10 +112,9 @@ sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
 
-
 # Syncthing
 
-sudo pacman -S --noconfirm syncthing 
+sudo pacman -S --noconfirm syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
 
 # Grub
@@ -126,7 +124,7 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-overrid
 # sudo cp grub /etc/default
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-# Plymouth 
+# Plymouth
 # Commented out below because Plymouth is no longer installed by default.
 #sudo cp plymouthd.conf /etc/plymouth
 #sudo plymouth-set-default-theme -R spinner
@@ -139,23 +137,23 @@ sudo cp startup-sound.sh /usr/bin
 sudo cp startupsound.service /etc/systemd/system
 sudo systemctl enable startupsound.service
 
-# Undelete Files 
+# Undelete Files
 
 sudo pacman -S --noconfirm ext4magic testdisk
-yay -S --noconfirm  r-linux extundelete 
+yay -S --noconfirm  r-linux extundelete
 
 
 if echo "$DesktopApps" | grep -iq "^y" ;then
-    echo "Installing standard desktop apps...." 
+    echo "Installing standard desktop apps...."
 
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre neovide mc p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes smtube ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord
+    sudo pacman -S --noconfirm xsel libdvdcss youtube-dl pandoc bash-completion audacity calibre neovide mc tlp p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes smtube ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord powerline python-powerline
 
     # Apps in AUR
 
-    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 libbdplus pdfsam ted brave-bin
+    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 libbdplus pdfsam ted brave-bin python-powerline-gitstatus
 
 else
     echo "Skipping standard desktop apps...."
@@ -173,7 +171,7 @@ rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
 mv old-config-files.zip ~
 git submodule init
 git submodule update
-../install 
+../install
 
 
 if echo "$Desktop" | grep -iq "^p" ;then
