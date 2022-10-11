@@ -9,7 +9,7 @@ sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledon
 
 sudo pacman -S --noconfirm packagekit-qt5 kaccounts-providers kio-gdrive kwalletmanager neovim-qt gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdenlive frei0r-plugins audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra falkon unzip kio-gdrive flameshot krita opencolorio krita-plugin-gmic libheif xdg-desktop-portal-kde kid3
 
-yay -S --noconfirm  octopi plasma5-applets-active-window-control-git plasma5-applets-window-appmenu plasma5-applets-window-buttons plasma5-applets-window-title plasma5-applets-playbar2 xfce-theme-greybird plasma5-applets-netspeed arc-kde-git
+yay -S --noconfirm  octopi plasma5-applets-active-window-control-git plasma5-applets-window-appmenu plasma5-applets-window-buttons plasma5-applets-window-title plasma5-applets-playbar2 xfce-theme-greybird plasma5-applets-netspeed arc-kde-git kdeplasma-applets-fokus
 
 # KDE Config
 
