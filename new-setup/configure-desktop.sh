@@ -98,9 +98,19 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-c
 ## Fonts
 
 sudo pacman -S --noconfirm gentium-plus-font
-yay -S --noconfirm  otf-fantasque-sans-mono ttf-mplus nerd-fonts-hermit ttf-anonymice-powerline-git ttf-carlito ttf-iosevka ttf-iosevka-slab ttf-gidole otf-libertinus
+yay -S --noconfirm  otf-fantasque-sans-mono 
+yay -S --noconfirm ttf-mplus 
+yay -S --noconfirm nerd-fonts-hermit 
+yay -S --noconfirm ttf-anonymice-powerline-git 
+yay -S --noconfirm ttf-carlito 
+yay -S --noconfirm ttf-iosevka 
+yay -S --noconfirm ttf-iosevka-slab 
+yay -S --noconfirm ttf-gidole 
+yay -S --noconfirm otf-libertinus
 # Moved Vegur to its own line because it's currently broken in AUR
-yay -S --noconfirm otf-vegur otf-tenderness ttf-exljbris
+yay -S --noconfirm otf-vegur 
+yay -S --noconfirm otf-tenderness 
+yay -S --noconfirm ttf-exljbris
 
 ## Removed Caladea from above because it conflicted with Google Fonts
 
