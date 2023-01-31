@@ -42,7 +42,7 @@ sudo pacman -S --noconfirm base-devel
 
 # Environment
 
-cp desktop/*.desktop ~/Desktop
+cp ./desktop/*.desktop ~/Desktop
 sudo pacman -S --noconfirm festival festival-english festival-us
 function say { echo "$1" | festival --tts; }
 export -f say
