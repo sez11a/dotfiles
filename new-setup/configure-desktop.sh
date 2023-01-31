@@ -69,6 +69,11 @@ DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
     "y" "Yes" on \
     "n" "No" off 2>&1 >/dev/tty)
 
+say "Install 3D printing apps?"
+ThreeDPrintingApps=$($DIALOG --radiolist "Install 3D Printing Apps?" 20 60 12 \
+    "y" "Yes" on \
+    "n" "No" off 2>&1 >/dev/tty)
+
 say "Which desktop do you want to configure?"
 Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
     "p" "Plasma 5"  on \
@@ -163,10 +168,20 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Apps in AUR
 
-    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga-qt5 libbdplus pdfsam ted brave-bin python-powerline-gitstatus
+    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus pdfsam ted brave-bin python-powerline-gitstatus
 
 else
     echo "Skipping standard desktop apps...."
+fi
+
+if echo "$ThreeDPrintingApps" | grep -iq "^y" ;then
+    echo "Installing 3D Printing apps...." 
+
+    sudo pacman -S --noconfirm superslicer prusa-slicer freecad openscad
+    yay -S --noconfirm cura-modern-appimage
+
+else 
+    echo "Skipping 3D Printing Apps...." 
 fi
 
 # Printers
