@@ -19,7 +19,6 @@ yay -S --noconfirm xfce-theme-greybird
 yay -S --noconfirm plasma5-applets-netspeed
 yay -S --noconfirm arc-kde-git
 yay -S --noconfirm kdeplasma-applets-fokus
-yay -S --noconfirm kwin-bismuth
 
 # KDE Config
 
