@@ -103,13 +103,15 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-c
 ## Fonts
 
 sudo pacman -S --noconfirm gentium-plus-font
+sudo pacman -S --noconfirm ttc-iosevka
+sudo pacman -S --noconfirm ttc-iosevka-slab
+sudo pacman -S --noconfirm ttc-iosevka-aile
+sudo pacman -S --noconfirm ttc-iosevka-etoile
 yay -S --noconfirm  otf-fantasque-sans-mono 
 yay -S --noconfirm ttf-mplus 
 yay -S --noconfirm nerd-fonts-hermit 
 yay -S --noconfirm ttf-anonymice-powerline-git 
 yay -S --noconfirm ttf-carlito 
-yay -S --noconfirm ttf-iosevka 
-yay -S --noconfirm ttf-iosevka-slab 
 yay -S --noconfirm ttf-gidole 
 yay -S --noconfirm otf-libertinus
 # Moved Vegur to its own line because it's currently broken in AUR
