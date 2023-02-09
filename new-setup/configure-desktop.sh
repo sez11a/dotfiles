@@ -97,7 +97,7 @@ fi
 
 ## Mouse Cursors
 
-sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.16.2-1-any.pkg.tar.xz
+sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.18.4.1-1-any.pkg.tar.xz
 #yay -S --noconfirm  breeze-red-cursor-theme
 
 ## Fonts
