@@ -86,7 +86,7 @@ VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 
 
 ## Editor
 
-sudo pacman -S --noconfirm neovim joe python-neovim xclip wl-clipboard
+sudo pacman -S --noconfirm neovim joe python-pynvim xclip wl-clipboard
 
 if echo "$VimStar" | grep -iq "^y" ;then
     echo "Installing VimStar!"
