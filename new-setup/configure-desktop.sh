@@ -43,7 +43,7 @@ sudo pacman -S --noconfirm base-devel
 # Environment
 
 cp ./desktop/*.desktop ~/Desktop
-sudo pacman -S --noconfirm festival festival-english festival-us
+sudo pacman -S --noconfirm festival festival-english festival-us rsync
 function say { echo "$1" | festival --tts; }
 export -f say
 DIALOG=whiptail
