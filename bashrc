@@ -1,5 +1,6 @@
-# Archlinux Ultimate Install - .bashrc
-# by helmuthdu
+# Rich Sezov .bashrc from multiple sources: 
+# Archlinux Ultimate Install - by helmuthdu
+
 # OVERALL CONDITIONALS {{{
 _islinux=false
 [[ "$(uname -s)" =~ Linux|GNU|GNU/* ]] && _islinux=true
@@ -548,7 +549,7 @@ _isroot=false
   # REMIND ME, ITS IMPORTANT! {{{
     # usage: remindme <time> <text>
     # e.g.: remindme 10m "omg, the pizza"
-    remindme() { sleep $1 && zenity --info --text "$2" & }
+    remindme() { sleep $1 && kdialog --info --text "$2" & }
   #}}}
   # SIMPLE CALCULATOR #{{{
     # usage: calc <equation>
