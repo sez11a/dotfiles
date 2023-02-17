@@ -86,7 +86,7 @@ VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 
 
 ## Editor
 
-sudo pacman -S --noconfirm neovim joe python-pynvim xclip wl-clipboard jq
+sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
 
 if echo "$VimStar" | grep -iq "^y" ;then
     echo "Installing VimStar!"
@@ -170,7 +170,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Apps in AUR
 
-    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus pdfsam ted brave-bin python-powerline-gitstatus
+    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus pdfsam ted brave-bin python-powerline-gitstatus joe
 
 else
     echo "Skipping standard desktop apps...."
