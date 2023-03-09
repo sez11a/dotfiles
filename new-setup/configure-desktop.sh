@@ -188,6 +188,7 @@ fi
 
 # Printers
 
+sudo pacman -S --noconfirm libjpeg6-turbo # for Canon driver below
 #sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
 yay -S --noconfirm brother-hll6200dw cnrdrvcups-lb
 
