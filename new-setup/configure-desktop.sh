@@ -74,11 +74,6 @@ ThreeDPrintingApps=$($DIALOG --radiolist "Install 3D Printing Apps?" 20 60 12 \
     "y" "Yes" on \
     "n" "No" off 2>&1 >/dev/tty)
 
-say "Which desktop do you want to configure?"
-Desktop=$($DIALOG --radiolist "Plasma 5 or XFCE?" 20 60 12 \
-    "p" "Plasma 5"  on \
-    "x" "XFCE"      off 2>&1 >/dev/tty)
-
 say "Do you want the VimStar config?"
 VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 \
     "y" "Install VimStar"  on \
@@ -202,13 +197,8 @@ git submodule update
 ../install
 
 
-if echo "$Desktop" | grep -iq "^p" ;then
-    echo "Plasma 5"
-    source ./configure-plasma5.sh
-else
-    echo "XFCE"
-    source ./configure-xfce.sh
-fi
+# Desktop
+source ./configure-plasma5.sh
 
 say "Do you want to install developer tools?"
 if $DIALOG --yesno "Install Dev Tools?" 20 60 ;then
