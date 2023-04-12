@@ -1,24 +1,52 @@
 #!/bin/sh
 
-# Syncthing Integration
+_isarch=false
+[[ -f /etc/arch-release ]] && _isarch=true
+[[ -f /etc/manjaro-release ]] && _isarch=true
 
-yay -S --noconfirm c++utilities qtutilities qtforkawesome syncthingtray
+if $_isarch; then
 
-# Theme Stuff
-sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
+   # Email/PIM
 
-sudo pacman -S --noconfirm packagekit-qt5 kaccounts-providers kio-gdrive kwalletmanager neovim-qt yakuake gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdenlive frei0r-plugins audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra falkon unzip kio-gdrive flameshot krita opencolorio krita-plugin-gmic libheif xdg-desktop-portal-kde kid3 kbackup k3b
+   say "Do you want the KDE PIM apps?"
+   if $DIALOG --yesno "Install PIM Apps?" 20 60 ;then
+      sudo pacman -S --noconfirm kde-pim-meta
+   else
+      echo "Nope."
+   fi
 
-yay -S --noconfirm octopi
-yay -S --noconfirm plasma5-applets-active-window-control-git
-yay -S --noconfirm plasma5-applets-window-appmenu
-yay -S --noconfirm plasma5-applets-window-buttons
-yay -S --noconfirm plasma5-applets-window-title
-yay -S --noconfirm plasma5-applets-playbar2
-yay -S --noconfirm xfce-theme-greybird
-yay -S --noconfirm plasma5-applets-netspeed
-yay -S --noconfirm arc-kde-git
-yay -S --noconfirm kdeplasma-applets-fokus
+   # Theme Stuff
+   sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
+
+   sudo pacman -S --noconfirm packagekit-qt5 kaccounts-providers kio-gdrive kwalletmanager neovim-qt yakuake gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdenlive frei0r-plugins audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra falkon unzip kio-gdrive flameshot krita opencolorio krita-plugin-gmic libheif xdg-desktop-portal-kde kid3 kbackup k3b
+
+   sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
+   yay -S --noconfirm octopi
+   yay -S --noconfirm plasma5-applets-active-window-control-git
+   yay -S --noconfirm plasma5-applets-window-appmenu
+   yay -S --noconfirm plasma5-applets-window-buttons
+   yay -S --noconfirm plasma5-applets-window-title
+   yay -S --noconfirm plasma5-applets-playbar2
+   yay -S --noconfirm xfce-theme-greybird
+   yay -S --noconfirm plasma5-applets-netspeed
+   yay -S --noconfirm arc-kde-git
+   yay -S --noconfirm kdeplasma-applets-fokus
+
+   # Syncthing must sync first for below to work
+   # cp -r ~/config/icons/kora/* ~/.local/share/icons
+
+   # Get Kora icons from the Internet instead
+   # git clone https://github.com/bikass/kora.git ~/kora-icons
+
+   # cp -r ~/kora-icons/kora ~/.local/share/icons
+   # cp -r ~/kora-icons/kora-light ~/.local/share/icons
+   # cp -r ~/kora-icons/kora-light-panel ~/.local/share/icons
+   # cp -r ~/kora-icons/kora-pgrey ~/.local/share/icons
+
+   # Even better: AUR has kora icons
+   yay -S --noconfirm kora-icon-theme
+   
+fi
 
 # KDE Config
 
@@ -33,34 +61,11 @@ tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
 mkdir -p ~/.local/share/aurorae/themes
 tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
 
-# Syncthing must sync first for below to work
-# cp -r ~/config/icons/kora/* ~/.local/share/icons
-
-# Get Kora icons from the Internet instead
-# git clone https://github.com/bikass/kora.git ~/kora-icons
-
-# cp -r ~/kora-icons/kora ~/.local/share/icons
-# cp -r ~/kora-icons/kora-light ~/.local/share/icons
-# cp -r ~/kora-icons/kora-light-panel ~/.local/share/icons
-# cp -r ~/kora-icons/kora-pgrey ~/.local/share/icons
-
-# Even better: AUR has kora icons
-yay -S --noconfirm kora-icon-theme
-
-# Email/PIM
-
-say "Do you want the KDE PIM apps?"
-if $DIALOG --yesno "Install PIM Apps?" 20 60 ;then
-	sudo pacman -S --noconfirm kde-pim-meta
-else
-	echo "Nope."
-fi
 
 # Desktop Configuration
 
 say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
 if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System Settings." 20 60 ;then
-    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
     # yay -S --noconfirm  gmenu-dbusmenu-proxy-git
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config

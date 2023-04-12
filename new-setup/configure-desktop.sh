@@ -1,51 +1,5 @@
 #!/bin/sh
 
-## Add this to /etc/pacman.conf first
-
-#[infinality-bundle]
-#Server = http://bohoomil.com/repo/$arch
-
-#[infinality-bundle-multilib]
-#Server = http://bohoomil.com/repo/multilib/$arch
-
-#[infinality-bundle-fonts]
-#Server = http://bohoomil.com/repo/fonts
-
-# Infinality Fonts
-
-#sudo pacman-key -r 962DDE58
-#sudo pacman-key --lsign-key 962DDE58
-
-#cat /etc/pacman.conf infinality-repos.txt > font-repos.txt
-#sudo cp font-repos.txt /etc/pacman.conf
-
-sudo pacman-mirrors -f 0
-sudo pacman -Syu
-
-# AUR Helper
-# Presumably, if we've gone through the AUI Arch install, we already
-# have our AUR helper. On Manjaro, it's in the repo, so we can just
-# call the installer and get it.
-
-sudo pacman -S --noconfirm yay
-
-# AUR Performance
-# Install the multicore compression utilities.
-# Rename makepkg.conf and replace it with the multicore version.
-
-sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
-sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
-sudo cp makepkg.conf /etc/makepkg.conf
-
-# Build Stuff
-sudo pacman -S --noconfirm base-devel
-
-# Environment
-
-cp ./desktop/*.desktop ~/Desktop
-sudo pacman -S --noconfirm festival festival-english festival-us rsync
-function say { echo "$1" | festival --tts; }
-export -f say
 DIALOG=whiptail
 
 # Questions
@@ -79,16 +33,65 @@ VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 
     "y" "Install VimStar"  on \
     "n" "I already have my own Vim config"      off 2>&1 >/dev/tty)
 
-## Editor
-
-sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
-
 if echo "$VimStar" | grep -iq "^y" ;then
     echo "Installing VimStar!"
 	curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
 else
     echo "Skipping VimStar install...."
 fi
+sudo pacman-mirrors -f 0
+sudo pacman -Syu
+
+# AUR Helper
+# Presumably, if we've gone through the AUI Arch install, we already
+# have our AUR helper. On Manjaro, it's in the repo, so we can just
+# call the installer and get it.
+
+sudo pacman -S --noconfirm yay
+
+# AUR Performance
+# Install the multicore compression utilities.
+# Rename makepkg.conf and replace it with the multicore version.
+
+sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
+sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
+sudo cp makepkg.conf /etc/makepkg.conf
+
+# Build Stuff
+sudo pacman -S --noconfirm base-devel
+
+# Environment
+
+cp ./desktop/*.desktop ~/Desktop
+sudo pacman -S --noconfirm festival festival-english festival-us rsync
+function say { echo "$1" | festival --tts; }
+export -f say
+
+## Editor
+
+sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
+
+# Dotfiles
+
+zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+mv old-config-files.zip ~
+git submodule init
+git submodule update
+../install
+
+# Syncthing
+
+sudo pacman -S --noconfirm syncthing
+echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
+
+# Syncthing Integration
+
+yay -S --noconfirm c++utilities qtutilities qtforkawesome syncthingtray
+
+# Desktop
+source ./configure-plasma5.sh
+
 
 ## Mouse Cursors
 
@@ -109,7 +112,6 @@ yay -S --noconfirm ttf-anonymice-powerline-git
 yay -S --noconfirm ttf-carlito 
 yay -S --noconfirm ttf-gidole 
 yay -S --noconfirm otf-libertinus
-# Moved Vegur to its own line because it's currently broken in AUR
 yay -S --noconfirm otf-vegur 
 yay -S --noconfirm otf-tenderness 
 yay -S --noconfirm ttf-exljbris
@@ -123,11 +125,6 @@ sudo mkdir /usr/share/fonts/OTF
 sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
-
-# Syncthing
-
-sudo pacman -S --noconfirm syncthing
-echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
 
 # Grub
 
@@ -143,6 +140,7 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-overrid
 
 # Startup Sound
 
+sudo pacman -S --noconfirm alsa-utils
 sudo mkdir /usr/share/sounds/custom
 sudo cp a1000.wav /usr/share/sounds/custom
 sudo cp startup-sound.sh /usr/bin
@@ -187,18 +185,6 @@ sudo pacman -S --noconfirm libjpeg6-turbo # for Canon driver below
 #sudo pacman -U --noconfirm brother-mfc-9340cdw-1.1.2-1-x86_64.pkg.tar.xz
 yay -S --noconfirm brother-hll6200dw cnrdrvcups-lb
 
-# Dotfiles
-
-zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-mv old-config-files.zip ~
-git submodule init
-git submodule update
-../install
-
-
-# Desktop
-source ./configure-plasma5.sh
 
 say "Do you want to install developer tools?"
 if $DIALOG --yesno "Install Dev Tools?" 20 60 ;then
