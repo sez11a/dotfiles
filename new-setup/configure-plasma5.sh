@@ -18,7 +18,7 @@ if $_isarch; then
    # Theme Stuff
    sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
 
-   sudo pacman -S --noconfirm packagekit-qt5 kaccounts-providers kio-gdrive kwalletmanager neovim-qt yakuake gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdenlive frei0r-plugins audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra falkon unzip kio-gdrive flameshot krita opencolorio krita-plugin-gmic libheif xdg-desktop-portal-kde kid3 kbackup k3b
+   sudo pacman -S --noconfirm packagekit-qt5 kaccounts-providers kio-gdrive kwalletmanager neovim-qt yakuake gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdenlive frei0r-plugins audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra falkon unzip kio-gdrive flameshot krita opencolorio krita-plugin-gmic libheif xdg-desktop-portal-kde kid3 kbackup k3b kvantum
 
    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
    yay -S --noconfirm octopi
