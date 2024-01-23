@@ -18,15 +18,48 @@ if $_isarch; then
    # Theme Stuff
    sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
 
-   sudo pacman -S --noconfirm packagekit-qt5 kaccounts-providers kio-gdrive kwalletmanager neovim-qt yakuake gst-libav gst-plugins-bad gst-plugins-ugly gst-python krusader kdenlive frei0r-plugins audex krename choqok smb4k bibletime kcharselect kamoso latte-dock ktorrent digikam kleopatra falkon unzip kio-gdrive flameshot krita opencolorio krita-plugin-gmic libheif xdg-desktop-portal-kde kid3 kbackup k3b kvantum
+	sudo pacman -S --noconfirm packagekit-qt5
+	sudo pacman -S --noconfirm kaccounts-providers
+	sudo pacman -S --noconfirm kio-gdrive
+	sudo pacman -S --noconfirm kwalletmanager
+	sudo pacman -S --noconfirm neovim-qt
+	sudo pacman -S --noconfirm yakuake
+	sudo pacman -S --noconfirm gst-libav
+	sudo pacman -S --noconfirm gst-plugins-bad
+	sudo pacman -S --noconfirm gst-plugins-ugly
+	sudo pacman -S --noconfirm gst-python
+	sudo pacman -S --noconfirm krusader
+	sudo pacman -S --noconfirm kdenlive
+	sudo pacman -S --noconfirm frei0r-plugins
+	sudo pacman -S --noconfirm audex
+	sudo pacman -S --noconfirm krename
+	sudo pacman -S --noconfirm smb4k
+	sudo pacman -S --noconfirm bibletime
+	sudo pacman -S --noconfirm kcharselect
+	sudo pacman -S --noconfirm kamoso
+	sudo pacman -S --noconfirm latte-dock
+	sudo pacman -S --noconfirm ktorrent
+	sudo pacman -S --noconfirm digikam
+	sudo pacman -S --noconfirm kleopatra
+	sudo pacman -S --noconfirm falkon
+	sudo pacman -S --noconfirm unzip
+	sudo pacman -S --noconfirm krita
+	sudo pacman -S --noconfirm opencolorio
+	sudo pacman -S --noconfirm krita-plugin-gmic
+	sudo pacman -S --noconfirm libheif
+	sudo pacman -S --noconfirm xdg-desktop-portal-kde
+	sudo pacman -S --noconfirm kid3
+	sudo pacman -S --noconfirm k3b
+	sudo pacman -S --noconfirm kvantum
 
    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
+
    yay -S --noconfirm octopi
    yay -S --noconfirm plasma5-applets-active-window-control-git
    yay -S --noconfirm plasma5-applets-window-appmenu
    yay -S --noconfirm plasma5-applets-window-buttons
    yay -S --noconfirm plasma5-applets-window-title
-   yay -S --noconfirm plasma5-applets-playbar2
+   # yay -S --noconfirm plasma5-applets-playbar2
    yay -S --noconfirm xfce-theme-greybird
    yay -S --noconfirm plasma5-applets-netspeed
    yay -S --noconfirm arc-kde-git
@@ -99,19 +132,19 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
 	kwriteconfig5 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 	kwriteconfig5 --file kdeglobals --group General --key shadeSortColumn true
 	# kwriteconfig5 --file kdeglobals --group General --key widgetStyle Breeze
-	if [ -d "~/.local/share/icons/kora-light" ]
-	then
-		kwriteconfig5 --file kdeglobals --group Icons --key Theme kora-light
-	else
-		kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
-	fi
+#	if [ -d "~/.local/share/icons/kora-light" ]
+#	then
+	kwriteconfig5 --file kdeglobals --group Icons --key Theme kora-light
+#	else
+#		kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
+#	fi
 	kwriteconfig5 --file kdeglobals --group KDE --key ColorScheme Hybrid
 	kwriteconfig5 --file kdeglobals --group KDE --key SingleClick false
 	# KSplash
 	kwriteconfig5 --file ksplashrc --group KSplash --key Engine KSplashQML
 	kwriteconfig5 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
 	# Input
-	kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme oxy-red-argentina
+	kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme breeze-red
 else
     echo "Nope.";
 fi
