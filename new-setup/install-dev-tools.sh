@@ -1,7 +1,6 @@
 #!/bin/sh
 
-yay -S --noconfirm zulu-11-bin zulu-8-bin squirrel-sql
-sudo archlinux-java set zulu-11
+yay -S --noconfirm squirrel-sql
 
 sudo pacman -S --noconfirm source-highlight lazarus-qt5 fpc gdb nodejs npm kdiff3 netbeans github-cli ruby rubygems gitui
 

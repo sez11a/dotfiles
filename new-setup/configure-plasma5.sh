@@ -94,7 +94,6 @@ tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
 mkdir -p ~/.local/share/aurorae/themes
 tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
 
-
 # Desktop Configuration
 
 say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
@@ -153,17 +152,14 @@ fi
 kwriteconfig5 --file kwinrc --group Compositing --key Backend OpenGL
 kwriteconfig5 --file kwinrc --group Compositing --key Enabled true
 
-
 # Dolphin
 kwriteconfig5 --file dolphinrc --group General --key EditableUrl true
 kwriteconfig5 --file dolphinrc --group General --key GlobalViewProps true
 kwriteconfig5 --file dolphinrc --group General --key ShowFullPath true
 
-
 # Konsole
 kwriteconfig5 --file konsolerc --group Desktop\ Entry --key DefaultProfile Commodore.profile
 kwriteconfig5 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\ 3.profile,8086.profile,Commodore.profile,NewGray.profile,Old\ Text\ Mode.profile
-
 
 # Keyboard
 kwriteconfig5 --file kxkbrc --group Layout --key Options ctrl:swapcaps

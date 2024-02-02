@@ -1,6 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 DIALOG=whiptail
+
+# AUR Helper
+# If on Arch, install this before running this script. On Manjaro, it's in the repo, so we can just
+# call the installer and get it.
+
+sudo pacman -S --noconfirm yay
 
 # Questions
 
@@ -39,15 +45,24 @@ if echo "$VimStar" | grep -iq "^y" ;then
 else
     echo "Skipping VimStar install...."
 fi
+
+DevTools=false
+say "Do you want to install developer tools?"
+if $DIALOG --yesno "Install Dev Tools?" 20 60 ;then
+    DevTools = true; else echo "Nope."; fi
+
+LaTeX=false
+say "Do you want to install LaTeX?"
+if $DIALOG --yesno "Install LaTeX?" 20 60 ;then
+    LaTeX=true; else echo "Nope."; fi
+
+emulators=false
+say "Do you want to install emulators for vintage computing?"
+if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
+    emulators=true; else echo "Nope."; fi
+
 sudo pacman-mirrors -f 0
 sudo pacman -Syu
-
-# AUR Helper
-# Presumably, if we've gone through the AUI Arch install, we already
-# have our AUR helper. On Manjaro, it's in the repo, so we can just
-# call the installer and get it.
-
-sudo pacman -S --noconfirm yay
 
 # AUR Performance
 # Install the multicore compression utilities.
@@ -66,6 +81,8 @@ cp ./desktop/*.desktop ~/Desktop
 sudo pacman -S --noconfirm festival festival-english festival-us rsync
 function say { echo "$1" | festival --tts; }
 export -f say
+yay -S --noconfirm zulu-11-bin zulu-8-bin
+sudo archlinux-java set zulu-11
 
 ## Editor
 
@@ -92,10 +109,9 @@ yay -S --noconfirm c++utilities qtutilities qtforkawesome syncthingtray
 # Desktop
 source ./configure-plasma5.sh
 
-
 ## Mouse Cursors
 
-sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz oxygen-cursors-extra-5.18.4.1-1-any.pkg.tar.xz
+sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
 #yay -S --noconfirm  breeze-red-cursor-theme
 
 ## Fonts
@@ -126,17 +142,13 @@ sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
 
-# Grub
+# Plymouth
 
-# yay -S --noconfirm  grub2-theme-dharma-mod
+sudo pacman -S --noconfirm plymouth
+sudo plymouth-set-default-theme -R bgrt
 
 # sudo cp grub /etc/default
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-# Plymouth
-# Commented out below because Plymouth is no longer installed by default.
-#sudo cp plymouthd.conf /etc/plymouth
-#sudo plymouth-set-default-theme -R spinner
 
 # Startup Sound
 
@@ -186,17 +198,23 @@ sudo pacman -S --noconfirm libjpeg6-turbo # for Canon driver below
 yay -S --noconfirm brother-hll6200dw cnrdrvcups-lb
 
 
-say "Do you want to install developer tools?"
-if $DIALOG --yesno "Install Dev Tools?" 20 60 ;then
-    source ./install-dev-tools.sh; else echo "Nope."; fi
+if $DevTools ;then
+    source ./install-dev-tools.sh; 
+else 
+    echo "Not installing Dev Tools" 
+fi
 
-say "Do you need LaTeX?"
-if $DIALOG --yesno "Install LaTeX?" 20 60 ;then
-    source ./install-latex.sh; else echo "Nope."; fi
+if $LaTeX ;then
+    source ./install-latex.sh; 
+else 
+    echo "Not installing LaTeX." 
+fi
 
-say "Do you want to install emulators for vintage computing?"
-if $DIALOG --yesno "Install emulators?" 20 60 ;then
-    source ./install-emulators.sh; else echo "Nope."; fi
+if $emulators ;then
+    source ./install-emulators.sh;
+else 
+    echo "Not installing emulators." 
+fi
 
 if echo "$GoogleFonts" | grep -iq "^y" ;then
     echo "Installing Google Fonts!"
