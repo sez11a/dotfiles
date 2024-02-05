@@ -27,4 +27,7 @@
     ~/.config/vifm:
         path: vifm
         create: true
+    ~/.config/ranger:
+        path: ranger
+        create: true
     ~/.npmrc: npmrc
