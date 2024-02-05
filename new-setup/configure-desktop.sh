@@ -175,7 +175,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Apps in AUR
 
-    yay -S --noconfirm  todotxt slack-desktop freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus pdfsam ted brave-bin python-powerline-gitstatus joe zoom
+    yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus pdfsam ted brave-bin python-powerline-gitstatus joe zoom
 
 else
     echo "Skipping standard desktop apps...."
