@@ -52,16 +52,12 @@ MAVEN_OPTS="-Xmx1024m"
 
 IZPACK_HOME=/opt/IzPack
 
-GRINDERPATH=/opt/grinder-3.4
-GRINDERPROPERTIES=/opt/grinder-3.4/grinder.properties
-CLASSPATH=$GRINDERPATH/lib/grinder.jar:$CLASSPATH
-
 #export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 export JAVA_DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000"
 
 PATH=$PATH:$HOME/bin:$ANT_HOME/bin:$IZPACK_HOME/bin
 
-export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS GRINDERPATH CLASSPATH
+export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS CLASSPATH
 
 # Use archlinux-java status to see which JDK is set as default
 
@@ -78,14 +74,6 @@ export PATH=$PATH:~/jpm/bin:~/.npm-global/bin
 
 # Integrate GTK apps eith KDE
 export GTK_USE_PORTAL=1
-
-# Start Powerline
-export XDG_CONFIG_HOME=~/.config
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-# powerline-daemon -q
-# . /usr/share/powerline/bindings/bash/powerline.sh
-
 
 function fineFinder() {
     find -name "*.${1:-java}" -print0 | xargs -0 grep -${3:-r} --color=auto "${2:-@review}"

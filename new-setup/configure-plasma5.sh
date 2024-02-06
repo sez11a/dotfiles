@@ -18,6 +18,7 @@ if $_isarch; then
    # Theme Stuff
    sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
 
+	sudo pacman -S --noconfirm discover
 	sudo pacman -S --noconfirm packagekit-qt5
 	sudo pacman -S --noconfirm kaccounts-providers
 	sudo pacman -S --noconfirm kio-gdrive
@@ -51,18 +52,16 @@ if $_isarch; then
 	sudo pacman -S --noconfirm kid3
 	sudo pacman -S --noconfirm k3b
 	sudo pacman -S --noconfirm kvantum
+	sudo pacman -S --noconfirm plasma5-applets-active-window-control
 
    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
 
    yay -S --noconfirm octopi
-   yay -S --noconfirm plasma5-applets-active-window-control-git
-   yay -S --noconfirm plasma5-applets-window-appmenu
    yay -S --noconfirm plasma5-applets-window-buttons
    yay -S --noconfirm plasma5-applets-window-title
    # yay -S --noconfirm plasma5-applets-playbar2
    yay -S --noconfirm xfce-theme-greybird
    yay -S --noconfirm plasma5-applets-netspeed
-   yay -S --noconfirm arc-kde-git
    yay -S --noconfirm kdeplasma-applets-fokus
 
    # Syncthing must sync first for below to work
