@@ -50,7 +50,7 @@ ThreeDPrintingApps=$($DIALOG --radiolist "Install 3D Printing Apps?" 20 60 12 \
 DevTools=false
 say "Do you want to install developer tools?"
 if $DIALOG --yesno "Install Dev Tools?" 20 60 ;then
-    DevTools = true; else echo "Nope."; fi
+    DevTools=true; else echo "Nope."; fi
 
 LaTeX=false
 say "Do you want to install LaTeX?"
@@ -202,19 +202,19 @@ sudo pacman -S --noconfirm libjpeg6-turbo # for Canon driver below
 yay -S --noconfirm brother-hll6200dw cnrdrvcups-lb
 
 
-if $DevTools ;then
+if [ "$DevTools" = true ] ;then
     source ./install-dev-tools.sh; 
 else 
     echo "Not installing Dev Tools" 
 fi
 
-if $LaTeX ;then
+if [ "$LaTeX" = true ] ;then
     source ./install-latex.sh; 
 else 
     echo "Not installing LaTeX." 
 fi
 
-if $emulators ;then
+if [ "$emulators" = true ] ;then
     source ./install-emulators.sh;
 else 
     echo "Not installing emulators." 
