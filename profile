@@ -69,7 +69,7 @@ export JPM_PACKAGES=~/jpm
 export NPM_CONFIG_PREFIX=~/.npm-global
 
 # Ruby Environment
-if [[-f /usr/bin/ruby ]]; then
+if [[ -f /usr/bin/ruby ]]; then
     PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
     eval "$(rbenv init -)"
 fi

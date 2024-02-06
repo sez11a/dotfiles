@@ -797,6 +797,9 @@ function parse_git_current_branch {
 function parse_git_current_branch_with_parentheses {
 	parse_git_current_branch | sed 's/.*/(&)/'
 }
+
+customize_aliases
+
 ## End of Liferay stuff
 
 source ~/.profile
