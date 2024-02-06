@@ -33,7 +33,6 @@ alias to='todotxt-machine'
 alias sudo='sudo -E'
 alias ws='jstar -text_color white+bg_blue'
 alias wt='WordTsar'
-alias gitpr='~/.dotfiles/git-tools/git-pull-request/git-pull-request.sh'
 export QT_QPA_PLATFORMTHEME=appmenu-qt5
 JAVA_HOME=/usr/lib/jvm/default
 
@@ -57,7 +56,7 @@ GRINDERPATH=/opt/grinder-3.4
 GRINDERPROPERTIES=/opt/grinder-3.4/grinder.properties
 CLASSPATH=$GRINDERPATH/lib/grinder.jar:$CLASSPATH
 
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+#export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 export JAVA_DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000"
 
 PATH=$PATH:$HOME/bin:$ANT_HOME/bin:$IZPACK_HOME/bin
@@ -69,7 +68,12 @@ export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS GRINDERPATH 
 export JPM_PACKAGES=~/jpm
 export NPM_CONFIG_PREFIX=~/.npm-global
 
-PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+# Ruby Environment
+if [[-f /usr/bin/ruby ]]; then
+    PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+    eval "$(rbenv init -)"
+fi
+
 export PATH=$PATH:~/jpm/bin:~/.npm-global/bin
 
 # Integrate GTK apps eith KDE
@@ -82,8 +86,6 @@ POWERLINE_BASH_SELECT=1
 # powerline-daemon -q
 # . /usr/share/powerline/bindings/bash/powerline.sh
 
-# Ruby Environment
-eval "$(rbenv init -)"
 
 function fineFinder() {
     find -name "*.${1:-java}" -print0 | xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
