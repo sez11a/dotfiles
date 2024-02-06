@@ -159,7 +159,7 @@ kwriteconfig5 --file dolphinrc --group General --key GlobalViewProps true
 kwriteconfig5 --file dolphinrc --group General --key ShowFullPath true
 
 # Konsole
-kwriteconfig5 --file konsolerc --group Desktop\ Entry --key DefaultProfile Commodore.profile
+kwriteconfig5 --file konsolerc --group Desktop\ Entry --key DefaultProfile Catppuccin.profile
 kwriteconfig5 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\ 3.profile,8086.profile,Commodore.profile,NewGray.profile,Old\ Text\ Mode.profile
 
 # Keyboard

@@ -34,17 +34,18 @@ ThreeDPrintingApps=$($DIALOG --radiolist "Install 3D Printing Apps?" 20 60 12 \
     "y" "Yes" on \
     "n" "No" off 2>&1 >/dev/tty)
 
-say "Do you want the VimStar config?"
-VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 \
-    "y" "Install VimStar"  on \
-    "n" "I already have my own Vim config"      off 2>&1 >/dev/tty)
+# Commenting out Vimstar in favor of Astronvim, but not removing as it may have future life.
+# say "Do you want the VimStar config?"
+# VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 \
+#     "y" "Install VimStar"  on \
+#     "n" "I already have my own Vim config"      off 2>&1 >/dev/tty)
 
-if echo "$VimStar" | grep -iq "^y" ;then
-    echo "Installing VimStar!"
-	curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
-else
-    echo "Skipping VimStar install...."
-fi
+# if echo "$VimStar" | grep -iq "^y" ;then
+#     echo "Installing VimStar!"
+# 	curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
+# else
+#     echo "Skipping VimStar install...."
+# fi
 
 DevTools=false
 say "Do you want to install developer tools?"
@@ -87,6 +88,9 @@ sudo archlinux-java set zulu-11
 ## Editor
 
 sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
+git clone https://github.com/AstroNvim/AstroNvim ~/.astronvim
+ln -s ~/.astronvim ~/.config/nvim
+git clone https://github.com/sez11a/astronvim-writing ~/.config/nvim/lua/user
 
 # Dotfiles
 
@@ -171,7 +175,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli bash-completion audacity borg calibre neovide mc tlp p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan chromium lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord powerline python-powerline cdrdao cdrtools libisofs dvd+rw-tools hunspell hunspell-en_us hyphen hyphen-en
+    sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli bash-completion audacity borg calibre neovide mc tlp p7zip whois projectm easytag exfat-utils fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord powerline python-powerline cdrdao cdrtools libisofs dvd+rw-tools hunspell hunspell-en_us hyphen hyphen-en
 
     # Apps in AUR
 
