@@ -1,4 +1,4 @@
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.profile: profile
@@ -10,24 +10,27 @@
     ~/.festivalrc: festivalrc
     ~/.config/goneovim/settings.toml: goneovim/settings.toml
     ~/bin:
-        path: bin/
-        create: true
+      path: bin/
+      create: true
     ~/.joe: joe
     ~/.config/fontconfig: fontconfig
     ~/.latexmkrc: latexmkrc
     ~/.todo.cfg: todo.cfg
-    ~/.todo: 
-        path: todo/
-        create: true
+    ~/.todo:
+      path: todo/
+      create: true
     ~/.todotxt-machinerc: todotxt-machinerc
     ~/.spacemacs: spacemacs
     ~/.config/powerline:
-        path: powerline
-        create: true
+      path: powerline
+      create: true
     ~/.config/vifm:
-        path: vifm
-        create: true
+      path: vifm
+      create: true
     ~/.config/ranger:
-        path: ranger
-        create: true
+      path: ranger
+      create: true
+    ~/.config/gitui:
+      path: gitui
+      create: true
     ~/.npmrc: npmrc
