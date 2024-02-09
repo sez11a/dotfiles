@@ -8,6 +8,54 @@ DIALOG=whiptail
 
 sudo pacman -S --noconfirm yay
 
+sudo pacman-mirrors -f 0
+sudo pacman -Syu
+
+# AUR Performance
+# Install the multicore compression utilities.
+# Rename makepkg.conf and replace it with the multicore version.
+
+sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
+sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
+sudo cp makepkg.conf /etc/makepkg.conf
+
+# Build Stuff
+sudo pacman -S --noconfirm base-devel
+
+# Environment
+
+cp ./desktop/*.desktop ~/Desktop
+sudo pacman -S --noconfirm festival festival-english festival-us rsync
+function say { echo "$1" | festival --tts; }
+export -f say
+yay -S --noconfirm zulu-11-bin zulu-8-bin
+sudo archlinux-java set zulu-11
+
+## Editor
+
+sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
+git clone https://github.com/AstroNvim/AstroNvim ~/.astronvim
+ln -s ~/.astronvim ~/.config/nvim
+git clone https://github.com/sez11a/astronvim-writing ~/.config/nvim/lua/user
+
+# Dotfiles
+
+zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+mv old-config-files.zip ~
+git submodule init
+git submodule update
+../install
+
+# Power
+
+sudo pacman -R power-profiles-daemon
+sudo pacman -S tlp
+sudo systemctl stop systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+sudo systemctl start tlp.service
+sudo systemctl enable tlp.service
+
 # Questions
 
 ## Console config
@@ -62,44 +110,6 @@ say "Do you want to install emulators for vintage computing?"
 if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
     emulators=true; else echo "Nope."; fi
 
-sudo pacman-mirrors -f 0
-sudo pacman -Syu
-
-# AUR Performance
-# Install the multicore compression utilities.
-# Rename makepkg.conf and replace it with the multicore version.
-
-sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
-sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
-sudo cp makepkg.conf /etc/makepkg.conf
-
-# Build Stuff
-sudo pacman -S --noconfirm base-devel
-
-# Environment
-
-cp ./desktop/*.desktop ~/Desktop
-sudo pacman -S --noconfirm festival festival-english festival-us rsync
-function say { echo "$1" | festival --tts; }
-export -f say
-yay -S --noconfirm zulu-11-bin zulu-8-bin
-sudo archlinux-java set zulu-11
-
-## Editor
-
-sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
-git clone https://github.com/AstroNvim/AstroNvim ~/.astronvim
-ln -s ~/.astronvim ~/.config/nvim
-git clone https://github.com/sez11a/astronvim-writing ~/.config/nvim/lua/user
-
-# Dotfiles
-
-zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-mv old-config-files.zip ~
-git submodule init
-git submodule update
-../install
 
 # Syncthing
 
@@ -175,7 +185,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
     # Standard desktop stuff
 
     sudo pacman -R --noconfirm libreoffice-still
-    sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli bash-completion audacity borg python-llfuse calibre neovide mc tlp p7zip whois projectm easytag fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord cdrdao cdrtools libisofs dvd+rw-tools hunspell hunspell-en_us hyphen hyphen-en
+    sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli bash-completion audacity borg calibre neovide mc p7zip whois projectm easytag fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord cdrdao cdrtools libisofs dvd+rw-tools hunspell hunspell-en_us hyphen hyphen-en
 
     # Apps in AUR
 
