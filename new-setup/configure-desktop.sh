@@ -199,7 +199,8 @@ if echo "$ThreeDPrintingApps" | grep -iq "^y" ;then
     echo "Installing 3D Printing apps...." 
 
     sudo pacman -S --noconfirm superslicer prusa-slicer freecad openscad platformio-core platformio-core-udev
-    yay -S --noconfirm cura-modern-appimage
+    yay -S --noconfirm cura-bin
+    yay -S --noconfirm orca-slicer-bin
 
 else 
     echo "Skipping 3D Printing Apps...." 
