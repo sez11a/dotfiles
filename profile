@@ -72,8 +72,8 @@ fi
 
 export PATH=$PATH:~/jpm/bin:~/.npm-global/bin
 
-# Integrate GTK apps eith KDE
-#export GTK_USE_PORTAL=1
+# Integrate GTK apps with KDE
+export GTK_USE_PORTAL=1
 
 function fineFinder() {
     find -name "*.${1:-java}" -print0 | xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
