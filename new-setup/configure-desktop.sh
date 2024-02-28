@@ -130,7 +130,7 @@ sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
 
 ## Fonts
 
-sudo pacman -S --noconfirm gentium-plus-font
+sudo pacman -S --noconfirm ttf-gentium-plus
 sudo pacman -S --noconfirm ttc-iosevka
 sudo pacman -S --noconfirm ttc-iosevka-slab
 sudo pacman -S --noconfirm ttc-iosevka-aile
