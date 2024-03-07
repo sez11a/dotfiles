@@ -2,6 +2,11 @@
 
 DIALOG=whiptail
 
+cp ./desktop/*.desktop ~/Desktop
+sudo pacman -S --noconfirm festival festival-english festival-us rsync
+function say { echo "$1" | festival --tts; }
+export -f say
+
 # AUR Helper
 # If on Arch, install this before running this script. On Manjaro, it's in the repo, so we can just
 # call the installer and get it.
@@ -9,6 +14,8 @@ DIALOG=whiptail
 sudo pacman -S --noconfirm yay
 
 sudo pacman-mirrors -f 0
+
+# Run an update before doing anything
 sudo pacman -Syu
 
 # AUR Performance
@@ -21,40 +28,6 @@ sudo cp makepkg.conf /etc/makepkg.conf
 
 # Build Stuff
 sudo pacman -S --noconfirm base-devel
-
-# Environment
-
-cp ./desktop/*.desktop ~/Desktop
-sudo pacman -S --noconfirm festival festival-english festival-us rsync
-function say { echo "$1" | festival --tts; }
-export -f say
-yay -S --noconfirm zulu-11-bin zulu-8-bin
-sudo archlinux-java set zulu-11
-
-## Editor
-
-sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
-git clone https://github.com/AstroNvim/AstroNvim ~/.astronvim
-ln -s ~/.astronvim ~/.config/nvim
-git clone https://github.com/sez11a/astronvim-writing ~/.config/nvim/lua/user
-
-# Dotfiles
-
-zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-mv old-config-files.zip ~
-git submodule init
-git submodule update
-../install
-
-# Power
-
-sudo pacman -R power-profiles-daemon
-sudo pacman -S tlp
-sudo systemctl stop systemd-rfkill.service
-sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
-sudo systemctl start tlp.service
-sudo systemctl enable tlp.service
 
 # Questions
 
@@ -109,6 +82,40 @@ emulators=false
 say "Do you want to install emulators for vintage computing?"
 if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
     emulators=true; else echo "Nope."; fi
+    
+# Desktop
+source ./configure-plasma6.sh
+
+# Environment
+
+yay -S --noconfirm zulu-11-bin zulu-8-bin
+sudo archlinux-java set zulu-11
+
+## Editor
+
+sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
+git clone https://github.com/AstroNvim/AstroNvim ~/.astronvim
+ln -s ~/.astronvim ~/.config/nvim
+git clone https://github.com/sez11a/astronvim-writing ~/.config/nvim/lua/user
+
+# Dotfiles
+
+zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+mv old-config-files.zip ~
+git submodule init
+git submodule update
+../install
+
+# Power
+
+sudo pacman -R power-profiles-daemon
+sudo pacman -S tlp
+sudo systemctl stop systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+sudo systemctl start tlp.service
+sudo systemctl enable tlp.service
+
 
 
 # Syncthing
@@ -119,9 +126,6 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-overrid
 # Syncthing Integration
 
 yay -S --noconfirm c++utilities qtutilities qtforkawesome syncthingtray
-
-# Desktop
-source ./configure-plasma5.sh
 
 ## Mouse Cursors
 
@@ -210,7 +214,8 @@ fi
 
 sudo pacman -S --noconfirm libjpeg6-turbo # for Canon driver below
 sudo pacman -S --noconfirm brother-mfc-9340cdw
-yay -S --noconfirm brother-hll6200dw cnrdrvcups-lb
+yay -S --noconfirm brother-hll6200dw 
+yay -S --noconfirm cnrdrvcups-lb
 
 
 if [ "$DevTools" = true ] ;then
