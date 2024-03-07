@@ -19,7 +19,7 @@ if $_isarch; then
    sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
 
 	sudo pacman -S --noconfirm discover
-	sudo pacman -S --noconfirm packagekit-qt5
+	sudo pacman -S --noconfirm packagekit-qt6
 	sudo pacman -S --noconfirm kaccounts-providers
 	sudo pacman -S --noconfirm kio-gdrive
 	sudo pacman -S --noconfirm kwalletmanager
@@ -38,7 +38,6 @@ if $_isarch; then
 	sudo pacman -S --noconfirm bibletime
 	sudo pacman -S --noconfirm kcharselect
 	sudo pacman -S --noconfirm kamoso
-	sudo pacman -S --noconfirm latte-dock
 	sudo pacman -S --noconfirm ktorrent
 	sudo pacman -S --noconfirm digikam
 	sudo pacman -S --noconfirm kleopatra
@@ -56,13 +55,11 @@ if $_isarch; then
 
    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
 
-   yay -S --noconfirm octopi
-   yay -S --noconfirm plasma5-applets-window-buttons
-   yay -S --noconfirm plasma5-applets-window-title
-   # yay -S --noconfirm plasma5-applets-playbar2
+   yay -S --noconfirm plasma6-applets-window-buttons
+   yay -S --noconfirm plasma6-applets-window-title
+   yay -S --noconfirm plasma6-applets-netspeed
+   yay -S --noconfirm plasma6-applets-fokus
    yay -S --noconfirm xfce-theme-greybird
-   yay -S --noconfirm plasma5-applets-netspeed
-   yay -S --noconfirm kdeplasma-applets-fokus
 
    # Syncthing must sync first for below to work
    # cp -r ~/config/icons/kora/* ~/.local/share/icons
@@ -77,6 +74,7 @@ if $_isarch; then
 
    # Even better: AUR has kora icons
    yay -S --noconfirm kora-icon-theme
+   yay -S --noconfirm octopi
    
 fi
 
@@ -103,70 +101,70 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
     #cp kde/plasmashellrc ~/.config
     mkdir -p ~/.local/share/plasma/look-and-feel
 	tar xvfz hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
-    kwriteconfig5 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
-    kwriteconfig5 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
-    kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
-    kwriteconfig5 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
-    kwriteconfig5 --file plasmarc --group Theme --key name default
+    kwriteconfig6 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
+    kwriteconfig6 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
+    kwriteconfig6 --file plasmarc --group Theme --key name default
 	# KWin
-	kwriteconfig5 --file kwinrc --group Plugins --key kwin4_effect_scaleinEnabled true
-	kwriteconfig5 --file kwinrc --group Plugins --key magiclampEnabled true
-	kwriteconfig5 --file kwinrc --group Plugins --key minimizeanimationEnabled false
-	kwriteconfig5 --file kwinrc --group Plugins --key windowgeometryEnabled false
-	kwriteconfig5 --file kwinrc --group Plugins --key wobblywindowsEnabled true
-	kwriteconfig5 --file kwinrc --group Windows --key Placement UnderMouse
+	kwriteconfig6 --file kwinrc --group Plugins --key kwin4_effect_scaleinEnabled true
+	kwriteconfig6 --file kwinrc --group Plugins --key magiclampEnabled true
+	kwriteconfig6 --file kwinrc --group Plugins --key minimizeanimationEnabled false
+	kwriteconfig6 --file kwinrc --group Plugins --key windowgeometryEnabled false
+	kwriteconfig6 --file kwinrc --group Plugins --key wobblywindowsEnabled true
+	kwriteconfig6 --file kwinrc --group Windows --key Placement UnderMouse
 	# Breeze
 	# kwriteconfig5 --file breezerc --group Common --key ShadowSize 64
 	# kwriteconfig5 --file breezerc --group Common --key ShadowStrength 163
-	kwriteconfig5 --file breezerc --group Windeco --key TitleAlignment AlignLeft
+	kwriteconfig6 --file breezerc --group Windeco --key TitleAlignment AlignLeft
 	# KDE Globals
-	kwriteconfig5 --file kdeglobals --group General --key ColorScheme Hybrid
-	kwriteconfig5 --file kdeglobals --group General --key Name Hybrid
-	kwriteconfig5 --file kdeglobals --group General --key widgetStyle Oxygen
-	kwriteconfig5 --file kdeglobals --group KDE --key widgetStyle Oxygen
-	kwriteconfig5 --file kdeglobals --group General --key fixed Monospace,11,-1,5,50,0,0,0,0,0
-	kwriteconfig5 --file kdeglobals --group General --key font Sans\ Serif,11,-1,5,50,0,0,0,0,0
-	kwriteconfig5 --file kdeglobals --group General --key menuFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
-	kwriteconfig5 --file kdeglobals --group General --key smallestReadableFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
-	kwriteconfig5 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
-	kwriteconfig5 --file kdeglobals --group General --key shadeSortColumn true
+	kwriteconfig6 --file kdeglobals --group General --key ColorScheme Hybrid
+	kwriteconfig6 --file kdeglobals --group General --key Name Hybrid
+	kwriteconfig6 --file kdeglobals --group General --key widgetStyle Oxygen
+	kwriteconfig6 --file kdeglobals --group KDE --key widgetStyle Oxygen
+	kwriteconfig6 --file kdeglobals --group General --key fixed Monospace,11,-1,5,50,0,0,0,0,0
+	kwriteconfig6 --file kdeglobals --group General --key font Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig6 --file kdeglobals --group General --key menuFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig6 --file kdeglobals --group General --key smallestReadableFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig6 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
+	kwriteconfig6 --file kdeglobals --group General --key shadeSortColumn true
 	# kwriteconfig5 --file kdeglobals --group General --key widgetStyle Breeze
 #	if [ -d "~/.local/share/icons/kora-light" ]
 #	then
-	kwriteconfig5 --file kdeglobals --group Icons --key Theme kora-light
+	kwriteconfig6 --file kdeglobals --group Icons --key Theme kora-light
 #	else
 #		kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
 #	fi
-	kwriteconfig5 --file kdeglobals --group KDE --key ColorScheme Hybrid
-	kwriteconfig5 --file kdeglobals --group KDE --key SingleClick false
+	kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme Hybrid
+	kwriteconfig6 --file kdeglobals --group KDE --key SingleClick false
 	# KSplash
-	kwriteconfig5 --file ksplashrc --group KSplash --key Engine KSplashQML
-	kwriteconfig5 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
+	kwriteconfig6 --file ksplashrc --group KSplash --key Engine KSplashQML
+	kwriteconfig6 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
 	# Input
-	kwriteconfig5 --file kcminputrc --group Mouse --key cursorTheme breeze-red
+	kwriteconfig6 --file kcminputrc --group Mouse --key cursorTheme breeze-red
 else
     echo "Nope.";
 fi
 
 #KWin
-kwriteconfig5 --file kwinrc --group Compositing --key Backend OpenGL
-kwriteconfig5 --file kwinrc --group Compositing --key Enabled true
+kwriteconfig6 --file kwinrc --group Compositing --key Backend OpenGL
+kwriteconfig6 --file kwinrc --group Compositing --key Enabled true
 
 # Dolphin
-kwriteconfig5 --file dolphinrc --group General --key EditableUrl true
-kwriteconfig5 --file dolphinrc --group General --key GlobalViewProps true
-kwriteconfig5 --file dolphinrc --group General --key ShowFullPath true
+kwriteconfig6 --file dolphinrc --group General --key EditableUrl true
+kwriteconfig6 --file dolphinrc --group General --key GlobalViewProps true
+kwriteconfig6 --file dolphinrc --group General --key ShowFullPath true
 
 # Konsole
-kwriteconfig5 --file konsolerc --group Desktop\ Entry --key DefaultProfile Catppuccin.profile
-kwriteconfig5 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\ 3.profile,8086.profile,Commodore.profile,NewGray.profile,Old\ Text\ Mode.profile
+kwriteconfig6 --file konsolerc --group Desktop\ Entry --key DefaultProfile Catppuccin.profile
+kwriteconfig6 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\ 3.profile,8086.profile,Commodore.profile,NewGray.profile,Old\ Text\ Mode.profile
 
 # Keyboard
-kwriteconfig5 --file kxkbrc --group Layout --key Options ctrl:swapcaps
+kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 
 # Oxygen
-kwriteconfig5 --file oxygenrc --group ActiveShadow --key ShadowSize 50
-kwriteconfig5 --file oxygenrc --group InactiveShadow --key ShadowSize 99
-kwriteconfig5 --file oxygenrc --group InactiveShadow --key VerticalOffset 0
-kwriteconfig5 --file oxygenrc --group Windeco --key TitleAlignment AlignLeft
-kwriteconfig5 --file oxygenrc --group Windeco --key UseWindowColors false
+#kwriteconfig6 --file oxygenrc --group ActiveShadow --key ShadowSize 50
+#kwriteconfig6 --file oxygenrc --group InactiveShadow --key ShadowSize 99
+#kwriteconfig6 --file oxygenrc --group InactiveShadow --key VerticalOffset 0
+#kwriteconfig6 --file oxygenrc --group Windeco --key TitleAlignment AlignLeft
+#kwriteconfig6 --file oxygenrc --group Windeco --key UseWindowColors false
