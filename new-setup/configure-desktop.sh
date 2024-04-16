@@ -179,7 +179,7 @@ sudo systemctl enable startupsound.service
 
 # Undelete Files
 
-sudo pacman -S --noconfirm ext4magic testdisk
+sudo pacman -S --noconfirm ddrescue ext4magic testdisk
 yay -S --noconfirm  r-linux extundelete
 
 
