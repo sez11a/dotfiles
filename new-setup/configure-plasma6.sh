@@ -63,7 +63,8 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config
     mkdir -p ~/.local/share/plasma/look-and-feel
-	tar xvfz hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
+	  tar xvfz hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
+    tar xvfz kde/hybrid-dark.tar.gz -C ~/.local/share/plasma/look-and-feel
     kwriteconfig6 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
     kwriteconfig6 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
