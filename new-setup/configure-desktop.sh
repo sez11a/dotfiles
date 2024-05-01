@@ -83,20 +83,20 @@ say "Do you want to install emulators for vintage computing?"
 if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
     emulators=true; else echo "Nope."; fi
     
-# Desktop
-source ./configure-plasma6.sh
+# Plymouth
+sudo pacman -S --noconfirm plymouth
+sudo plymouth-set-default-theme -R bgrt
 
-# Environment
+# sudo cp grub /etc/default
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-yay -S --noconfirm zulu-11-bin zulu-8-bin
-sudo archlinux-java set zulu-11
-
-## Editor
-
-sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
-git clone https://github.com/AstroNvim/AstroNvim ~/.astronvim
-ln -s ~/.astronvim ~/.config/nvim
-git clone https://github.com/sez11a/astronvim-writing ~/.config/nvim/lua/user
+# Startup Sound
+sudo pacman -S --noconfirm alsa-utils
+sudo mkdir /usr/share/sounds/custom
+sudo cp a1000.wav /usr/share/sounds/custom
+sudo cp startup-sound.sh /usr/bin
+sudo cp startupsound.service /etc/systemd/system
+sudo systemctl enable startupsound.service
 
 # Dotfiles
 
@@ -107,30 +107,35 @@ git submodule init
 git submodule update
 ../install
 
-# Power
+## Editor
+sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
+curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
 
-sudo pacman -R power-profiles-daemon
-sudo pacman -S tlp
+# Syncthing
+sudo pacman -S --noconfirm syncthing
+echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
+
+# Syncthing Integration
+yay -S --noconfirm c++utilities qtutilities qtforkawesome syncthingtray
+
+# Power
+sudo pacman -R --noconfirm power-profiles-daemon
+sudo pacman -S --noconfirm tlp
 sudo systemctl stop systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 sudo systemctl start tlp.service
 sudo systemctl enable tlp.service
 
-
-
-# Syncthing
-
-sudo pacman -S --noconfirm syncthing
-echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
-
-# Syncthing Integration
-
-yay -S --noconfirm c++utilities qtutilities qtforkawesome syncthingtray
+## UI font
+yay -S --noconfirm otf-libertinus
+sudo cp fonts-local.conf /etc/fonts/local.conf
 
 ## Mouse Cursors
-
 sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
 #yay -S --noconfirm  breeze-red-cursor-theme
+
+# Desktop
+source ./configure-plasma6.sh
 
 ## Fonts
 
@@ -145,14 +150,12 @@ yay -S --noconfirm nerd-fonts-hermit
 yay -S --noconfirm ttf-anonymice-powerline-git 
 yay -S --noconfirm ttf-carlito 
 yay -S --noconfirm ttf-gidole 
-yay -S --noconfirm otf-libertinus
 yay -S --noconfirm otf-vegur 
 yay -S --noconfirm otf-tenderness 
 yay -S --noconfirm ttf-exljbris
 
 ## Removed Caladea from above because it conflicted with Google Fonts
 
-sudo cp fonts-local.conf /etc/fonts/local.conf
 cp fonts.conf ~/.config/fontconfig
 sudo mkdir /usr/share/fonts/TTF
 sudo mkdir /usr/share/fonts/OTF
@@ -160,27 +163,14 @@ sudo cp fonts/*.ttf /usr/share/fonts/TTF
 sudo cp fonts/*.otf /usr/share/fonts/OTF
 sudo fc-cache -f -v
 
-# Plymouth
-
-sudo pacman -S --noconfirm plymouth
-sudo plymouth-set-default-theme -R bgrt
-
-# sudo cp grub /etc/default
-# sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-# Startup Sound
-
-sudo pacman -S --noconfirm alsa-utils
-sudo mkdir /usr/share/sounds/custom
-sudo cp a1000.wav /usr/share/sounds/custom
-sudo cp startup-sound.sh /usr/bin
-sudo cp startupsound.service /etc/systemd/system
-sudo systemctl enable startupsound.service
-
 # Undelete Files
 
 sudo pacman -S --noconfirm ddrescue ext4magic testdisk
 yay -S --noconfirm  r-linux extundelete
+
+# Java Environment
+yay -S --noconfirm zulu-11-bin zulu-8-bin
+sudo archlinux-java set zulu-11
 
 
 if echo "$DesktopApps" | grep -iq "^y" ;then
@@ -193,7 +183,7 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Apps in AUR
 
-    yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus pdfsam brave-bin joe zoom
+    yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus brave-bin joe zoom
 
 else
     echo "Skipping standard desktop apps...."

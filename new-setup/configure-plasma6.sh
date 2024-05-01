@@ -17,42 +17,7 @@ if $_isarch; then
 
    # Theme Stuff
    sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
-
-	sudo pacman -S --noconfirm discover
-	sudo pacman -S --noconfirm packagekit-qt6
-	sudo pacman -S --noconfirm kaccounts-providers
-	sudo pacman -S --noconfirm kio-gdrive
-	sudo pacman -S --noconfirm kwalletmanager
-	sudo pacman -S --noconfirm neovim-qt
-	sudo pacman -S --noconfirm yakuake
-	sudo pacman -S --noconfirm gst-libav
-	sudo pacman -S --noconfirm gst-plugins-bad
-	sudo pacman -S --noconfirm gst-plugins-ugly
-	sudo pacman -S --noconfirm gst-python
-	sudo pacman -S --noconfirm krusader
-	sudo pacman -S --noconfirm kdenlive
-	sudo pacman -S --noconfirm frei0r-plugins
-	sudo pacman -S --noconfirm audex
-	sudo pacman -S --noconfirm krename
-	sudo pacman -S --noconfirm smb4k
-	sudo pacman -S --noconfirm bibletime
-	sudo pacman -S --noconfirm kcharselect
-	sudo pacman -S --noconfirm kamoso
-	sudo pacman -S --noconfirm ktorrent
-	sudo pacman -S --noconfirm digikam
-	sudo pacman -S --noconfirm kleopatra
-	sudo pacman -S --noconfirm falkon
-	sudo pacman -S --noconfirm unzip
-	sudo pacman -S --noconfirm krita
-	sudo pacman -S --noconfirm opencolorio
-	sudo pacman -S --noconfirm krita-plugin-gmic
-	sudo pacman -S --noconfirm libheif
-	sudo pacman -S --noconfirm xdg-desktop-portal-kde
-	sudo pacman -S --noconfirm kid3
-	sudo pacman -S --noconfirm k3b
-	sudo pacman -S --noconfirm kvantum
-	sudo pacman -S --noconfirm plasma5-applets-active-window-control
-
+   sudo pacman -S --noconfirm kvantum
    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
 
    yay -S --noconfirm plasma6-applets-window-buttons
@@ -74,8 +39,6 @@ if $_isarch; then
 
    # Even better: AUR has kora icons
    yay -S --noconfirm kora-icon-theme
-   yay -S --noconfirm octopi
-   
 fi
 
 # KDE Config
@@ -90,7 +53,7 @@ mkdir -p ~/.local/share/plasma/desktoptheme
 tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
 mkdir -p ~/.local/share/aurorae/themes
 tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
-plasmapkg2 -i kde/overview.plasmoid
+kpackagetool6 -i kde/overview.plasmoid
 
 # Desktop Configuration
 
@@ -168,3 +131,42 @@ kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 #kwriteconfig6 --file oxygenrc --group InactiveShadow --key VerticalOffset 0
 #kwriteconfig6 --file oxygenrc --group Windeco --key TitleAlignment AlignLeft
 #kwriteconfig6 --file oxygenrc --group Windeco --key UseWindowColors false
+
+say "You can now apply the global theme."
+
+if $_isarch; then
+   sudo pacman -S --noconfirm discover
+   sudo pacman -S --noconfirm packagekit-qt6
+   sudo pacman -S --noconfirm kaccounts-providers
+   sudo pacman -S --noconfirm kio-gdrive
+   sudo pacman -S --noconfirm kwalletmanager
+   sudo pacman -S --noconfirm neovim-qt
+   sudo pacman -S --noconfirm yakuake
+   sudo pacman -S --noconfirm gst-libav
+   sudo pacman -S --noconfirm gst-plugins-bad
+   sudo pacman -S --noconfirm gst-plugins-ugly
+   sudo pacman -S --noconfirm gst-python
+   sudo pacman -S --noconfirm krusader
+   sudo pacman -S --noconfirm kdenlive
+   sudo pacman -S --noconfirm frei0r-plugins
+   sudo pacman -S --noconfirm audex
+   sudo pacman -S --noconfirm krename
+   sudo pacman -S --noconfirm smb4k
+   sudo pacman -S --noconfirm bibletime
+   sudo pacman -S --noconfirm kcharselect
+   sudo pacman -S --noconfirm kamoso
+   sudo pacman -S --noconfirm ktorrent
+   sudo pacman -S --noconfirm digikam
+   sudo pacman -S --noconfirm kleopatra
+   sudo pacman -S --noconfirm falkon
+   sudo pacman -S --noconfirm unzip
+   sudo pacman -S --noconfirm krita
+   sudo pacman -S --noconfirm opencolorio
+   sudo pacman -S --noconfirm krita-plugin-gmic
+   sudo pacman -S --noconfirm libheif
+   sudo pacman -S --noconfirm xdg-desktop-portal-kde
+   sudo pacman -S --noconfirm kid3
+   sudo pacman -S --noconfirm k3b
+
+   yay -S --noconfirm octopi
+fi
