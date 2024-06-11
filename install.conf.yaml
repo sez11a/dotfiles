@@ -8,12 +8,10 @@
     ~/.xprofile: xprofile
     ~/.conkyrc: conkyrc
     ~/.festivalrc: festivalrc
-    ~/.config/goneovim/settings.toml: goneovim/settings.toml
     ~/bin:
       path: bin/
       create: true
     ~/.joe: joe
-    ~/.config/fontconfig: fontconfig
     ~/.latexmkrc: latexmkrc
     ~/.todo.cfg: todo.cfg
     ~/.todo:
@@ -21,6 +19,8 @@
       create: true
     ~/.todotxt-machinerc: todotxt-machinerc
     ~/.spacemacs: spacemacs
+    ~/.npmrc: npmrc
+    ~/.config/goneovim/settings.toml: goneovim/settings.toml
     ~/.config/powerline:
       path: powerline
       create: true
@@ -33,4 +33,4 @@
     ~/.config/gitui:
       path: gitui
       create: true
-    ~/.npmrc: npmrc
+    ~/.config/fontconfig: fontconfig
