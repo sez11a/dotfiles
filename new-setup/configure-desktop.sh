@@ -1,6 +1,19 @@
 #!/bin/bash
 
+_ismanjaro=false
+[[ -f /etc/manjaro-release ]] && _ismanjaro=true
+
 DIALOG=whiptail
+
+# Dotfiles
+
+sudo pacman -S --noconfirm stow
+zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
+mv old-config-files.zip ~
+cd ..
+stow . 
+cd new-setup
 
 cp ./desktop/*.desktop ~/Desktop
 sudo pacman -S --noconfirm festival festival-english festival-us rsync
@@ -8,17 +21,26 @@ function say { echo "$1" | festival --tts; }
 export -f say
 
 # AUR Helper
-# If on Arch, install this before running this script. On Manjaro, it's in the repo, so we can just
-# call the installer and get it.
+# If on Arch, install this before running this script. On Manjaro and EndeavourOS, 
+# it's in the repo, so we can just call the installer and get it.
 
 sudo pacman -S --noconfirm yay
 
-sudo pacman-mirrors -f 0
+# On Manjaro, run the below command. Otherwise, set up Reflector.
+if $_ismanjaro; then
+  sudo pacman-mirrors -f 0
+else 
+  sudo pacman -S --noconfirm reflector 
+  sudo mv /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.orig
+  sudo cp ./reflector.conf /etc/xdg/reflector
+  sudo systemctl start reflector.service
+  sudo systemctl enable reflector.timer
+fi
 
-# Run an update before doing anything
+# Now we should be using the fastest mirrors; run an update before doing anything
 sudo pacman -Syu
 
-# AUR Performance
+# Improve AUR Performance
 # Install the multicore compression utilities.
 # Rename makepkg.conf and replace it with the multicore version.
 
@@ -26,12 +48,10 @@ sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp makepkg.conf /etc/makepkg.conf
 
-# Build Stuff
+# Build Stuff is needed to build AUR packages
 sudo pacman -S --noconfirm base-devel
 
-# Questions
-
-## Console config
+# Preliminaries are now out of the way; time for questions
 
 say "Does this machine have a HIDPI screen?"
 if $DIALOG --yesno "HIDPI screen?" 20 60 ;then
@@ -55,19 +75,6 @@ ThreeDPrintingApps=$($DIALOG --radiolist "Install 3D Printing Apps?" 20 60 12 \
     "y" "Yes" on \
     "n" "No" off 2>&1 >/dev/tty)
 
-# Commenting out Vimstar in favor of Astronvim, but not removing as it may have future life.
-# say "Do you want the VimStar config?"
-# VimStar=$($DIALOG --radiolist "Do you want the VimStar NeoVim config?" 20 60 12 \
-#     "y" "Install VimStar"  on \
-#     "n" "I already have my own Vim config"      off 2>&1 >/dev/tty)
-
-# if echo "$VimStar" | grep -iq "^y" ;then
-#     echo "Installing VimStar!"
-# 	curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
-# else
-#     echo "Skipping VimStar install...."
-# fi
-
 DevTools=false
 say "Do you want to install developer tools?"
 if $DIALOG --yesno "Install Dev Tools?" 20 60 ;then
@@ -86,8 +93,9 @@ if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
 # Plymouth
 sudo pacman -S --noconfirm plymouth
 sudo plymouth-set-default-theme -R bgrt
-
-# sudo cp grub /etc/default
+# uncomment below at your own risk; the point is to add the splash parameter
+# and then re-run Grub to get a nice boot screen
+# sed 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/& splash/'  /etc/default/grub
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Startup Sound
@@ -97,15 +105,6 @@ sudo cp a1000.wav /usr/share/sounds/custom
 sudo cp startup-sound.sh /usr/bin
 sudo cp startupsound.service /etc/systemd/system
 sudo systemctl enable startupsound.service
-
-# Dotfiles
-
-zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-mv old-config-files.zip ~
-git submodule init
-git submodule update
-../install
 
 ## Editor
 sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq
@@ -178,12 +177,14 @@ if echo "$DesktopApps" | grep -iq "^y" ;then
 
     # Standard desktop stuff
 
-    sudo pacman -R --noconfirm libreoffice-still
+    if $_ismanjaro; then
+      sudo pacman -R --noconfirm libreoffice-still
+    fi
     sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli bash-completion audacity borg spamassassin razor calibre neovide mc p7zip whois projectm easytag fuse handbrake tk scribus vpnc networkmanager-vpnc fontforge kdiff3 dvgrab dvdauthor inkscape strawberry conky libreoffice-fresh offlineimap dovecot neomutt w3m urlscan lha zip unzip vifm xdg-desktop-portal filelight mplayer fzf ripgrep the_silver_searcher fd ranger libaacs mpv smplayer smplayer-skins smplayer-themes ctags pstoedit libmythes beanshell coin-or-mp yt-dlp atomicparsley aria2 discord cdrdao cdrtools libisofs dvd+rw-tools hunspell hunspell-en_us hyphen hyphen-en
 
     # Apps in AUR
 
-    yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus brave-bin joe zoom
+    yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus brave-bin joe zoom goneovim-bin
 
 else
     echo "Skipping standard desktop apps...."

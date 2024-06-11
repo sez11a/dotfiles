@@ -20,6 +20,7 @@ if $_isarch; then
    sudo pacman -S --noconfirm kvantum
    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
 
+   yay -S --noconfirm libdbusmenu-qtilities6-git
    yay -S --noconfirm plasma6-applets-window-buttons
    yay -S --noconfirm plasma6-applets-window-title
    yay -S --noconfirm plasma6-applets-netspeed
