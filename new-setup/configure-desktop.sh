@@ -126,7 +126,7 @@ sudo systemctl start tlp.service
 sudo systemctl enable tlp.service
 
 ## UI font
-yay -S --noconfirm otf-libertinus
+sudo pacman -S --noconfirm libertinus-font
 sudo cp fonts-local.conf /etc/fonts/local.conf
 
 ## Mouse Cursors
