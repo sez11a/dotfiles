@@ -8,22 +8,19 @@ if $_isarch; then
 
    # Email/PIM
 
-   say "Do you want the KDE PIM apps?"
-   if $DIALOG --yesno "Install PIM Apps?" 20 60 ;then
-      sudo pacman -S --noconfirm kde-pim-meta
-   else
-      echo "Nope."
-   fi
+   sudo pacman -S --noconfirm kde-pim-meta
 
    # Theme Stuff
    sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
    sudo pacman -S --noconfirm kvantum
    sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
 
+   sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
    yay -S --noconfirm libdbusmenu-qtilities6-git
-   yay -S --noconfirm plasma6-applets-window-buttons
+   # yay -S --noconfirm plasma6-applets-window-buttons
    yay -S --noconfirm plasma6-applets-window-title
    yay -S --noconfirm plasma6-applets-netspeed
+   yay -S --noconfirm plasma6-applets-plasmusic-toolbar
    yay -S --noconfirm plasma6-applets-fokus
    yay -S --noconfirm xfce-theme-greybird
 
@@ -137,6 +134,7 @@ kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 say "You can now apply the global theme."
 
 if $_isarch; then
+   sudo pacman -S --noconfirm okular
    sudo pacman -S --noconfirm discover
    sudo pacman -S --noconfirm packagekit-qt6
    sudo pacman -S --noconfirm kaccounts-providers
