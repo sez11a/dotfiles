@@ -56,7 +56,7 @@ kpackagetool6 -i kde/overview.plasmoid
 # Desktop Configuration
 
 say "Do you want the hybrid desktop that's a mix of features from Amiga, GEM, Mac, Linux, and Windows?"
-if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System Settings." 20 60 ;then
+if $DIALOG --yesno "Hybrid desktop? Use System Settings to reset to default." 20 60 ;then
     # yay -S --noconfirm  gmenu-dbusmenu-proxy-git
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config
@@ -104,13 +104,14 @@ if $DIALOG --yesno "Hybrid desktop? Won't change layout unless chosen in System 
 	kwriteconfig6 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
 	# Input
 	kwriteconfig6 --file kcminputrc --group Mouse --key cursorTheme breeze-red
+  lookandfeeltool -a Hybrid-Dark --resetLayout
 else
     echo "Nope.";
 fi
 
 #KWin
-kwriteconfig6 --file kwinrc --group Compositing --key Backend OpenGL
-kwriteconfig6 --file kwinrc --group Compositing --key Enabled true
+# kwriteconfig6 --file kwinrc --group Compositing --key Backend OpenGL
+# kwriteconfig6 --file kwinrc --group Compositing --key Enabled true
 
 # Dolphin
 kwriteconfig6 --file dolphinrc --group General --key EditableUrl true
@@ -130,8 +131,6 @@ kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 #kwriteconfig6 --file oxygenrc --group InactiveShadow --key VerticalOffset 0
 #kwriteconfig6 --file oxygenrc --group Windeco --key TitleAlignment AlignLeft
 #kwriteconfig6 --file oxygenrc --group Windeco --key UseWindowColors false
-
-say "You can now apply the global theme."
 
 if $_isarch; then
    sudo pacman -S --noconfirm okular
