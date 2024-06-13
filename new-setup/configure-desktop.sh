@@ -168,8 +168,8 @@ sudo pacman -S --noconfirm ddrescue ext4magic testdisk
 yay -S --noconfirm  r-linux extundelete
 
 # Java Environment
-yay -S --noconfirm zulu-11-bin zulu-8-bin
-sudo archlinux-java set zulu-11
+yay -S --noconfirm zulu-21-bin
+sudo archlinux-java set zulu-21
 
 
 if echo "$DesktopApps" | grep -iq "^y" ;then
