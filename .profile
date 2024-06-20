@@ -85,3 +85,5 @@ echo
 echo    find -name "*.${1:-java}" -print0 \| xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
 echo _________________________________________________________________________________________
 }
+
+eval "$(oh-my-posh init bash --config ~/.dotfiles/hybrid-bash-prompt.yaml)"

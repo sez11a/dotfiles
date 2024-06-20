@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 2
+final_space: true
+blocks:
+- type: prompt
+  alignment: left
+  segments:
+  - type: session
+    style: plain
+    foreground: lightYellow
+    template: "{{ .UserName }} "
+  - type: path
+    style: plain
+    foreground: blue
+    template: "<#ffffff>in</> {{ .Path }} "
+    properties:
+      style: full
+  - type: git
+    style: plain
+    foreground: "red"
+    template: "<#ffffff>on</> {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>" 
+    properties:
+      branch_icon: " <#ff94df><b>\ue0a0 </b></>"
+      commit_icon: "@"
+      fetch_stash_count: true
+      fetch_status: true
+- type: prompt
+  alignment: left
+  segments:
+  - type: text
+    style: plain
+    foreground: lightGreen
+    template: ❯
+  newline: true
