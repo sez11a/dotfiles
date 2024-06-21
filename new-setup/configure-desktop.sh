@@ -147,7 +147,9 @@ yay -S --noconfirm  otf-fantasque-sans-mono
 yay -S --noconfirm ttf-mplus 
 yay -S --noconfirm nerd-fonts-hermit 
 yay -S --noconfirm ttf-anonymice-powerline-git 
-yay -S --noconfirm ttf-carlito 
+if echo "$GoogleFonts" | grep -iq "^n" ;then
+  yay -S --noconfirm ttf-carlito 
+fi
 yay -S --noconfirm ttf-gidole 
 yay -S --noconfirm otf-vegur 
 yay -S --noconfirm otf-tenderness 
