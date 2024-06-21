@@ -38,7 +38,7 @@ else
 fi
 
 # Now we should be using the fastest mirrors; run an update before doing anything
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 # Improve AUR Performance
 # Install the multicore compression utilities.
