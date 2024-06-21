@@ -10,3 +10,15 @@ Before running `configure-desktop.sh`, ensure you have already run these command
 6. `makepkg -i`
 
 This ensures `yay` is installed, which is needed for the setup script. 
+
+Next, you want to optimize Pacman so it downloads packages from five mirrors in parallel. 
+
+1. Edit `/etc/pacman.conf`. 
+2. Add or comment in these lines: 
+   ```
+   Color
+   ParallelDownloads = 5 
+   ILoveCandy
+   ```
+
+Now your downloads should go a little faster, especially since the script enables Reflector at the beginning. 
