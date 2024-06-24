@@ -86,4 +86,5 @@ echo    find -name "*.${1:-java}" -print0 \| xargs -0 grep -${3:-r} --color=auto
 echo _________________________________________________________________________________________
 }
 
-eval "$(oh-my-posh init bash --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
+ eval "$(oh-my-posh init bash --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
+# eval "$(oh-my-posh init bash --config /usr/share/oh-my-posh/themes/thecyberden.omp.json)"
