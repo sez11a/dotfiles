@@ -139,10 +139,13 @@ source ./configure-plasma6.sh
 ## Fonts
 
 sudo pacman -S --noconfirm ttf-gentium-plus
-sudo pacman -S --noconfirm ttc-iosevka
-sudo pacman -S --noconfirm ttc-iosevka-slab
-sudo pacman -S --noconfirm ttc-iosevka-aile
-sudo pacman -S --noconfirm ttc-iosevka-etoile
+sudo pacman -S --noconfirm ttf-iosevka-nerd
+sudo pacman -S --noconfirm ttf-iosevkaterm-nerd
+sudo pacman -S --noconfirm ttf-iosevkatermslab-nerd
+#sudo pacman -S --noconfirm ttc-iosevka
+#sudo pacman -S --noconfirm ttc-iosevka-slab
+#sudo pacman -S --noconfirm ttc-iosevka-aile
+#sudo pacman -S --noconfirm ttc-iosevka-etoile
 yay -S --noconfirm  otf-fantasque-sans-mono 
 yay -S --noconfirm ttf-mplus 
 yay -S --noconfirm nerd-fonts-hermit 
