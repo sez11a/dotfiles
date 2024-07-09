@@ -132,7 +132,6 @@ kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 if $_isarch; then
    sudo pacman -S --noconfirm okular
    sudo pacman -S --noconfirm discover
-   sudo pacman -S --noconfirm packagekit-qt6
    sudo pacman -S --noconfirm kaccounts-providers
    sudo pacman -S --noconfirm kio-gdrive
    sudo pacman -S --noconfirm kwalletmanager
