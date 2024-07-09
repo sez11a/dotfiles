@@ -116,6 +116,9 @@ sudo cp conf/makepkg.conf /etc/makepkg.conf
 # Build Stuff is needed to build AUR packages
 sudo pacman -S --noconfirm base-devel
 
+# Profile from oh-my-posh
+yay -S --noconfirm oh-my-posh
+
 # Preliminaries are now out of the way; time for questions
 
 say "Does this machine have a HIDPI screen?"
