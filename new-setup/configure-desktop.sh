@@ -1,21 +1,35 @@
 #!/bin/bash
 
+_isarch=true
 _ismanjaro=false
+_isfedora=false
+
 [[ -f /etc/manjaro-release ]] && _ismanjaro=true
+if [ -f /etc/fedora-release ] 
+  then 
+    _isfedora=true
+    _isarch=false
+fi
+
+if $_isfedora; then 
+  sudo dnf -qy install newt stow
+else 
+  sudo pacman -S --noconfirm stow
+fi
 
 DIALOG=whiptail
 
 # Dotfiles
 
-sudo pacman -S --noconfirm stow
 zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
 rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
 mv old-config-files.zip ~
 cd ..
 stow . 
 cd new-setup
-
 cp ./desktop/*.desktop ~/Desktop
+
+# Set up for installation
 sudo pacman -S --noconfirm festival festival-english festival-us rsync
 function say { echo "$1" | festival --tts; }
 export -f say
@@ -24,7 +38,9 @@ export -f say
 # If on Arch, install this before running this script. On Manjaro and EndeavourOS, 
 # it's in the repo, so we can just call the installer and get it.
 
-sudo pacman -S --noconfirm yay
+if $_ismanjaro; then
+  sudo pacman -S --noconfirm yay
+fi
 
 # On Manjaro, run the below command. Otherwise, set up Reflector.
 if $_ismanjaro; then
@@ -32,7 +48,7 @@ if $_ismanjaro; then
 else 
   sudo pacman -S --noconfirm reflector 
   sudo mv /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.orig
-  sudo cp ./reflector.conf /etc/xdg/reflector
+  sudo cp ./conf/reflector.conf /etc/xdg/reflector
   sudo systemctl start reflector.service
   sudo systemctl enable reflector.timer
 fi
@@ -46,7 +62,7 @@ sudo pacman -Syu --noconfirm
 
 sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
-sudo cp makepkg.conf /etc/makepkg.conf
+sudo cp conf/makepkg.conf /etc/makepkg.conf
 
 # Build Stuff is needed to build AUR packages
 sudo pacman -S --noconfirm base-devel
@@ -55,7 +71,7 @@ sudo pacman -S --noconfirm base-devel
 
 say "Does this machine have a HIDPI screen?"
 if $DIALOG --yesno "HIDPI screen?" 20 60 ;then
-    sudo cp vconsole.conf /etc
+    sudo cp conf/vconsole.conf /etc
 else
     echo "Nope."
 fi
@@ -89,6 +105,11 @@ emulators=false
 say "Do you want to install emulators for vintage computing?"
 if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
     emulators=true; else echo "Nope."; fi
+
+plasma=false
+say "Configure Plasma Desktop?"
+if $DIALOG --yesno "Configure Standard Plasma Desktop? Default is yes; if installing a lightweight system, answer no." 20 60; then 
+  plasma=true; else echo "Nope."; fi
     
 # Plymouth
 sudo pacman -S --noconfirm plymouth
@@ -101,9 +122,9 @@ sudo plymouth-set-default-theme -R bgrt
 # Startup Sound
 sudo pacman -S --noconfirm alsa-utils
 sudo mkdir /usr/share/sounds/custom
-sudo cp a1000.wav /usr/share/sounds/custom
-sudo cp startup-sound.sh /usr/bin
-sudo cp startupsound.service /etc/systemd/system
+sudo cp conf/a1000.wav /usr/share/sounds/custom
+sudo cp conf/startup-sound.sh /usr/bin
+sudo cp conf/startupsound.service /etc/systemd/system
 sudo systemctl enable startupsound.service
 
 ## Editor
@@ -115,7 +136,7 @@ sudo pacman -S --noconfirm syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
 
 # Syncthing Integration
-yay -S --noconfirm c++utilities qtutilities qtforkawesome syncthingtray
+yay -S --noconfirm syncthingtray-qt6
 
 # Power
 sudo pacman -R --noconfirm power-profiles-daemon
@@ -127,14 +148,17 @@ sudo systemctl enable tlp.service
 
 ## UI font
 sudo pacman -S --noconfirm libertinus-font
-sudo cp fonts-local.conf /etc/fonts/local.conf
+sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
 ## Mouse Cursors
-sudo pacman -U --noconfirm breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
+sudo pacman -U --noconfirm packages/breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
 #yay -S --noconfirm  breeze-red-cursor-theme
 
 # Desktop
-source ./configure-plasma6.sh
+
+if [ "$plasma" = true ] ;then
+  source ./configure-plasma6.sh
+fi
 
 ## Fonts
 
@@ -160,7 +184,7 @@ yay -S --noconfirm ttf-exljbris
 
 ## Removed Caladea from above because it conflicted with Google Fonts
 
-cp fonts.conf ~/.config/fontconfig
+cp conf/fonts.conf ~/.config/fontconfig
 sudo mkdir /usr/share/fonts/TTF
 sudo mkdir /usr/share/fonts/OTF
 sudo cp fonts/*.ttf /usr/share/fonts/TTF
@@ -209,7 +233,7 @@ fi
 # Printers
 
 sudo pacman -S --noconfirm libjpeg6-turbo # for Canon driver below
-sudo pacman -S --noconfirm brother-mfc-9340cdw
+yay -S --noconfirm brother-mfc-9340cdw
 yay -S --noconfirm brother-hll6200dw 
 yay -S --noconfirm cnrdrvcups-lb
 
@@ -237,6 +261,11 @@ if echo "$GoogleFonts" | grep -iq "^y" ;then
     yay -S ttf-google-fonts-git
 else
     echo "Skipping Google Fonts install...."
+fi
+
+if [ "$plasma" = false ] ;then
+  echo "If you want to configure Plasma later, run configure-plasma6.sh from this folder."
+  say "If you want to configure Plasma later, run configure-plasma6.sh from this folder."
 fi
 
 echo "All done! Please reboot your system now."

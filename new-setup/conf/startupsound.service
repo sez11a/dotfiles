@@ -1,0 +1,10 @@
+
+[Unit]
+Description=Startup sound
+
+[Service]
+ExecStart=/usr/bin/startup-sound.sh
+
+[Install]
+WantedBy=multi-user.target
+

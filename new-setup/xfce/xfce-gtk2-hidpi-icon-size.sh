@@ -1,1 +1,0 @@
-xfconf-query -c xsettings -p /Gtk/IconSizes -s "gtk-large-toolbar=48,48:gtk-small-toolbar=48,48"

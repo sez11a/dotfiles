@@ -1,43 +1,37 @@
 #!/bin/sh
 
-_isarch=false
-[[ -f /etc/arch-release ]] && _isarch=true
-[[ -f /etc/manjaro-release ]] && _isarch=true
+# Email/PIM
 
-if $_isarch; then
+sudo pacman -S --noconfirm kde-pim-meta
 
-   # Email/PIM
+# Theme Stuff
+sudo pacman -U --noconfirm packages/caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz 
+sudo pacman -U --noconfirm packages/caledonia-backgrounds-2.0-3-any.pkg.tar.xz
+sudo pacman -S --noconfirm kvantum
+sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module plasma-sdk
 
-   sudo pacman -S --noconfirm kde-pim-meta
+sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
+yay -S --noconfirm libdbusmenu-qtilities6-git
+# yay -S --noconfirm plasma6-applets-window-buttons
+yay -S --noconfirm plasma6-applets-window-title
+yay -S --noconfirm plasma6-applets-netspeed
+yay -S --noconfirm plasma6-applets-plasmusic-toolbar
+yay -S --noconfirm plasma6-applets-fokus
+yay -S --noconfirm xfce-theme-greybird
 
-   # Theme Stuff
-   sudo pacman -U --noconfirm caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz caledonia-backgrounds-2.0-3-any.pkg.tar.xz
-   sudo pacman -S --noconfirm kvantum
-   sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module
+# Syncthing must sync first for below to work
+# cp -r ~/config/icons/kora/* ~/.local/share/icons
 
-   sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
-   yay -S --noconfirm libdbusmenu-qtilities6-git
-   # yay -S --noconfirm plasma6-applets-window-buttons
-   yay -S --noconfirm plasma6-applets-window-title
-   yay -S --noconfirm plasma6-applets-netspeed
-   yay -S --noconfirm plasma6-applets-plasmusic-toolbar
-   yay -S --noconfirm plasma6-applets-fokus
-   yay -S --noconfirm xfce-theme-greybird
+# Get Kora icons from the Internet instead
+# git clone https://github.com/bikass/kora.git ~/kora-icons
 
-   # Syncthing must sync first for below to work
-   # cp -r ~/config/icons/kora/* ~/.local/share/icons
+# cp -r ~/kora-icons/kora ~/.local/share/icons
+# cp -r ~/kora-icons/kora-light ~/.local/share/icons
+# cp -r ~/kora-icons/kora-light-panel ~/.local/share/icons
+# cp -r ~/kora-icons/kora-pgrey ~/.local/share/icons
 
-   # Get Kora icons from the Internet instead
-   # git clone https://github.com/bikass/kora.git ~/kora-icons
-
-   # cp -r ~/kora-icons/kora ~/.local/share/icons
-   # cp -r ~/kora-icons/kora-light ~/.local/share/icons
-   # cp -r ~/kora-icons/kora-light-panel ~/.local/share/icons
-   # cp -r ~/kora-icons/kora-pgrey ~/.local/share/icons
-
-   # Even better: AUR has kora icons
-   yay -S --noconfirm kora-icon-theme
-fi
+# Even better: AUR has kora icons
+yay -S --noconfirm kora-icon-theme
 
 # KDE Config
 
@@ -62,7 +56,7 @@ if $DIALOG --yesno "Hybrid desktop? Use System Settings to reset to default." 20
     #cp kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config
     #cp kde/plasmashellrc ~/.config
     mkdir -p ~/.local/share/plasma/look-and-feel
-	  tar xvfz hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
+	  tar xvfz kde/hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
     tar xvfz kde/hybrid-dark.tar.gz -C ~/.local/share/plasma/look-and-feel
     kwriteconfig6 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
     kwriteconfig6 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
@@ -98,7 +92,7 @@ if $DIALOG --yesno "Hybrid desktop? Use System Settings to reset to default." 20
 #	else
 #		kwriteconfig5 --file kdeglobals --group Icons --key Theme breeze
 #	fi
-	kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme Hybrid
+	kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme CatppuccinMacchiatoBlue
 	kwriteconfig6 --file kdeglobals --group KDE --key SingleClick false
 	# KSplash
 	kwriteconfig6 --file ksplashrc --group KSplash --key Engine KSplashQML
