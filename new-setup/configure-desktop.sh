@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Set some colors for output messages
+OK="$(tput setaf 2)[OK]$(tput sgr0)"
+ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
+NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
+WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
+CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+ORANGE=$(tput setaf 166)
+YELLOW=$(tput setaf 3)
+RESET=$(tput sgr0)
+
 _isarch=true
 _ismanjaro=false
 _isfedora=false
@@ -40,9 +50,48 @@ export -f say
 
 if $_ismanjaro; then
   sudo pacman -S --noconfirm yay
+else
+  sudo pacman -S --noconfirm git
+  sudo pacman -S --noconfirm go
+  printf "\n%s - Installing yay from AUR\n" "${NOTE}"
+  git clone https://aur.archlinux.org/yay.git || { printf "%s - Failed to clone yay from AUR\n" "${ERROR}"; exit 1; }
+  cd yay || { printf "%s - Failed to enter yay directory\n" "${ERROR}"; exit 1; }
+  makepkg -si --noconfirm 2>&1 || { printf "%s - Failed to install yay from AUR\n" "${ERROR}"; exit 1; }
 fi
 
-# On Manjaro, run the below command. Otherwise, set up Reflector.
+# Configure Pacman
+echo -e "${NOTE} Adding Extra Spice in pacman.conf ... ${RESET}" 2>&1 
+pacman_conf="/etc/pacman.conf"
+
+# Remove comments '#' from specific lines
+lines_to_edit=(
+    "Color"
+    "CheckSpace"
+    "VerbosePkgLists"
+    "ParallelDownloads"
+)
+
+# Uncomment specified lines if they are commented out
+for line in "${lines_to_edit[@]}"; do
+    if grep -q "^#$line" "$pacman_conf"; then
+        sudo sed -i "s/^#$line/$line/" "$pacman_conf"
+        echo -e "${CAT} Uncommented: $line ${RESET}" 2>&1 
+    else
+        echo -e "${CAT} $line is already uncommented. ${RESET}" 2>&1 
+    fi
+done
+
+# Add "ILoveCandy" below ParallelDownloads if it doesn't exist
+if grep -q "^ParallelDownloads" "$pacman_conf" && ! grep -q "^ILoveCandy" "$pacman_conf"; then
+    sudo sed -i "/^ParallelDownloads/a ILoveCandy" "$pacman_conf"
+    echo -e "${CAT} Added ILoveCandy below ParallelDownloads. ${RESET}" 2>&1 
+else
+    echo -e "${CAT} ILoveCandy already exists ${RESET}" 2>&1 
+fi
+
+echo -e "${CAT} Pacman.conf spicing up completed ${RESET}" 2>&1 
+
+# On Manjaro, run pacman-mirrors. Otherwise, set up Reflector.
 if $_ismanjaro; then
   sudo pacman-mirrors -f 0
 else 
