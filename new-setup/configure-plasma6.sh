@@ -47,8 +47,7 @@ mkdir -p ~/.local/share/plasma/desktoptheme
 tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
 mkdir -p ~/.local/share/aurorae/themes
 tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
-kpackagetool6 -i kde/overview.plasmoid
-mv ~/.local/share/kpackage/generic/overview ~/.local/share/plasma/plasmoids
+cp -r kde/com.himdek.kde.plasma.overview ~/.local/share/plasma/plasmoids
 
 # Desktop Configuration
 
