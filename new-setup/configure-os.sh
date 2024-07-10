@@ -45,13 +45,13 @@ source $scriptsDir/5-apps-fonts.sh
 source $scriptsDir/6-3d-printing.sh
 
 # Configure Developer Tools
-source ./install-dev-tools.sh; 
+source $scriptsDir/7-dev-tools.sh; 
 
 # Configure LaTeX
-source ./install-latex.sh; 
+source $scriptsDir/8-latex.sh; 
 
 # Configure Emulators
-source ./install-emulators.sh;
+source $scriptsDir/9-emulators.sh;
 
 if [ "$plasma" = false ] ;then
   echo "If you want to configure Plasma later, run 4-kdeplasma.sh from the appropriate scripts folder."
