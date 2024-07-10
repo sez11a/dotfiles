@@ -120,6 +120,9 @@ sudo pacman -S --noconfirm base-devel
 # Profile from oh-my-posh
 yay -S --noconfirm oh-my-posh
 
+# Install Flatpak
+sudo pacman -S --noconfirm flatpak
+
 # Preliminaries are now out of the way; time for questions
 
 say "Does this machine have a HIDPI screen?"
@@ -129,20 +132,15 @@ else
     echo "Nope."
 fi
 
-say "Do you want all the Google fonts?"
-GoogleFonts=$($DIALOG --radiolist "Do you want all the Google Fonts (takes a long time to install)?" 20 60 12 \
-    "y" "Install Google Fonts"  on \
-    "n" "Too big; skip it"      off 2>&1 >/dev/tty)
-
+DesktopApps=false
 say "Install standard desktop apps?"
-DesktopApps=$($DIALOG --radiolist "Install standard desktop apps?" 20 60 12 \
-    "y" "Yes" on \
-    "n" "No" off 2>&1 >/dev/tty)
+if $DIALOG --yesno "Install standard desktop apps?" 20 60; then 
+  DesktopApps=true; else echo "Nope."; fi 
 
+ThreeDPrintingApps=false
 say "Install 3D printing apps?"
-ThreeDPrintingApps=$($DIALOG --radiolist "Install 3D Printing Apps?" 20 60 12 \
-    "y" "Yes" on \
-    "n" "No" off 2>&1 >/dev/tty)
+if $DIALOG --yesno "Install 3D printing apps?" 20 60; then 
+  ThreeDPrintingApps=true; else echo "Nope."; fi 
 
 DevTools=false
 say "Do you want to install developer tools?"
@@ -169,7 +167,7 @@ sudo pacman -S --noconfirm plymouth
 sudo plymouth-set-default-theme -R bgrt
 # uncomment below at your own risk; the point is to add the splash parameter
 # and then re-run Grub to get a nice boot screen
-# sed 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/& splash/'  /etc/default/grub
+# sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/& splash/'  /etc/default/grub
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Startup Sound
@@ -189,7 +187,8 @@ sudo pacman -S --noconfirm syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
 
 # Syncthing Integration
-yay -S --noconfirm syncthingtray-qt6
+flatpak install -y --noninteractive flathub SyncThingy 
+# yay -S --noconfirm syncthingtray-qt6
 
 # Power
 sudo pacman -R --noconfirm power-profiles-daemon
@@ -199,8 +198,11 @@ sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 sudo systemctl start tlp.service
 sudo systemctl enable tlp.service
 
-## UI font
+## UI fonts
 sudo pacman -S --noconfirm libertinus-font
+sudo pacman -S --noconfirm ttf-iosevka-nerd
+sudo pacman -S --noconfirm ttf-iosevkaterm-nerd
+sudo pacman -S --noconfirm ttf-iosevkatermslab-nerd
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
 ## Mouse Cursors
@@ -216,20 +218,12 @@ fi
 ## Fonts
 
 sudo pacman -S --noconfirm ttf-gentium-plus
-sudo pacman -S --noconfirm ttf-iosevka-nerd
-sudo pacman -S --noconfirm ttf-iosevkaterm-nerd
-sudo pacman -S --noconfirm ttf-iosevkatermslab-nerd
-#sudo pacman -S --noconfirm ttc-iosevka
-#sudo pacman -S --noconfirm ttc-iosevka-slab
-#sudo pacman -S --noconfirm ttc-iosevka-aile
-#sudo pacman -S --noconfirm ttc-iosevka-etoile
 yay -S --noconfirm  otf-fantasque-sans-mono 
 yay -S --noconfirm ttf-mplus 
 yay -S --noconfirm nerd-fonts-hermit 
 yay -S --noconfirm ttf-anonymice-powerline-git 
-if echo "$GoogleFonts" | grep -iq "^n" ;then
-  yay -S --noconfirm ttf-carlito 
-fi
+yay -S --noconfirm ttf-carlito 
+yay -S --noconfirm ttf-caladea
 yay -S --noconfirm ttf-gidole 
 yay -S --noconfirm otf-vegur 
 yay -S --noconfirm otf-tenderness 
@@ -254,7 +248,7 @@ yay -S --noconfirm zulu-21-bin
 sudo archlinux-java set zulu-21
 
 
-if echo "$DesktopApps" | grep -iq "^y" ;then
+if [ "$DesktopApps" = true ] ;then
     echo "Installing standard desktop apps...."
 
     # Standard desktop stuff
@@ -274,7 +268,7 @@ else
     echo "Skipping standard desktop apps...."
 fi
 
-if echo "$ThreeDPrintingApps" | grep -iq "^y" ;then
+if [ "$ThreeDPrintingApps" = true ] ;then
     echo "Installing 3D Printing apps...." 
 
     sudo pacman -S --noconfirm superslicer prusa-slicer freecad openscad platformio-core platformio-core-udev
@@ -309,13 +303,6 @@ if [ "$emulators" = true ] ;then
     source ./install-emulators.sh;
 else 
     echo "Not installing emulators." 
-fi
-
-if echo "$GoogleFonts" | grep -iq "^y" ;then
-    echo "Installing Google Fonts!"
-    yay -S ttf-google-fonts-git
-else
-    echo "Skipping Google Fonts install...."
 fi
 
 if [ "$plasma" = false ] ;then
