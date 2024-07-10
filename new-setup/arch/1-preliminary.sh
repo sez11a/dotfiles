@@ -32,7 +32,7 @@ else
   git clone https://aur.archlinux.org/yay.git ~/Downloads/yay || { printf "%s - Failed to clone yay from AUR\n" "${ERROR}"; exit 1; }
   cd ~/Downloads/yay || { printf "%s - Failed to enter yay directory\n" "${ERROR}"; exit 1; }
   makepkg -si --noconfirm 2>&1 || { printf "%s - Failed to install yay from AUR\n" "${ERROR}"; exit 1; }
-  cd $rundir
+  cd $_rundir
 fi
 
 # Configure Pacman
