@@ -92,9 +92,6 @@ sudo cp conf/makepkg.conf /etc/makepkg.conf
 # Build Stuff is needed to build AUR packages
 sudo pacman -S --noconfirm base-devel
 
-# Profile from oh-my-posh
-yay -S --noconfirm oh-my-posh
-
 # Install Flatpak
 sudo pacman -S --noconfirm flatpak
 
