@@ -24,4 +24,4 @@ export -f say
 sudo apt upgrade -y
 
 # Install Flatpak
-sudo apt install flatpak
+sudo apt install -y flatpak

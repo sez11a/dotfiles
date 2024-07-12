@@ -17,10 +17,12 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/99-sysctl.
 
 # Syncthing Integration
 flatpak install -y --noninteractive flathub SyncThingy 
+flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # UI Fonts
-sudo apt install -y fonts-league-mono texlive-fonts-extra texlive-latex-extra
-# No Iosevka fonts are in the repos; devise another way to install them.
+sudo apt install -y fonts-league-mono 
+# No Iosevka fonts are in the repos; devise another way to install them. 
+# Fonts in Texlive wound up installing Texlive; don't want that either.
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
 # Mouse cursors
