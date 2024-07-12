@@ -90,7 +90,7 @@ sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp conf/makepkg.conf /etc/makepkg.conf
 
 # Build Stuff is needed to build AUR packages
-sudo pacman -S --noconfirm base-devel
+sudo pacman -S --noconfirm base-devel bash-completion
 
 # Install Flatpak
 sudo pacman -S --noconfirm flatpak
