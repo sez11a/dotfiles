@@ -15,6 +15,7 @@ RESET=$(tput sgr0)
 _isarch=true
 _ismanjaro=false
 _isfedora=false
+_isdebian=false
 
 scriptsDir="arch"
 
@@ -24,6 +25,13 @@ if [ -f /etc/fedora-release ]
     _isfedora=true
     _isarch=false
     scriptsDir="fedora"
+fi
+
+if [ -f /etc/os-release ] || [ -f /etc/armbian-release ]
+  then
+  _isdebian=true
+  _isarch=false
+  scriptsDir="debian"
 fi
 
 # Set up preliminary CLI/utilities
