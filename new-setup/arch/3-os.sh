@@ -43,10 +43,6 @@ sudo pacman -S --noconfirm ttf-iosevkaterm-nerd
 sudo pacman -S --noconfirm ttf-iosevkatermslab-nerd
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
-## Mouse Cursors
-sudo pacman -U --noconfirm packages/breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
-#yay -S --noconfirm  breeze-red-cursor-theme
-
 # Printers
 
 sudo pacman -S --noconfirm cups

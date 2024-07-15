@@ -25,5 +25,3 @@ sudo apt install -y fonts-league-mono
 # Fonts in Texlive wound up installing Texlive; don't want that either.
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
-# Mouse cursors
-sudo apt install -y oxygencursors
