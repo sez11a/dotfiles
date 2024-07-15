@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Syncthing Integration
+flatpak install -y --noninteractive flathub SyncThingy 
+
 ## Fonts
 
 sudo pacman -S --noconfirm ttf-gentium-plus

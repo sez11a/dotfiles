@@ -11,6 +11,8 @@ if [ "$plasma" = true ] ;then
   sudo pacman -U --noconfirm packages/breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
   #yay -S --noconfirm  breeze-red-cursor-theme
 
+  yay -S --noconfirm syncthingtray-qt6
+
   # Theme Stuff
   sudo pacman -U --noconfirm packages/caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz 
   sudo pacman -U --noconfirm packages/caledonia-backgrounds-2.0-3-any.pkg.tar.xz

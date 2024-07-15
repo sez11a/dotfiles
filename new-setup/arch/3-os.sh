@@ -24,10 +24,6 @@ curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimsta
 sudo pacman -S --noconfirm syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/90-override.conf
 
-# Syncthing Integration
-flatpak install -y --noninteractive flathub SyncThingy 
-# yay -S --noconfirm syncthingtray-qt6
-
 # Power
 sudo pacman -R --noconfirm power-profiles-daemon
 sudo pacman -S --noconfirm tlp
