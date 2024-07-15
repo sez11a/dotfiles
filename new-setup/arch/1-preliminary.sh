@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Build Stuff is needed to build AUR packages
+sudo pacman -S --noconfirm bash-completion libnewt base-devel
+
 DIALOG=whiptail
 
 sudo pacman -S --noconfirm stow
@@ -26,7 +29,6 @@ export -f say
 if $_ismanjaro; then
   sudo pacman -S --noconfirm yay
 else
-  sudo pacman -S --noconfirm git
   sudo pacman -S --noconfirm go
   printf "\n%s - Installing yay from AUR\n" "${NOTE}"
   git clone https://aur.archlinux.org/yay.git ~/Downloads/yay || { printf "%s - Failed to clone yay from AUR\n" "${ERROR}"; exit 1; }
@@ -88,9 +90,6 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp conf/makepkg.conf /etc/makepkg.conf
-
-# Build Stuff is needed to build AUR packages
-sudo pacman -S --noconfirm base-devel bash-completion
 
 # Install Flatpak
 sudo pacman -S --noconfirm flatpak
