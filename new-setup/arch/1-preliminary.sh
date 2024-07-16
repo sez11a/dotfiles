@@ -91,6 +91,3 @@ sudo pacman -S --noconfirm pbzip2 pigz lbzip2 lrzip
 sudo mv /etc/makepkg.conf /etc/makepkg.conf.orig
 sudo cp conf/makepkg.conf /etc/makepkg.conf
 
-# Install Flatpak
-sudo pacman -S --noconfirm flatpak
-

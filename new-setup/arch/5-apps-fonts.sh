@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Syncthing Integration
-flatpak install -y --noninteractive flathub SyncThingy 
+yay -S --noconfirm syncthing-gtk
 
 ## Fonts
 
