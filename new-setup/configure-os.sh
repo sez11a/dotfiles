@@ -20,15 +20,13 @@ _isdebian=false
 scriptsDir="arch"
 
 [[ -f /etc/manjaro-release ]] && _ismanjaro=true
-if [ -f /etc/fedora-release ] 
-  then 
+if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then 
     _isfedora=true
     _isarch=false
     scriptsDir="fedora"
 fi
 
-if [ -f /etc/os-release ] || [ -f /etc/armbian-release ]
-  then
+if grep -q "Debian" /etc/os-release; then
   _isdebian=true
   _isarch=false
   scriptsDir="debian"
