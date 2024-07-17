@@ -15,9 +15,9 @@ cd new-setup
 cp ./desktop/*.desktop ~/Desktop
 
 # Set up for installation
-sudo dnf -qy festival festival-data rsync
+sudo dnf -qy install festival festival-data rsync
 function say { echo "$1" | festival --tts; }
 export -f say
 
 # Install Flatpak
-sudo dnf -qy flatpak
+sudo dnf -qy install flatpak
