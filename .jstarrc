@@ -10,6 +10,7 @@
  in the first column:
 
  :include filename
+:include ~/.joe/ftyperc
 
  FIRST SECTION: Default global options (these options can also be specified
  on the command line.  Also the NOXON, LINES, COLUMNS, DOPADDING and BAUD
@@ -148,7 +149,7 @@
 
 -joe_state     Use ~/.joe_state file
 
- -mouse		Enable mouse support
+-mouse		Enable mouse support
 
  -joexterm	If you are using Joe's modified Xterm, which makes -mouse
 		mode work better (cut & paste work transparently).

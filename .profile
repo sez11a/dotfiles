@@ -61,7 +61,7 @@ export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS CLASSPATH
 
 # Use archlinux-java status to see which JDK is set as default
 
-export JPM_PACKAGES=~/jpm
+export JPM_PACKAGES=~/.jpm
 export NPM_CONFIG_PREFIX=~/.npm-global
 
 # Ruby Environment
@@ -70,7 +70,7 @@ if [[ -f /usr/bin/ruby ]]; then
     eval "$(rbenv init -)"
 fi
 
-export PATH=$PATH:~/jpm/bin:~/.npm-global/bin
+export PATH=$PATH:~/.jpm/bin:~/.npm-global/bin
 
 # Integrate GTK apps with KDE
 export GTK_USE_PORTAL=1
