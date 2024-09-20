@@ -27,6 +27,7 @@ if [ "$plasma" = true ] ;then
   yay -S --noconfirm plasma6-applets-plasmusic-toolbar
   yay -S --noconfirm plasma6-applets-fokus
   yay -S --noconfirm xfce-theme-greybird
+  yay -S --noconfirm klassy
 
   # Syncthing must sync first for below to work
   # cp -r ~/config/icons/kora/* ~/.local/share/icons

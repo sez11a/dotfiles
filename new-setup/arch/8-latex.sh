@@ -2,7 +2,7 @@
 
 if [ "$LaTeX" = true ] ;then
 
-  sudo pacman -S --noconfirm texlive-core texlive-bibtexextra texlive-bin texlive-fontsextra texlive-formatsextra texlive-games texlive-humanities texlive-langextra texlive-langgreek texlive-latexextra texlive-music texlive-pictures texlive-pstricks texlive-publishers texlive-science biber
+  sudo pacman -S --noconfirm texlive-meta texlive-binextra texlive-fontsrecommended texlive-langextra texlive-langgreek texlive-latexextra biber
 
 else 
   echo "Not installing LaTeX." 

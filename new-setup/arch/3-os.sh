@@ -33,7 +33,7 @@ sudo systemctl start tlp.service
 sudo systemctl enable tlp.service
 
 ## UI fonts
-sudo pacman -S --noconfirm libertinus-font
+sudo pacman -S --noconfirm otf-libertinus
 sudo pacman -S --noconfirm ttf-iosevka-nerd
 sudo pacman -S --noconfirm ttf-iosevkaterm-nerd
 sudo pacman -S --noconfirm ttf-iosevkatermslab-nerd
