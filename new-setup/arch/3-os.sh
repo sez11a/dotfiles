@@ -37,6 +37,7 @@ sudo pacman -S --noconfirm otf-libertinus
 sudo pacman -S --noconfirm ttf-iosevka-nerd
 sudo pacman -S --noconfirm ttf-iosevkaterm-nerd
 sudo pacman -S --noconfirm ttf-iosevkatermslab-nerd
+sudo pacman -S --noconfirm ttf-font-awesome
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
 # Printers
