@@ -20,8 +20,13 @@ bindkey -v
 # Some of this comes from helmuthdu's Arch Ultimate Install
 
 # Oh-My-Posh
-if command -v oh-my-posh &> /dev/null; then
-  eval "$(oh-my-posh init zsh --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
+# if command -v oh-my-posh &> /dev/null; then
+#  eval "$(oh-my-posh init zsh --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
+# fi
+
+# Starship
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
 fi
 
 _isxrunning=false

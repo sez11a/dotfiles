@@ -1,0 +1,258 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+palette = "flexoki_dark"
+
+# Using ANSI colors
+# https://i.stack.imgur.com/KTSQa.png
+format = """
+[\uE0B6](fg:purple)${env_var.is_elevated_session}[$directory](bg:purple)\
+[\uE0B0](bg:bright-black fg:purple)[$git_branch](bg:bright-black)[\uE0B0](fg:bright-black bg:none)\
+$git_status$git_state\
+$fill $all $time $line_break\
+$shell $character\
+"""
+
+# add_newline = true
+
+[profiles]
+short = """
+[\uE0B6](fg:purple)[$directory](bg:purple)\
+[\uE0B0](bg:12 fg:purple)[ $time](bg:12)\
+[\uE0B4](fg:12 bg:none) \
+"""
+
+[env_var.is_elevated_session]
+variable = "ISELEVATEDSESSION"
+symbol = "⚡"
+format = "[$symbol](bg:purple)"
+
+[directory]
+style = "bg:purple fg:white"
+format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 󰌾"
+
+[git_branch]
+always_show_remote = true
+format = "[ $branch $symbol$remote_name/$remote_branch ]($style)"
+symbol = " "
+#format = "[ $symbol$branch ]($style)"
+style = "bg:bright-black fg:white"
+
+[git_status]
+# Show the info relative to the upstream first: how many commits ahead/behind/diverged/conflicted
+# Show the info for current working set after: deleted, staged, renamed, modified, untracked.
+format = "[$ahead$behind$diverged$conflicted$deleted$staged$renamed$modified$untracked]($style)"
+style = "bg:green"
+conflicted = "[ ≠$count](fg:purple)"
+ahead = "[ ⇡$count](bold fg:purple)"
+behind = "[ ⇣$count](bold fg:purple)"
+diverged = "[ ⇕$count](bold fg:purple)"
+untracked = "[ +$count](bold fg:bright-green)"
+modified = "[ ~$count](bold fg:cyan)"
+staged = "[ ++$count](bold fg:green)"
+renamed = "[ »$count](bold fg:white)"
+deleted = "[ ✘$count](bold fg:red)"
+
+[fill]
+symbol = ' '
+
+[cmd_duration]
+show_milliseconds = true
+
+[time]
+disabled = false
+format = "$time"
+style = "fg:bright-white"
+
+[username]
+disabled = true
+
+[ruby]
+disabled = true
+symbol = " "
+
+[shell]
+disabled = false
+powershell_indicator = ''
+pwsh_indicator = ''
+bash_indicator = ''
+zsh_indicator = '%_'
+cmd_indicator = ''
+unknown_indicator = ''
+style = 'cyan bold'
+format = '[$indicator]($style)'
+
+[hostname]
+ssh_only = true
+ssh_symbol = " "
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[aws]
+symbol = "  "
+format = "[$symbol($version )]($style)"
+
+[buf]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[c]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[conda]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[dart]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[docker_context]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[elixir]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[elm]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[fossil_branch]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[guix_shell]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[haskell]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[haxe]
+symbol = "⌘ "
+format = "[$symbol($version )]($style)"
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+format = "[$symbol($version )]($style)"
+
+[nim]
+symbol = "󰆥 "
+format = "[$symbol($version )]($style)"
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[pijul_channel]
+symbol = "🪺 "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
+[palettes.flexoki_dark]
+black = "#100f0f"
+red = "#af3029"
+green = "#66800b"
+yellow = "#ad8301"
+blue = "#205ea6"
+purple = "#5e409d"
+cyan = "#24837b"
+white = "#cecdc3"
+bright-black = "#575653"
+bright-red = "#d14d41"
+bright-green = "#879a39"
+bright-yellow = "#d0a215"
+bright-blue = "#4385be"
+bright-purple = "#8b7ec8"
+bright-cyan = "#3aa99f"
+bright-white = "#fffcf0"
