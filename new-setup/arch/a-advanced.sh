@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Enable prompt from oh-my-posh
-yay -S --noconfirm oh-my-posh
+# Enable prompt from starship
+sudo pacman -S --noconfirm starship
 
 # Apps requiring advanced configuration or an account
-sudo pacman -S --noconfirm offlineimap dovecot neomut w3m urlscan discord
+sudo pacman -S --noconfirm offlineimap dovecot neomutt w3m urlscan discord
 
 # Undelete Files
 

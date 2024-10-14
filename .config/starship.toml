@@ -1,100 +1,276 @@
-# Insert a blank line between shell prompts
-add_newline = true
+"$schema" = 'https://starship.rs/config-schema.json'
+palette = "flexoki_dark"
+# palette = "catppuccin_macchiato"
 
-# Increase the default command timeout to 2 seconds
-command_timeout = 2000
+# Using ANSI colors
+# https://i.stack.imgur.com/KTSQa.png
+# format = """
+# [\uE0B6](fg:purple)${env_var.is_elevated_session}[$directory](bg:purple)\
+# [\uE0B0](bg:bright-black fg:purple)[$git_branch](bg:bright-black)[\uE0B0](fg:bright-black bg:none)\
+# $git_status$git_state\
+# $fill $all $time $line_break\
+# $shell $character\
+# """
 
-palette = "catppuccin_macchiato"
+format = """
+[\uE0B6](fg:purple)${env_var.is_elevated_session}[$directory](bg:purple)\
+[\uE0B0](bg:bright-black fg:purple)[$git_branch](bg:bright-black)[\uE0B0](fg:bright-black bg:none)\
+$git_status$git_state\
+$fill $time $line_break\
+$shell $character\
+"""
 
-# Define the order and format of the information in our prompt
-format = """\
-[](fg:#3B76F0)\
-$directory\
-${custom.directory_separator_not_git}\
-${custom.directory_separator_git}\
-$symbol($git_branch[](fg:#FCF392))\
-$symbol( $git_commit$git_status$git_metrics$git_state)$fill$cmd_duration\n$all\
-$character"""
+# add_newline = true
 
-# Character 
+[profiles]
+short = """
+[\uE0B6](fg:purple)[$directory](bg:purple)\
+[\uE0B0](bg:12 fg:purple)[ $time](bg:12)\
+[\uE0B4](fg:12 bg:none) \
+"""
+
+[env_var.is_elevated_session]
+variable = "ISELEVATEDSESSION"
+symbol = "⚡"
+format = "[$symbol](bg:purple)"
+
 [character]
-vimcmd_symbol = '[V](bold green) '
-success_symbol = '[➜](bold green) '
+vimcmd_symbol = '[V](bright-green) '
+success_symbol = '[➜](bright-green) '
 error_symbol = '[✗](bold red) '
 
-# Fill character (empty space) between the left and right prompt
-[fill]
-symbol = " "
-
-# Disable the line break between the first and second prompt lines
-[line_break]
-disabled = true
-
-# Customize the format of the working directory
 [directory]
 truncation_length = 8
-truncate_to_repo = true
-format = "[ﱮ $path ]($style)"
-style = "fg:text bg:#3B76F0"
+style = "bg:purple fg:white"
+format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 󰌾"
 
 [git_branch]
+always_show_remote = true
+format = "[ $branch $symbol$remote_name/$remote_branch ]($style)"
 symbol = " "
-format = "[ $symbol$branch(:$remote_branch) ]($style)"
-style = "fg:#1C3A5E bg:#FCF392"
+#format = "[ $symbol$branch ]($style)"
+style = "bg:bright-black fg:white"
 
-[git_metrics]
-disabled = false
+[git_status]
+# Show the info relative to the upstream first: how many commits ahead/behind/diverged/conflicted
+# Show the info for current working set after: deleted, staged, renamed, modified, untracked.
+format = "[$ahead$behind$diverged$conflicted$deleted$staged$renamed$modified$untracked]($style)"
+style = "bg:green"
+conflicted = "[ ≠$count](fg:purple)"
+ahead = "[ ⇡$count](bold fg:purple)"
+behind = "[ ⇣$count](bold fg:purple)"
+diverged = "[ ⇕$count](bold fg:purple)"
+untracked = "[ +$count](bold fg:bright-green)"
+modified = "[ ~$count](bold fg:cyan)"
+staged = "[ ++$count](bold fg:green)"
+renamed = "[ »$count](bold fg:white)"
+deleted = "[ ✘$count](bold fg:red)"
 
-[nodejs]
-format = "via [$symbol($version )]($style)"
-style = "yellow"
+[fill]
+symbol = ' '
 
-[package]
-disabled = true # Enable to output the current working directory's package version
-format = "[$symbol$version]($style) "
-display_private = true
-
-# Output the command duration if over 2 seconds
 [cmd_duration]
-min_time = 2_000
-format = "[  $duration ]($style)"
-style = "white"
+show_milliseconds = true
 
-# Customize the battery indicator
+[time]
+disabled = false
+format = "$time"
+style = "fg:bright-white"
+
+[username]
+disabled = true
+
+[ruby]
+disabled = true
+symbol = " "
+
+[shell]
+disabled = false
+powershell_indicator = ''
+pwsh_indicator = ''
+bash_indicator = ''
+zsh_indicator = '%_'
+cmd_indicator = ''
+unknown_indicator = ''
+style = 'cyan bold'
+format = '[$indicator]($style)'
+
+[hostname]
+ssh_only = true
+ssh_symbol = " "
+
 [battery]
-format = "[$symbol $percentage]($style) "
-empty_symbol = "🪫"
-charging_symbol = "🔋"
-full_symbol = '🔋'
+full_symbol = "🔋"
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
 
 [[battery.display]]
-threshold = 10
-style = 'red'
+threshold = 30
+style = "bold red"
 
-# Output the current git config email address
-# [custom.git_config_email]
-# description = "Output the current git user's configured email address."
-# command = "git config user.email"
-# format = "\n[$symbol(  $output)]($style)"
-# # Only when inside git repository
-# when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-# style = "text"
+[aws]
+symbol = "  "
+format = "[$symbol($version )]($style)"
 
-# Output a styled separator right after the directory when inside a git repository.
-[custom.directory_separator_git]
-description = "Output a styled separator right after the directory when inside a git repository."
-command = ""
-format = "[](fg:#3B76F0 bg:#FCF392)"
-# Only when inside git repository
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+[buf]
+symbol = " "
+format = "[$symbol($version )]($style)"
 
-# Output a styled separator right after the directory when NOT inside a git repository.
-[custom.directory_separator_not_git]
-description = "Output a styled separator right after the directory when NOT inside a git repository."
-command = ""
-format = "[](fg:#3B76F0)"
-# Only when NOT inside a git repository
-when = "! git rev-parse --is-inside-work-tree > /dev/null 2>&1"
+[c]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[conda]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[dart]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[docker_context]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[elixir]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[elm]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[fossil_branch]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[guix_shell]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[haskell]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[haxe]
+symbol = "⌘ "
+format = "[$symbol($version )]($style)"
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+format = "[$symbol($version )]($style)"
+
+[nim]
+symbol = "󰆥 "
+format = "[$symbol($version )]($style)"
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[pijul_channel]
+symbol = "🪺 "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
+[palettes.flexoki_dark]
+black = "#100f0f"
+red = "#af3029"
+green = "#66800b"
+yellow = "#ad8301"
+blue = "#205ea6"
+purple = "#5e409d"
+cyan = "#24837b"
+white = "#cecdc3"
+bright-black = "#575653"
+bright-red = "#d14d41"
+bright-green = "#879a39"
+bright-yellow = "#d0a215"
+bright-blue = "#4385be"
+bright-purple = "#8b7ec8"
+bright-cyan = "#3aa99f"
+bright-white = "#fffcf0"
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
