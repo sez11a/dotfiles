@@ -6,8 +6,10 @@ zstyle ':completion:*' max-errors 4
 zstyle ':completion:*' menu select
 zstyle :compinstall filename '/home/sezovr/.zshrc'
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit colors zcalc
+compinit -d 
+colors
+
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -15,6 +17,17 @@ HISTSIZE=1000
 SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
+
+# zsh options
+
+setopt correct
+setopt extendedglob
+setopt nocaseglob 
+setopt appendhistory 
+setopt histignorealldups 
+setopt autocd 
+setopt inc_append_history 
+setopt histignorespace 
 
 # Rich Sezov Custom Stuff
 # Some of this comes from helmuthdu's Arch Ultimate Install
@@ -53,7 +66,7 @@ alias ws='jstar -text_color white+bg_blue'
 alias wt='WordTsar'
 
 # Ant configured to build Liferay
-ANT_OPTS="-Xms4096M -Xmx4096M -XX:-UseGCOverheadLimit"
+ANT_OPTS="-Xmx4096M -XX:-UseGCOverheadLimit"
 ANT_ARGS="-logger org.apache.tools.ant.listener.AnsiColorLogger"
 
 export JPM_PACKAGES=~/.jpm

@@ -23,7 +23,7 @@
 
 ## This option makes the whole GUI window in semi-transparent.
 ## This setting also implicitly enables the Drawborder setting
-# Transparent = 1.0
+Transparent = 0.9
 
 ## Launch goneovim with full screen window size.
 # StartFullscreen = false
@@ -89,7 +89,7 @@
 # OptionsToUseGuideWidth = "tabstop"
 
 ## Animates the scrolling behavior of Neovim when the scroll command is entered.
-# SmoothScroll = false
+SmoothScroll = true
 ## Disables horizontal scrolling for smooth scrolling with the touchpad.
 # DisableHorizontalScroll = true
 
@@ -104,7 +104,7 @@
 # DesktopNotifications = false
 
 # Display the effect when clicked
-# ClickEffect = false
+ClickEffect = true
 
 # Pattern that fills the diff background
 # Change the background pattern used for diff display.
@@ -232,10 +232,10 @@ Visible = true
 ## To view the minimap, launch an additional nvim instance;
 ## setting Disable to true will not launch this additional nvim instance
 ## and will completely disable the minimap feature.
-Disable = false
+Disable = true
 
 ## Specifies whether to show the minimap or not.
-Visible = true
+Visible = false
 
 ## Specifies the width of the minimap.
 # Width = 100
