@@ -1,5 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-palette = "flexoki_dark"
+# palette = "flexoki_dark"
+palette = "purify"
 command_timeout=5000
 # palette = "catppuccin_macchiato"
 
@@ -14,26 +15,30 @@ command_timeout=5000
 # """
 
 format = """
-[\uE0B6](fg:purple)${env_var.is_elevated_session}[$directory](bg:purple)\
-[\uE0B0](bg:bright-black fg:purple)[$git_branch](bg:bright-black)[\uE0B0](fg:bright-black bg:none)\
-$git_status$git_state\
+[\uE0B6](fg:green)$hostname\
+[\uE0B0](fg:green bg:blue)\
+[\uE0B0](fg:blue bg:blue)[$directory](bg:blue)\
+[\uE0B0](fg:blue)\
 $fill $cmd_duration $line_break\
-$shell $character\
+$shell \
+[$git_branch$git_status](bg:bright-black)[\uE0B0](fg:bright-black bg:none)\
+$character\
 """
 
 # add_newline = true
 
 [profiles]
 short = """
-[\uE0B6](fg:purple)[$directory](bg:purple)\
-[\uE0B0](bg:12 fg:purple)[ $time](bg:12)\
+[\uE0B6](fg:purple)[$directory](bg:blue)\
+[\uE0B0](bg:12 fg:blue)[ $time](bg:12)\
 [\uE0B4](fg:12 bg:none) \
 """
+
 
 [env_var.is_elevated_session]
 variable = "ISELEVATEDSESSION"
 symbol = "⚡"
-format = "[$symbol](bg:purple)"
+format = "[$symbol](bg:blue)"
 
 [character]
 vimcmd_symbol = '[V](bright-green) '
@@ -42,13 +47,13 @@ error_symbol = '[✗](bold red) '
 
 [directory]
 truncation_length = 8
-style = "bg:purple fg:white"
+style = "bg:blue fg:black"
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 󰌾"
 
 [git_branch]
 always_show_remote = true
-format = "[ $branch $symbol$remote_name/$remote_branch ]($style)"
+format = "[ $symbol $branch]($style)"
 symbol = " "
 #format = "[ $symbol$branch ]($style)"
 style = "bg:bright-black fg:white"
@@ -58,10 +63,10 @@ style = "bg:bright-black fg:white"
 # Show the info for current working set after: deleted, staged, renamed, modified, untracked.
 format = "[$ahead$behind$diverged$conflicted$deleted$staged$renamed$modified$untracked]($style)"
 style = "bg:green"
-conflicted = "[ ≠$count](fg:purple)"
-ahead = "[ ⇡$count](bold fg:purple)"
-behind = "[ ⇣$count](bold fg:purple)"
-diverged = "[ ⇕$count](bold fg:purple)"
+conflicted = "[ ≠$count](fg:blue)"
+ahead = "[ ⇡$count](bold fg:blue)"
+behind = "[ ⇣$count](bold fg:blue)"
+diverged = "[ ⇕$count](bold fg:blue)"
 untracked = "[ +$count](bold fg:bright-green)"
 modified = "[ ~$count](bold fg:cyan)"
 staged = "[ ++$count](bold fg:green)"
@@ -98,8 +103,11 @@ style = 'cyan bold'
 format = '[$indicator]($style)'
 
 [hostname]
-ssh_only = true
+ssh_only = false
 ssh_symbol = " "
+style = "bg:green fg:black"
+format = '[$hostname]($style)'
+disabled = false
 
 [battery]
 full_symbol = "🔋"
@@ -264,6 +272,27 @@ blue = "#205ea6"
 purple = "#5e409d"
 cyan = "#24837b"
 white = "#cecdc3"
+bright-black = "#575653"
+bright-red = "#d14d41"
+bright-green = "#879a39"
+bright-yellow = "#d0a215"
+bright-blue = "#4385be"
+bright-purple = "#8b7ec8"
+bright-cyan = "#3aa99f"
+bright-white = "#fffcf0"
+
+[palettes.purify]
+black = "#282C34"
+white = "#FFFFFF"
+red = "#FF0000"
+green = "#5FFF87"
+blue = "#5FAFFF"
+yellow = "#FFFF87"
+pink = "#FF79C6"
+salmon = "#FF875F"
+purple = "#AF87FF"
+dark_yellow = "#D19A66"
+# from above
 bright-black = "#575653"
 bright-red = "#d14d41"
 bright-green = "#879a39"
