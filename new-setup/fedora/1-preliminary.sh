@@ -21,3 +21,33 @@ export -f say
 
 # Install Flatpak
 sudo dnf -qy install flatpak
+
+# Enable RPM Fusion
+sudo dnf -qy install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf qy install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+## Enable Brave
+sudo dnf -qy install dnf-plugins-core
+sudo dnf -qy config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf -qy install brave-browser
+
+# Configure DNF 
+echo -e "${NOTE} Adding extra spice in dnf.conf ... ${RESET}" 2>&1
+dnf_conf="/etc/dnf/dnf.conf"
+
+sudo sed -i "/^[main]/a max_parallel_downloads=10" "$dnf_conf"
+
+echo -e "${CAT} dnf.conf spicing up completed ${RESET}" 2>&1
+
+sudo dnf -qy update
+
+# Install dnfdragora
+sudo dnf -qy install dnfdragora
+
+# Install Multimedia codecs
+sudo dnf -qy install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+
+sudo dnf -qy install lame\* --exclude=lame-devel
+
+sudo dnf -qy group upgrade --with-optional Multimedia
