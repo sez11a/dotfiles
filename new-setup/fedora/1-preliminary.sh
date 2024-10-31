@@ -14,6 +14,10 @@ stow .
 cd new-setup
 cp ./desktop/*.desktop ~/Desktop
 
+## Starship prevents git prompt error on Fedora
+sudo dnf -qy copr enable shdwchn10/AllTheTools
+sudo dnf -qy install starship 
+
 # Set up for installation
 sudo dnf -qy install festival festival-data rsync
 function say { echo "$1" | festival --tts; }
@@ -34,10 +38,7 @@ sudo dnf -qy install brave-browser
 
 # Configure DNF 
 echo -e "${NOTE} Adding extra spice in dnf.conf ... ${RESET}" 2>&1
-dnf_conf="/etc/dnf/dnf.conf"
-
-sudo sed -i "/^[main]/a max_parallel_downloads=10" "$dnf_conf"
-
+echo "max_parallel_downloads=10" | sudo tee -a /etc/dnf/dnf.conf
 echo -e "${CAT} dnf.conf spicing up completed ${RESET}" 2>&1
 
 sudo dnf -qy update
