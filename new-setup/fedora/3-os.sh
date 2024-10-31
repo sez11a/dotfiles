@@ -20,7 +20,7 @@ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/99-sysctl.
 sudo dnf -qy install tlp
 
 # UI Fonts
-sudo dnf -qy texlive-libertinus
+sudo dnf -qy install texlive-libertinus texlive-libertinus-fonts
 sudo dnf -qy copr enable aquacash5/nerd-fonts
 sudo dnf -qy install iosevka-nerd-fonts
 sudo dnf -qy install iosevka-term-nerd-fonts

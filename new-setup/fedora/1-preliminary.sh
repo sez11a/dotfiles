@@ -32,7 +32,7 @@ sudo dnf qy install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-non
 
 ## Enable Brave
 sudo dnf -qy install dnf-plugins-core
-sudo dnf -qy config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo wget https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo -O /etc/yum.repos.d/brave-browser.repo
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf -qy install brave-browser
 
