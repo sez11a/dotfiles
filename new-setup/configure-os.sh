@@ -35,33 +35,78 @@ fi
 # Set up preliminary CLI/utilities
 source $scriptsDir/1-preliminary.sh
 
-# Preliminaries are now out of the way; time for questions
-source $scriptsDir/2-questions.sh
+say "Does this machine have a HIDPI screen?"
+if $DIALOG --yesno "HIDPI screen?" 20 60 ;then
+    sudo cp conf/vconsole.conf /etc
+else
+    echo "Nope."
+fi
+
+plasma=false
+say "Configure Plasma Desktop?"
+if $DIALOG --yesno "Configure Standard Plasma Desktop? Default is yes; if installing a lightweight system, answer no." 20 60; then 
+  plasma=true; else echo "Nope."; fi
+
+DesktopApps=false
+say "Install standard desktop apps?"
+if $DIALOG --yesno "Install standard desktop apps?" 20 60; then 
+  DesktopApps=true; else echo "Nope."; fi 
+
+ThreeDPrintingApps=false
+say "Install 3D printing apps?"
+if $DIALOG --yesno "Install 3D printing apps?" 20 60; then 
+  ThreeDPrintingApps=true; else echo "Nope."; fi 
+
+DevTools=false
+say "Do you want to install developer tools?"
+if $DIALOG --yesno "Install Dev Tools?" 20 60 ;then
+    DevTools=true; else echo "Nope."; fi
+
+LaTeX=false
+say "Do you want to install LaTeX?"
+if $DIALOG --yesno "Install LaTeX?" 20 60 ;then
+    LaTeX=true; else echo "Nope."; fi
+
+emulators=false
+say "Do you want to install emulators for vintage computing?"
+if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
+    emulators=true; else echo "Nope."; fi
 
 # Configure OS 
 source $scriptsDir/3-os.sh 
 
 # Configure KDE Plasma
-source $scriptsDir/4-kdeplasma.sh
+if [ "$plasma" = true ] ;then
+  source $scriptsDir/4-kdeplasma.sh
+else
+  echo "If you want to configure Plasma later, run the appropriate 4-kdeplasma.sh from this folder."
+  say "If you want to configure Plasma later, run the appropriate 4-kdeplasma.sh from this folder."
+fi 
 
 # Configure Apps and Fonts
-source $scriptsDir/5-apps-fonts.sh
+if [ "$DesktopApps" = true ] ;then
+  source $scriptsDir/5-apps-fonts.sh
+fi
 
 # Configure 3D Printing Apps
-source $scriptsDir/6-3d-printing.sh
+if [ "$ThreeDPrintingApps" = true ] ;then
+  echo "Installing 3D Printing apps...." 
+  source $scriptsDir/6-3d-printing.sh
+fi
 
 # Configure Developer Tools
-source $scriptsDir/7-dev-tools.sh; 
+if [ "$DevTools" = true ] ;then
+  source $scriptsDir/7-dev-tools.sh 
+fi
 
 # Configure LaTeX
-source $scriptsDir/8-latex.sh; 
+if [ "$LaTeX" = true ] ;then
+  source $scriptsDir/8-latex.sh 
+fi
 
 # Configure Emulators
-source $scriptsDir/9-emulators.sh;
-
-if [ "$plasma" = false ] ;then
-  echo "If you want to configure Plasma later, run 4-kdeplasma.sh from the appropriate scripts folder."
-  say "If you want to configure Plasma later, run 4-kdeplasma.sh from the appropriate scripts folder."
+if [ "$emulators" = true ] ;then
+  source $scriptsDir/9-emulators.sh
 fi
 
 echo "All done! Please reboot your system now."
