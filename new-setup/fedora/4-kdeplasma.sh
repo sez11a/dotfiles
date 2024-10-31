@@ -13,7 +13,6 @@ sudo dnf -qy install dbusmenu-qt
 sudo dnf -qy copr enable hazel-bunny/ricing
 sudo dnf -qy install applet-window-buttons
 sudo dnf -qy install applit-window-title
-sudo dnf -qy install appmenu-gtk-module
 sudo dnf -qy install klassy
 sudo dnf -qy install kora-icon-theme
 sudo dnf -qy install fokus-plasmoid
