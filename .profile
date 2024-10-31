@@ -1,4 +1,6 @@
-source /usr/share/git/completion/git-prompt.sh
+if $_isarch ;then
+  source /usr/share/git/completion/git-prompt.sh
+fi
 
 #PS1='\[\e[0;37m\][\[\e[0;31m\]\u@\h\[\e[0;33m\]$(__git_ps1 " (%s)") \[\e[0;32m\]\W\[\e[0;37m\]]\$\[\e[m\] '
 #PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[35m\u@\h\e[0m'; else echo '\e[35m\u@\h\e[0m' ; fi\`:\e[0;31m\$PWD\e[0m\[\e[m\]\n\e[0;33m\$(__git_ps1 '(%s)')\e[0;30m$\e[0m\[\e[m\] "
