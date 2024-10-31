@@ -76,7 +76,7 @@ if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
 source $scriptsDir/3-os.sh 
 
 # Configure KDE Plasma
-if [ "$plasma" = true ] ;then
+if $plasma ;then
   source $scriptsDir/4-kdeplasma.sh
 else
   echo "If you want to configure Plasma later, run the appropriate 4-kdeplasma.sh from this folder."
@@ -84,28 +84,28 @@ else
 fi 
 
 # Configure Apps and Fonts
-if [ "$DesktopApps" = true ] ;then
+if $DesktopApps ;then
   source $scriptsDir/5-apps-fonts.sh
 fi
 
 # Configure 3D Printing Apps
-if [ "$ThreeDPrintingApps" = true ] ;then
+if $ThreeDPrintingApps ;then
   echo "Installing 3D Printing apps...." 
   source $scriptsDir/6-3d-printing.sh
 fi
 
 # Configure Developer Tools
-if [ "$DevTools" = true ] ;then
+if $DevTools ;then
   source $scriptsDir/7-dev-tools.sh 
 fi
 
 # Configure LaTeX
-if [ "$LaTeX" = true ] ;then
+if $LaTeX ;then
   source $scriptsDir/8-latex.sh 
 fi
 
 # Configure Emulators
-if [ "$emulators" = true ] ;then
+if $emulators ;then
   source $scriptsDir/9-emulators.sh
 fi
 
