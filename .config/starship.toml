@@ -62,16 +62,16 @@ style = "bg:bright-black fg:white"
 # Show the info relative to the upstream first: how many commits ahead/behind/diverged/conflicted
 # Show the info for current working set after: deleted, staged, renamed, modified, untracked.
 format = "[$ahead$behind$diverged$conflicted$deleted$staged$renamed$modified$untracked]($style)"
-style = "bg:green"
-conflicted = "[ ≠$count](fg:blue)"
-ahead = "[ ⇡$count](bold fg:blue)"
-behind = "[ ⇣$count](bold fg:blue)"
-diverged = "[ ⇕$count](bold fg:blue)"
-untracked = "[ +$count](bold fg:bright-green)"
-modified = "[ ~$count](bold fg:cyan)"
-staged = "[ ++$count](bold fg:green)"
-renamed = "[ »$count](bold fg:white)"
-deleted = "[ ✘$count](bold fg:red)"
+style = "bg:bright-black"
+conflicted = "[ ≠$count](bg:bright-black fg:blue)"
+ahead = "[ ⇡$count](bold bg:bright-black fg:blue)"
+behind = "[ ⇣$count](bold bg:bright-black fg:blue)"
+diverged = "[ ⇕$count](bold bg:bright-black fg:blue)"
+untracked = "[ +$count](bold bg:bright-black fg:bright-green)"
+modified = "[ ~$count](bold bg:bright-black fg:cyan)"
+staged = "[ ++$count](bold bg:bright-black fg:green)"
+renamed = "[ »$count](bold bg:bright-black fg:white)"
+deleted = "[ ✘$count](bold bg:bright-black fg:red)"
 
 [fill]
 symbol = ' '
