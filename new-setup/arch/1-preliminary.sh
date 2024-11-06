@@ -6,6 +6,7 @@ sudo pacman -S --noconfirm bash-completion libnewt base-devel
 DIALOG=whiptail
 
 sudo pacman -S --noconfirm stow
+sudo pacman -S --noconfirm starship
 
 # Dotfiles
 
@@ -23,8 +24,6 @@ function say { echo "$1" | festival --tts; }
 export -f say
 
 # AUR Helper
-# If on Arch, install this before running this script. On Manjaro and EndeavourOS, 
-# it's in the repo, so we can just call the installer and get it.
 
 if $_ismanjaro; then
   sudo pacman -S --noconfirm yay
