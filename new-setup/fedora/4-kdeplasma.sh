@@ -12,7 +12,7 @@ sudo dnf -qy install dbusmenu-qt
 # Need to find a way to get netspeed, plasmusic-toolbar 
 sudo dnf -qy copr enable hazel-bunny/ricing
 sudo dnf -qy install applet-window-buttons
-sudo dnf -qy install applit-window-title
+sudo dnf -qy install applet-window-title
 sudo dnf -qy install klassy
 sudo dnf -qy install kora-icon-theme
 sudo dnf -qy install fokus-plasmoid
