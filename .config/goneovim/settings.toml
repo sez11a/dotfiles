@@ -6,9 +6,9 @@
 # BorderlessWindow = false
 
 ## Editor minimum window width (>= 400)
-# Width = 800
+ Width = 1000
 ## Editor minimum window height (>= 300)
-# Height = 600
+ Height = 1000
 ## Create a small margin on the left and right sides of the application window.
 # Gap = 2
 

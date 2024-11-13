@@ -7,7 +7,8 @@ zstyle ':completion:*' menu select
 zstyle :compinstall filename '/home/sezovr/.zshrc'
 
 autoload -Uz compinit colors zcalc
-compinit -d 
+# compinit -d 
+compinit
 colors
 
 # End of lines added by compinstall
@@ -31,11 +32,12 @@ setopt histignorespace
 
 # Rich Sezov Custom Stuff
 # Some of this comes from helmuthdu's Arch Ultimate Install
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
-# Oh-My-Posh
-# if command -v oh-my-posh &> /dev/null; then
-#  eval "$(oh-my-posh init zsh --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
-# fi
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
 # Starship
 if command -v starship &> /dev/null; then
@@ -82,6 +84,33 @@ echo REMINDER: *fineFinder* is a function that uses find and grep. The actual co
 echo    
 echo    find -name "*.${1:-java}" -print0 \| xargs -0 grep -${3:-r} --color=auto "${2:-@review}"
 echo _________________________________________________________________________________________
+}
+
+function command_not_found_handler {
+    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+    printf 'zsh: command not found: %s\n' "$1"
+    local entries=(
+        ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
+    )
+    if (( ${#entries[@]} ))
+    then
+        printf "${bright}$1${reset} may be found in the following packages:\n"
+        local pkg
+        for entry in "${entries[@]}"
+        do
+            # (repo package version file)
+            local fields=(
+                ${(0)entry}
+            )
+            if [[ "$pkg" != "${fields[2]}" ]]
+            then
+                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+            fi
+            printf '    /%s\n' "${fields[4]}"
+            pkg="${fields[2]}"
+        done
+    fi
+    return 127
 }
 
 # COLORED MANUAL PAGES {{{

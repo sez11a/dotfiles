@@ -20,7 +20,7 @@ format = """
 [\uE0B0](fg:blue bg:blue)[$directory](bg:blue)\
 [\uE0B0](fg:blue)\
 $fill $cmd_duration $line_break\
-$shell \
+$shell\
 [$git_branch$git_status](bg:bright-black)[\uE0B0](fg:bright-black bg:none)\
 $character\
 """
@@ -48,6 +48,7 @@ error_symbol = '[✗](bold red) '
 [directory]
 truncation_length = 8
 style = "bg:blue fg:black"
+read_only_style = "bg:blue fg:red"
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 󰌾"
 
@@ -99,7 +100,7 @@ bash_indicator = ''
 zsh_indicator = '%_'
 cmd_indicator = ''
 unknown_indicator = ''
-style = 'cyan bold'
+style = 'cyan bold bg:bright-black'
 format = '[$indicator]($style)'
 
 [hostname]
