@@ -6,6 +6,7 @@ sudo pacman -S --noconfirm kde-pim-meta
 
 ## Mouse Cursors
 sudo pacman -U --noconfirm packages/breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
+sudo pacman -U --noconfirm packages/oxygen-cursors-extra-6.2.3-1-any.pkg.tar.xz
 #yay -S --noconfirm  breeze-red-cursor-theme
 
 yay -S --noconfirm syncthingtray-qt6
