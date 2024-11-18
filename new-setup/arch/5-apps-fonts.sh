@@ -40,5 +40,5 @@ sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli audacity borg spamas
 
 # Apps in AUR
 
-yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus brave-bin joe zoom goneovim-bin
+yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus brave-bin joe zoom goneovim-bin worker
 
