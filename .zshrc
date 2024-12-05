@@ -74,6 +74,7 @@ ANT_ARGS="-logger org.apache.tools.ant.listener.AnsiColorLogger"
 export JPM_PACKAGES=~/.jpm
 export NPM_CONFIG_PREFIX=~/.npm-global
 export PATH=$PATH:~/jpm/bin:~/.npm-global/bin:$HOME/bin
+export XCURSOR_THEME=oxy-red-argentina
 
 function fineFinder() {
     find -name "*.${1:-java}" -print0 | xargs -0 grep -${3:-r} --color=auto "${2:-@review}"

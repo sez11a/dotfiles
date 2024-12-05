@@ -17,9 +17,9 @@ sudo pacman -U --noconfirm packages/caledonia-backgrounds-2.0-3-any.pkg.tar.xz
 sudo pacman -S --noconfirm kvantum
 sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module plasma-sdk
 
-sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
+# sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
 yay -S --noconfirm libdbusmenu-qtilities6-git
-# yay -S --noconfirm plasma6-applets-window-buttons
+yay -S --noconfirm plasma6-applets-window-buttons
 yay -S --noconfirm plasma6-applets-window-title
 yay -S --noconfirm plasma6-applets-netspeed
 yay -S --noconfirm plasma6-applets-plasmusic-toolbar
@@ -113,6 +113,20 @@ kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 #kwriteconfig6 --file oxygenrc --group InactiveShadow --key VerticalOffset 0
 #kwriteconfig6 --file oxygenrc --group Windeco --key TitleAlignment AlignLeft
 #kwriteconfig6 --file oxygenrc --group Windeco --key UseWindowColors false
+
+# KGlobalShortcuts 
+# For whatever reason, kwriteconfig6, though documented to use nested groups, 
+# does not modify kglobalshortcutsrc; it fails. The below changes are therefore being 
+# done without it. 
+echo " " >> ~/.config/kglobalshortcutsrc
+echo "[services][vifm.desktop]" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Alt+Return" >> ~/.config/kglobalshortcutsrc
+echo " " >> ~/.config/kglobalshortcutsrc
+echo "[services][goneovim.desktop]" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Alt+V" >> ~/.config/kglobalshortcutsrc
+echo " " >> ~/.config/kglobalshortcutsrc
+echo "[services][brave-browser.desktop]" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Alt+B">> ~/.config/kglobalshortcutsrc
 
 sudo pacman -S --noconfirm packagekit-qt6
 sudo pacman -S --noconfirm okular
