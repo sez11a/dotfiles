@@ -88,3 +88,16 @@ kwriteconfig6 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\
 # Keyboard
 kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 
+# KGlobalShortcuts 
+# For whatever reason, kwriteconfig6, though documented to use nested groups, 
+# does not modify kglobalshortcutsrc; it fails. The below changes are therefore being 
+# done without it. 
+echo " " >> ~/.config/kglobalshortcutsrc
+echo "[services][vifm.desktop]" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Alt+Return" >> ~/.config/kglobalshortcutsrc
+echo " " >> ~/.config/kglobalshortcutsrc
+echo "[services][goneovim.desktop]" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Alt+V" >> ~/.config/kglobalshortcutsrc
+echo " " >> ~/.config/kglobalshortcutsrc
+echo "[services][brave-browser.desktop]" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Alt+B">> ~/.config/kglobalshortcutsrc

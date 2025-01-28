@@ -115,6 +115,8 @@ kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 #kwriteconfig6 --file oxygenrc --group Windeco --key UseWindowColors false
 
 # KGlobalShortcuts 
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Left" "Meta+Ctrl+Left\tMeta+Ctrl+H,Switch One Desktop to the Left"
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Right" "Meta+Ctrl+Right\tMeta+Ctrl+L,Switch One Desktop to the Right"
 # For whatever reason, kwriteconfig6, though documented to use nested groups, 
 # does not modify kglobalshortcutsrc; it fails. The below changes are therefore being 
 # done without it. 
