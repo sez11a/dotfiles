@@ -89,6 +89,9 @@ kwriteconfig6 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\
 kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 
 # KGlobalShortcuts 
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Left" "Meta+Ctrl+Left\tMeta+Ctrl+H,Switch One Desktop to the Left"
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Right" "Meta+Ctrl+Right\tMeta+Ctrl+L,Switch One Desktop to the Right"
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Close" "Alt+F4\tMeta+C,Alt+F4,Close Window"
 # For whatever reason, kwriteconfig6, though documented to use nested groups, 
 # does not modify kglobalshortcutsrc; it fails. The below changes are therefore being 
 # done without it. 
