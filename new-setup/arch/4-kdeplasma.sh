@@ -18,8 +18,10 @@ sudo pacman -S --noconfirm kvantum
 sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module plasma-sdk
 
 # sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
+plasmapkg2 -i kde/Window-Button-Applet.plasmoid 
+sudo mkdir -p /usr/lib/qt6/qml/org/kde/appletdecoration/ 
+sudo cp -r ~/.local/share/plasma/plasmoids/org.kde.windowbuttons/lib/* /usr/lib/qt6/qml/org/kde/appletdecoration/
 yay -S --noconfirm libdbusmenu-qtilities6-git
-yay -S --noconfirm plasma6-applets-window-buttons
 yay -S --noconfirm plasma6-applets-window-title
 yay -S --noconfirm plasma6-applets-netspeed
 yay -S --noconfirm plasma6-applets-plasmusic-toolbar
