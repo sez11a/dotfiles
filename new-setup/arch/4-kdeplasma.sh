@@ -9,7 +9,7 @@ sudo pacman -U --noconfirm packages/breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
 sudo pacman -U --noconfirm packages/oxygen-cursors-extra-6.2.3-1-any.pkg.tar.xz
 #yay -S --noconfirm  breeze-red-cursor-theme
 
-yay -S --noconfirm syncthingtray-qt6
+# yay -S --noconfirm syncthingtray-qt6
 
 # Theme Stuff
 sudo pacman -U --noconfirm packages/caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz 
@@ -27,7 +27,7 @@ yay -S --noconfirm plasma6-applets-netspeed
 yay -S --noconfirm plasma6-applets-plasmusic-toolbar
 yay -S --noconfirm plasma6-applets-fokus
 yay -S --noconfirm xfce-theme-greybird
-yay -S --noconfirm klassy
+# yay -S --noconfirm klassy
 
 # Syncthing must sync first for below to work
 # cp -r ~/config/icons/kora/* ~/.local/share/icons
