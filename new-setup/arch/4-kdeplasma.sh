@@ -55,13 +55,13 @@ cp kde/yakuake.notifyrc ~/.config
 # tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
 # mkdir -p ~/.local/share/aurorae/themes
 # tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
-cp -r kde/com.himdek.kde.plasma.overview ~/.local/share/plasma/plasmoids
+# cp -r kde/com.himdek.kde.plasma.overview ~/.local/share/plasma/plasmoids
 
 # Desktop Configuration
 
 mkdir -p ~/.local/share/plasma/look-and-feel
 # tar xvfz kde/hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
-tar xvfz kde/Hybrid-Dark.tar.gz -C ~/.local/share/plasma/look-and-feel
+tar xvfz kde/com.richardsezov.hybrid-dark.tar.gz -C ~/.local/share/plasma/look-and-feel
 # kwriteconfig6 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
 kwriteconfig6 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
 kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
@@ -95,7 +95,7 @@ kwriteconfig6 --file ksplashrc --group KSplash --key Engine KSplashQML
 kwriteconfig6 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
 # Input
 # kwriteconfig6 --file kcminputrc --group Mouse --key cursorTheme breeze-red
-lookandfeeltool -a Hybrid-Dark --resetLayout
+lookandfeeltool -a com.richardsezov.hybrid-dark --resetLayout
 
 # Dolphin
 kwriteconfig6 --file dolphinrc --group General --key EditableUrl true
