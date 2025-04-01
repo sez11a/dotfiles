@@ -18,11 +18,11 @@ sudo pacman -S --noconfirm kvantum
 sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module plasma-sdk
 
 # sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
-plasmapkg2 -i kde/Window-Button-Applet.plasmoid 
-sudo mkdir -p /usr/lib/qt6/qml/org/kde/appletdecoration/ 
-sudo cp -r ~/.local/share/plasma/plasmoids/org.kde.windowbuttons/lib/* /usr/lib/qt6/qml/org/kde/appletdecoration/
+# plasmapkg2 -i kde/Window-Button-Applet.plasmoid 
+# sudo mkdir -p /usr/lib/qt6/qml/org/kde/appletdecoration/ 
+# sudo cp -r ~/.local/share/plasma/plasmoids/org.kde.windowbuttons/lib/* /usr/lib/qt6/qml/org/kde/appletdecoration/
 yay -S --noconfirm libdbusmenu-qtilities6-git
-yay -S --noconfirm plasma6-applets-window-title
+# yay -S --noconfirm plasma6-applets-window-title
 yay -S --noconfirm plasma6-applets-netspeed
 yay -S --noconfirm plasma6-applets-plasmusic-toolbar
 yay -S --noconfirm plasma6-applets-fokus
@@ -51,26 +51,26 @@ cp kde/konsole/*.colorscheme ~/.local/share/konsole
 cp kde/color-schemes/*.colors ~/.local/share/color-schemes
 cp kde/yakuakerc ~/.config
 cp kde/yakuake.notifyrc ~/.config
-mkdir -p ~/.local/share/plasma/desktoptheme
-tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
-mkdir -p ~/.local/share/aurorae/themes
-tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
+# mkdir -p ~/.local/share/plasma/desktoptheme
+# tar xvfz kde/hybrid-light.tar.gz -C ~/.local/share/plasma/desktoptheme
+# mkdir -p ~/.local/share/aurorae/themes
+# tar xvfz kde/hybrid-wd.tar.gz -C ~/.local/share/aurorae/themes
 cp -r kde/com.himdek.kde.plasma.overview ~/.local/share/plasma/plasmoids
 
 # Desktop Configuration
 
 mkdir -p ~/.local/share/plasma/look-and-feel
-tar xvfz kde/hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
-tar xvfz kde/hybrid-dark.tar.gz -C ~/.local/share/plasma/look-and-feel
-kwriteconfig6 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
+# tar xvfz kde/hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
+tar xvfz kde/Hybrid-Dark.tar.gz -C ~/.local/share/plasma/look-and-feel
+# kwriteconfig6 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
 kwriteconfig6 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
 kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
 kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HIA
 kwriteconfig6 --file plasmarc --group Theme --key name default
 # KWin
-kwriteconfig6 --file kwinrc --group Plugins --key kwin4_effect_scaleinEnabled true
-kwriteconfig6 --file kwinrc --group Plugins --key magiclampEnabled true
-kwriteconfig6 --file kwinrc --group Plugins --key minimizeanimationEnabled false
+# kwriteconfig6 --file kwinrc --group Plugins --key kwin4_effect_scaleinEnabled true
+# kwriteconfig6 --file kwinrc --group Plugins --key magiclampEnabled true
+# kwriteconfig6 --file kwinrc --group Plugins --key minimizeanimationEnabled false
 kwriteconfig6 --file kwinrc --group Plugins --key windowgeometryEnabled false
 kwriteconfig6 --file kwinrc --group Plugins --key wobblywindowsEnabled true
 kwriteconfig6 --file kwinrc --group Windows --key Placement UnderMouse
@@ -94,7 +94,7 @@ kwriteconfig6 --file kdeglobals --group KDE --key SingleClick false
 kwriteconfig6 --file ksplashrc --group KSplash --key Engine KSplashQML
 kwriteconfig6 --file ksplashrc --group KSplash --key Theme org.kde.breeze.desktop
 # Input
-kwriteconfig6 --file kcminputrc --group Mouse --key cursorTheme breeze-red
+# kwriteconfig6 --file kcminputrc --group Mouse --key cursorTheme breeze-red
 lookandfeeltool -a Hybrid-Dark --resetLayout
 
 # Dolphin
