@@ -10,11 +10,7 @@ sudo plymouth-set-default-theme -R bgrt
 
 # Startup Sound
 sudo pacman -S --noconfirm alsa-utils
-sudo mkdir /usr/share/sounds/custom
-sudo cp conf/a1000.wav /usr/share/sounds/custom
-sudo cp conf/startup-sound.sh /usr/bin
-sudo cp conf/startupsound.service /etc/systemd/system
-sudo systemctl enable startupsound.service
+source common/startup-sound.sh
 
 ## Editor
 sudo pacman -S --noconfirm neovim python-pynvim xclip wl-clipboard jq

@@ -17,12 +17,7 @@ yay -S --noconfirm otf-vegur
 yay -S --noconfirm otf-tenderness 
 yay -S --noconfirm ttf-exljbris
 
-cp conf/fonts.conf ~/.config/fontconfig
-sudo mkdir /usr/share/fonts/TTF
-sudo mkdir /usr/share/fonts/OTF
-sudo cp fonts/*.ttf /usr/share/fonts/TTF
-sudo cp fonts/*.otf /usr/share/fonts/OTF
-sudo fc-cache -f -v
+source common/fonts.sh
 
 # Java Environment
 yay -S --noconfirm zulu-21-bin

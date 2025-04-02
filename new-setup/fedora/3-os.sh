@@ -2,11 +2,7 @@
 
 # Startup Sound
 sudo dnf -qy install alsa-utils
-sudo mkdir /usr/share/sounds/custom
-sudo cp conf/a1000.wav /usr/share/sounds/custom
-sudo cp conf/startup-sound.sh /usr/bin
-sudo cp conf/startupsound.service /etc/systemd/system
-sudo systemctl enable startupsound.service
+source common/startup-sound.sh 
 
 # Editor
 sudo dnf -qy install neovim python3-neovim xclip wl-clipboard jq

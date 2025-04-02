@@ -8,12 +8,7 @@ sudo dnf -qy install syncthing-gtk
 sudo dnf -qy install sil-gentium-fonts sil-gentium-basic-fonts-all
 sudo dnf -qy google-carlito-fonts 
 
-cp conf/fonts.conf ~/.config/fontconfig
-sudo mkdir /usr/share/fonts/TTF
-sudo mkdir /usr/share/fonts/OTF
-sudo cp fonts/*.ttf /usr/share/fonts/TTF
-sudo cp fonts/*.otf /usr/share/fonts/OTF
-sudo fc-cache -f -v
+source common/fonts.sh
 
 ## Java Environment
 sudo dnf -qy install https://cdn.azul.com/zulu/bin/zulu-repo-1.0.0-1.noarch.rpm
