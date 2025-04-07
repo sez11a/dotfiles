@@ -39,7 +39,7 @@ export QT_QPA_PLATFORMTHEME=appmenu-qt5
 JAVA_HOME=/usr/lib/jvm/default
 
 # Ant configured to build Liferay
-ANT_OPTS="-Xms4096M -Xmx4096M -XX:-UseGCOverheadLimit"
+ANT_OPTS="-Xms2560m"
 
 # To debug Ant tasks: 
 # ANT_OPTS="-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=y -Xms4096M -Xmx4096M -XX:-UseGCOverheadLimit"

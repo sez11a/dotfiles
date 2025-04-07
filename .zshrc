@@ -68,7 +68,7 @@ alias ws='jstar -text_color white+bg_blue'
 alias wt='WordTsar'
 
 # Ant configured to build Liferay
-ANT_OPTS="-Xmx4096M -XX:-UseGCOverheadLimit"
+ANT_OPTS="-Xmx2560m"
 ANT_ARGS="-logger org.apache.tools.ant.listener.AnsiColorLogger"
 
 export JPM_PACKAGES=~/.jpm
