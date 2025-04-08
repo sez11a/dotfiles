@@ -23,7 +23,7 @@ scriptsDir="arch"
 if grep -q "EndeavourOS" /etc/os-release; then
     _ismanjaro=true
 fi
-if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then 
+if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release || [ -f /etc/mandriva-release ]; then 
     _isfedora=true
     _isarch=false
     scriptsDir="fedora"
