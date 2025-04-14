@@ -3,7 +3,7 @@
 sudo enable-repo extra 
 sudo enable-repo restricted
 sudo enable-repo non-free
-sudo dnf -qy update
+sudo dnf -y update
 
 sudo dnf --refresh -y install newt stow
 sudo dnf -y install task-devel task-c-devel task-c++-devel clang llvm
@@ -18,7 +18,7 @@ source common/dotfiles.sh
 curl -sS https://starship.rs/install.sh | sh
 
 # Set up for installation
-sudo dnf -qy install festival 
+sudo dnf -y install festival 
 function say { echo "$1" | festival --tts; }
 export -f say
 
@@ -36,5 +36,5 @@ echo "max_parallel_downloads=10" | sudo tee -a /etc/dnf/dnf.conf
 echo -e "${CAT} dnf.conf spicing up completed ${RESET}" 2>&1
 
 # Install dnfdragora
-sudo dnf -qy install dnfdragora
+sudo dnf -y install dnfdragora
 

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo dnf -qy install texlive texlive-biber
+sudo dnf -y install texlive texlive-biber
