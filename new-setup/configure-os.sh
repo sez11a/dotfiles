@@ -16,6 +16,7 @@ _isarch=true
 _ismanjaro=false
 _isfedora=false
 _isdebian=false
+_isOM=false
 
 scriptsDir="arch"
 
@@ -23,7 +24,14 @@ scriptsDir="arch"
 if grep -q "EndeavourOS" /etc/os-release; then
     _ismanjaro=true
 fi
-if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release || [ -f /etc/mandriva-release ]; then 
+
+if [ -f /etc/mandriva-release ] ; then 
+  _isOM=true
+  _isarch=false
+  scriptsDir="OM"
+fi
+
+if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then 
     _isfedora=true
     _isarch=false
     scriptsDir="fedora"
