@@ -3,8 +3,7 @@
 sudo enable-repo extra 
 sudo enable-repo restricted
 sudo enable-repo non-free
-sudo dnf -y update
-
+sudo dnf clean all ; dnf clean all ; sudo dnf distro-sync --refresh --allowerasing 2>&1| tee dsync2-log.txt
 sudo dnf --refresh -y install newt stow
 sudo dnf -y install task-devel task-c-devel task-c++-devel clang llvm
 

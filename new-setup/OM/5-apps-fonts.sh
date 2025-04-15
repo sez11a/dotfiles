@@ -1,8 +1,5 @@
 #!/bin/sh 
 
-# Syncthing Integration
-sudo flatpak -y install Syncthingy 
-
 # Fonts
 sudo dnf -y install texlive-gentium texlive-gentium-tug
 sudo dnf -y fonts-ttf-alegreya open-sans-fonts

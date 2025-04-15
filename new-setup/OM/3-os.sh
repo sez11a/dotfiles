@@ -11,6 +11,7 @@ curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimsta
 sudo dnf -y install syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 systemctl --user enable syncthing
+sudo flatpak -y install io.github.martchus.syncthingtray
 
 # Power
 sudo dnf -y install tlp
@@ -43,3 +44,6 @@ sudo cp ~/Downloads/IosevkaTermSlab/*.ttf /usr/share/fonts/custom
 sudo fc-cache -f -v
 
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
+
+# Printing
+sudo dnf -y install task-printing-scanning task-printing-canon task-printing-hp task-printing-lexmark task-printing-misc 
