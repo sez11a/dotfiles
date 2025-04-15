@@ -16,3 +16,6 @@ sudo dnf -y install zulu21-jdk
 # Standard desktop stuff
 sudo dnf -y install audacity borgbackup spamassassin calibre mc easytag handbrake scribus fontforge kdiff3 dvgrab dvdauthor inkscape strawberry lha mplayer fzf ripgrep ranger mpv smplayer smplayer-themes pstoedit yt-dlp atomicparsley aria2 cdrdao dvd+rw-tools joe 
 
+# Pandoc (until it gets in the repos) 
+curl -OL https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-linux-amd64.tar.gz 
+tar xvfz pandoc-3.6.4-linux-amd64.tar.gz --strip-components 1 -C $HOME/.local
