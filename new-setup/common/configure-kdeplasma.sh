@@ -25,7 +25,6 @@ kwriteconfig6 --file kwinrc --group Windows --key Placement UnderMouse
 # Breeze
 kwriteconfig6 --file breezerc --group Windeco --key TitleAlignment AlignLeft
 # KDE Globals
-kwriteconfig6 --file kdeglobals --group General --key ColorScheme Hybrid
 kwriteconfig6 --file kdeglobals --group General --key Name Hybrid
 kwriteconfig6 --file kdeglobals --group General --key widgetStyle Oxygen
 kwriteconfig6 --file kdeglobals --group KDE --key widgetStyle Oxygen
@@ -35,7 +34,7 @@ kwriteconfig6 --file kdeglobals --group General --key menuFont Sans\ Serif,11,-1
 kwriteconfig6 --file kdeglobals --group General --key smallestReadableFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 kwriteconfig6 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 kwriteconfig6 --file kdeglobals --group General --key shadeSortColumn true
-kwriteconfig6 --file kdeglobals --group Icons --key Theme kora-light
+# kwriteconfig6 --file kdeglobals --group Icons --key Theme kora-light
 kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme CatppuccinMacchiatoBlue
 kwriteconfig6 --file kdeglobals --group KDE --key SingleClick false
 # KSplash
@@ -49,6 +48,8 @@ lookandfeeltool -a com.richardsezov.hybrid-dark --resetLayout
 kwriteconfig6 --file dolphinrc --group General --key EditableUrl true
 kwriteconfig6 --file dolphinrc --group General --key GlobalViewProps true
 kwriteconfig6 --file dolphinrc --group General --key ShowFullPath true
+kwriteconfig6 --file dolphinrc --group General --key RememberOpenedTabs false
+kwriteconfig6 --file dolphinrc --group General --key ShowFullPathInTitlebar true
 
 # Konsole
 kwriteconfig6 --file konsolerc --group Desktop\ Entry --key DefaultProfile Catppuccin.profile
