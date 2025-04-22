@@ -11,7 +11,7 @@ sudo dnf -y install https://cdn.azul.com/zulu/bin/zulu-repo-1.0.0-1.noarch.rpm
 sudo dnf -y install zulu21-jdk
 
 # Standard desktop stuff
-sudo dnf -y install audacity borgbackup spamassassin calibre mc easytag handbrake scribus fontforge kdiff3 dvgrab dvdauthor inkscape strawberry lha mplayer fzf ranger mpv smplayer smplayer-themes pstoedit yt-dlp atomicparsley aria2 cdrdao dvd+rw-tools joe lib64aacs0 lib64aacs-devel nextcloud-client hunspell hunspell-tools hyphen-en 
+sudo dnf -y install audacity borgbackup spamassassin calibre mc easytag handbrake scribus fontforge kdiff3 dvgrab dvdauthor inkscape keepassxc strawberry lha mplayer fzf ranger mpv smplayer smplayer-themes pstoedit yt-dlp atomicparsley aria2 cdrdao dvd+rw-tools joe lib64aacs0 lib64aacs-devel nextcloud-client hunspell hunspell-tools hyphen-en 
 
 # Standard Flatpak stuff
 sudo flatpak -y install zoom
