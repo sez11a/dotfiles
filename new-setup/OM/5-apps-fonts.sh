@@ -6,6 +6,11 @@ sudo dnf -y fonts-ttf-alegreya open-sans-fonts
 
 source common/fonts.sh
 
+## Enable Brave
+sudo wget https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo -O /etc/yum.repos.d/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf -y install brave-browser
+
 ## Java Environment
 sudo dnf -y install https://cdn.azul.com/zulu/bin/zulu-repo-1.0.0-1.noarch.rpm
 sudo dnf -y install zulu21-jdk

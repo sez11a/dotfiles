@@ -30,11 +30,6 @@ export -f say
 # Install Flatpak
 sudo dnf -y install flatpak
 
-## Enable Brave
-sudo wget https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo -O /etc/yum.repos.d/brave-browser.repo
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-sudo dnf -y install brave-browser
-
 # Install dnfdragora
 sudo dnf -y install dnfdragora
 

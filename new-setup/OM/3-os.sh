@@ -46,4 +46,4 @@ sudo fc-cache -f -v
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
 # Printing
-sudo dnf -y install task-printing-scanning task-printing-canon task-printing-hp task-printing-lexmark task-printing-misc 
+sudo dnf -y install task-printing-scanning task-printing-epson task-printing-hp task-printing-lexmark task-printing-misc 
