@@ -1,6 +1,11 @@
 # Rich Sezov .bashrc from multiple sources:
 # Archlinux Ultimate Install - by helmuthdu
 
+# Source global definitions 
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc 
+fi 
+
 # OVERALL CONDITIONALS {{{
 _islinux=false
 [[ "$(uname -s)" =~ Linux|GNU|GNU/* ]] && _islinux=true
