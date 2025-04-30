@@ -1,9 +1,14 @@
 # Rich Sezov .bashrc from multiple sources:
 # Archlinux Ultimate Install - by helmuthdu
 
-# Source global definitions 
+# Source global definitions: OM
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc 
+fi 
+
+# Source global definitions: Arch
+if [ -f /etc/bash.bashrc ]; then
+  . /etc/bash.bashrc 
 fi 
 
 # OVERALL CONDITIONALS {{{
