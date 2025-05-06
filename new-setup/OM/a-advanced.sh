@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## Apps required for special hardware
+
+# NVidia graphics switching
+sudo dnf -y install envycontrol
+
 ## Apps requiring advanced configuration or an account
 sudo dnf -y install offlineimap dovecot neomutt w3m urlscan discord
 

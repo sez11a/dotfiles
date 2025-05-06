@@ -52,14 +52,10 @@ fixnpm() {
 
 MAVEN_OPTS="-Xmx1024m"
 
-IZPACK_HOME=/opt/IzPack
-
 #export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 export JAVA_DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000"
 
-PATH=$PATH:$HOME/bin:$ANT_HOME/bin:$IZPACK_HOME/bin
-
-export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH ANT_HOME MAVEN_OPTS CLASSPATH
+export JAVA_HOME ANT_OPTS ANT_ARGS M2_HOME PATH MAVEN_OPTS CLASSPATH
 
 # Use archlinux-java status to see which JDK is set as default
 
@@ -72,7 +68,7 @@ if [[ -f /usr/bin/ruby ]]; then
     eval "$(rbenv init -)"
 fi
 
-export PATH=$PATH:~/jpm/bin:~/.npm-global/bin
+export PATH=$PATH:~/jpm/bin:~/.npm-global/bin:/usr/local/texlive/2025/bin/x86_64-linux
 
 # Integrate GTK apps with KDE
 #export GTK_USE_PORTAL=1
