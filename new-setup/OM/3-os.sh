@@ -10,6 +10,7 @@ curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimsta
 # Syncthing
 sudo dnf -y install syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
+sudo systemctl disable syncthing --global
 systemctl --user enable syncthing
 # sudo flatpak -y install io.github.martchus.syncthingtray
 
