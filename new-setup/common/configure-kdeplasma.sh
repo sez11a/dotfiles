@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 mkdir -p ~/.local/share/color-schemes
 cp kde/konsole/*.profile ~/.local/share/konsole
@@ -50,6 +50,7 @@ kwriteconfig6 --file dolphinrc --group General --key GlobalViewProps true
 kwriteconfig6 --file dolphinrc --group General --key ShowFullPath true
 kwriteconfig6 --file dolphinrc --group General --key RememberOpenedTabs false
 kwriteconfig6 --file dolphinrc --group General --key ShowFullPathInTitlebar true
+kwriteconfig6 --file dolphinrc --group General --key ShowToolTips false
 
 # Konsole
 kwriteconfig6 --file konsolerc --group Desktop\ Entry --key DefaultProfile Catppuccin.profile
@@ -65,13 +66,13 @@ kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
 #kwriteconfig6 --file oxygenrc --group Windeco --key TitleAlignment AlignLeft
 #kwriteconfig6 --file oxygenrc --group Windeco --key UseWindowColors false
 
-# KGlobalShortcuts 
+# KGlobalShortcuts
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Left" "Meta+Ctrl+Left\tMeta+Ctrl+H,Switch One Desktop to the Left"
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch One Desktop to the Right" "Meta+Ctrl+Right\tMeta+Ctrl+L,Switch One Desktop to the Right"
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Close" "Alt+F4\tMeta+C,Alt+F4,Close Window"
-# For whatever reason, kwriteconfig6, though documented to use nested groups, 
-# does not modify kglobalshortcutsrc; it fails. The below changes are therefore being 
-# done without it. 
+# For whatever reason, kwriteconfig6, though documented to use nested groups,
+# does not modify kglobalshortcutsrc; it fails. The below changes are therefore being
+# done without it.
 echo " " >> ~/.config/kglobalshortcutsrc
 echo "[services][vifm.desktop]" >> ~/.config/kglobalshortcutsrc
 echo "_launch=Alt+Return" >> ~/.config/kglobalshortcutsrc
