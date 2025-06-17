@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function pause() {
+	read -p "$*"
+}
+
 _rundir=$(pwd)
 
 # Set some colors for output messages
@@ -12,6 +16,8 @@ ORANGE=$(tput setaf 166)
 YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
+echo "${ORANGE} Detecting OS..."
+
 _isarch=true
 _ismanjaro=false
 _isfedora=false
@@ -19,29 +25,48 @@ _isdebian=false
 _isOM=false
 
 scriptsDir="arch"
+osName="Arch               "
 
 [[ -f /etc/manjaro-release ]] && _ismanjaro=true
 if grep -q "EndeavourOS" /etc/os-release; then
     _ismanjaro=true
+	osName="EndeavourOS/Manjaro"
 fi
 
-if [ -f /etc/mandriva-release ] ; then 
+if [ -f /etc/mandriva-release ] ; then
   _isOM=true
   _isarch=false
   scriptsDir="OM"
+  osName="OpenMandriva       "
 fi
 
-if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then 
+if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then
     _isfedora=true
     _isarch=false
     scriptsDir="fedora"
+	osName="Fedora            "
 fi
 
 if grep -q "Debian" /etc/os-release; then
   _isdebian=true
   _isarch=false
   scriptsDir="debian"
+  osName="Debian             "
 fi
+
+echo "${NOTE}╔══════════════════════════════╗"
+echo "${NOTE}║ Detected ${osName} ║"
+echo "${NOTE}╚══════════════════════════════╝"
+
+echo "${RESET} "
+echo "${YELLOW} ╔═════════════════════════════════════════════════╗"
+echo "${YELLOW} ║ Ready to begin? The next step will set up some  ║"
+echo "${YELLOW} ║ preliminary utilities and perform an update.    ║"
+echo "${YELLOW} ║ When that completes, you'll be asked several    ║"
+echo "${YELLOW} ║ questions about what you want to install.       ║"
+echo "${YELLOW} ╚═════════════════════════════════════════════════╝"
+echo "${RESET} "
+pause "Press Enter to continue or Ctrl-C to abort."
 
 # Set up preliminary CLI/utilities
 source $scriptsDir/1-preliminary.sh
@@ -55,18 +80,18 @@ fi
 
 plasma=false
 say "Configure Plasma Desktop?"
-if $DIALOG --yesno "Configure Standard Plasma Desktop? Default is yes; if installing a lightweight system, answer no." 20 60; then 
+if $DIALOG --yesno "Configure Standard Plasma Desktop? Default is yes; if installing a lightweight system, answer no." 20 60; then
   plasma=true; else echo "Nope."; fi
 
 DesktopApps=false
 say "Install standard desktop apps?"
-if $DIALOG --yesno "Install standard desktop apps?" 20 60; then 
-  DesktopApps=true; else echo "Nope."; fi 
+if $DIALOG --yesno "Install standard desktop apps?" 20 60; then
+  DesktopApps=true; else echo "Nope."; fi
 
 ThreeDPrintingApps=false
 say "Install 3D printing apps?"
-if $DIALOG --yesno "Install 3D printing apps?" 20 60; then 
-  ThreeDPrintingApps=true; else echo "Nope."; fi 
+if $DIALOG --yesno "Install 3D printing apps?" 20 60; then
+  ThreeDPrintingApps=true; else echo "Nope."; fi
 
 DevTools=false
 say "Do you want to install developer tools?"
@@ -83,8 +108,8 @@ say "Do you want to install emulators for vintage computing?"
 if $DIALOG --yesno "Install emulators for vintage computing?" 20 60 ;then
     emulators=true; else echo "Nope."; fi
 
-# Configure OS 
-source $scriptsDir/3-os.sh 
+# Configure OS
+source $scriptsDir/3-os.sh
 
 # Configure KDE Plasma
 if $plasma ;then
@@ -92,7 +117,7 @@ if $plasma ;then
 else
   echo "If you want to configure Plasma later, run the appropriate 4-kdeplasma.sh from this folder."
   say "If you want to configure Plasma later, run the appropriate 4-kdeplasma.sh from this folder."
-fi 
+fi
 
 # Configure Apps and Fonts
 if $DesktopApps ;then
@@ -101,18 +126,18 @@ fi
 
 # Configure 3D Printing Apps
 if $ThreeDPrintingApps ;then
-  echo "Installing 3D Printing apps...." 
+  echo "Installing 3D Printing apps...."
   source $scriptsDir/6-3d-printing.sh
 fi
 
 # Configure Developer Tools
 if $DevTools ;then
-  source $scriptsDir/7-dev-tools.sh 
+  source $scriptsDir/7-dev-tools.sh
 fi
 
 # Configure LaTeX
 if $LaTeX ;then
-  source $scriptsDir/8-latex.sh 
+  source $scriptsDir/8-latex.sh
 fi
 
 # Configure Emulators
