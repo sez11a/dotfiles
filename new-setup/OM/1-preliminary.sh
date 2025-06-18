@@ -14,7 +14,6 @@ echo -e "${CAT} dnf.conf spicing up completed ${RESET}" 2>&1
 
 sudo dnf clean all ; dnf clean all ; sudo dnf distro-sync --refresh --allowerasing 2>&1| tee dsync2-log.txt
 sudo dnf --refresh -y install newt stow
-sudo dnf -y install task-devel task-c-devel task-c++-devel clang llvm lrzip
 
 DIALOG=whiptail
 

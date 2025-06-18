@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Startup Sound
-source common/startup-sound.sh 
+source common/startup-sound.sh
 
 # Editor
 sudo dnf -y install neovim xclipboard wl-clipboard jq yarn
@@ -18,9 +18,8 @@ systemctl --user enable syncthing
 sudo dnf -y install tlp
 
 # UI Fonts
-sudo dnf -y install texlive-libertinus texlive-libertinus-fonts texlive-libertinus-otf texlive-libertinus-type1 texlive-libertinust1math
 curl -OL https://github.com/alerque/libertinus/releases/download/v7.051/Libertinus-7.051.tar.zst
-mkdir ~/Downloads/Libertinus 
+mkdir ~/Downloads/Libertinus
 tar xvfz Libertinus-7.051.tar.zst -C ~/Downloads/Libertinus
 rm Libertinus-7.051.tar.zst
 
@@ -39,12 +38,12 @@ rm IosevkaTermSlab.tar.xz
 
 sudo mkdir /usr/share/fonts/custom
 sudo cp ~/Downloads/Libertinus/Libertinus-7.051/static/OTF/* /usr/share/fonts/custom
-sudo cp ~/Downloads/Iosevka/*.ttf /usr/share/fonts/custom 
-sudo cp ~/Downloads/IosevkaTerm/*.ttf /usr/share/fonts/custom 
-sudo cp ~/Downloads/IosevkaTermSlab/*.ttf /usr/share/fonts/custom 
+sudo cp ~/Downloads/Iosevka/*.ttf /usr/share/fonts/custom
+sudo cp ~/Downloads/IosevkaTerm/*.ttf /usr/share/fonts/custom
+sudo cp ~/Downloads/IosevkaTermSlab/*.ttf /usr/share/fonts/custom
 sudo fc-cache -f -v
 
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
 # Printing
-sudo dnf -y install task-printing-scanning task-printing-epson task-printing-hp task-printing-lexmark task-printing-misc 
+sudo dnf -y install task-printing-scanning task-printing-epson task-printing-hp task-printing-lexmark task-printing-misc
