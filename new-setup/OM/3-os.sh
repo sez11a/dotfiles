@@ -4,7 +4,7 @@
 source common/startup-sound.sh
 
 # Editor
-sudo dnf -y install neovim xclipboard wl-clipboard jq yarn
+sudo dnf -y install neovim xclipboard wl-clipboard jq yarn rust-ripgrep
 curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
 
 # Syncthing
