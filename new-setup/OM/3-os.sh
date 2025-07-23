@@ -3,6 +3,9 @@
 # Startup Sound
 source common/startup-sound.sh
 
+# MOTD
+sudo bash -c $'echo "neofetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
+
 # Editor
 sudo dnf -y install neovim xclipboard wl-clipboard jq yarn rust-ripgrep
 curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash

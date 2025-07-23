@@ -29,6 +29,7 @@ export -f say
 
 # Install Flatpak
 sudo dnf -y install flatpak
+sudo dnf -y install flatdrake
 sudo dnf -y install flatseal
 
 # Install dnfdragora
