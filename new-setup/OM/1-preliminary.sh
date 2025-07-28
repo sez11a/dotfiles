@@ -19,6 +19,7 @@ DIALOG=whiptail
 
 # Dotfiles
 source common/dotfiles.sh
+mkdir -p ~/.local/bin
 cp OM/update.sh ~/.local/bin/update
 # echo 'alias dsync="sudo dnf clean all ; dnf clean all ; sudo dnf distro-sync --refresh --allowerasing 2>&1| tee dsync2-log.txt ; flatpak update" # dnf updates for ROME' | tee -a ~/.profile
 
