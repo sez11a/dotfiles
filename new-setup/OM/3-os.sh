@@ -4,7 +4,7 @@
 source common/startup-sound.sh
 
 # MOTD
-sudo bash -c $'echo "neofetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
+sudo bash -c $'echo "fastfetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
 
 # Editor
 sudo dnf -y install neovim xclipboard wl-clipboard jq yarn rust-ripgrep
