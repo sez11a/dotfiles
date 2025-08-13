@@ -21,7 +21,7 @@ kwriteconfig6 --file plasmarc --group Theme --key name default
 # kwriteconfig6 --file kwinrc --group Plugins --key minimizeanimationEnabled false
 kwriteconfig6 --file kwinrc --group Plugins --key windowgeometryEnabled false
 kwriteconfig6 --file kwinrc --group Plugins --key wobblywindowsEnabled true
-kwriteconfig6 --file kwinrc --group Windows --key Placement UnderMouse
+kwriteconfig6 --file kwinrc --group Windows --key Placement Smart
 # Breeze
 kwriteconfig6 --file breezerc --group Windeco --key TitleAlignment AlignLeft
 # KDE Globals
@@ -58,6 +58,8 @@ kwriteconfig6 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\
 
 # Keyboard
 kwriteconfig6 --file kxkbrc --group Layout --key Options ctrl:swapcaps
+kwriteconfig6 --file kxkbrc --group Layout --key ResetOldOptions true
+kwriteconfig6 --file kxkbrc --group Layout --key Use true
 
 # Oxygen
 #kwriteconfig6 --file oxygenrc --group ActiveShadow --key ShadowSize 50
