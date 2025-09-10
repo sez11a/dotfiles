@@ -1,9 +1,6 @@
 [submodule "joe/syntax"]
 	path = joe/syntax
 	url = https://github.com/cmur2/joe-syntax
-[submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
 [submodule ".config/ranger/plugins/ranger_devicons"]
 	path = .config/ranger/plugins/ranger_devicons
 	url = https://github.com/alexanderjeurissen/ranger_devicons
