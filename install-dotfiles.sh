@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
+function pause() {
+	read -p "$*"
+}
+
 echo "This script launches the installation routine for these dotfiles."
 echo "It supports OpenMandriva, Arch, Fedora, and to a lesser extent, Debian."
 echo "Ensure you have Git installed before continuing."
 echo " "
-read -p "Press any key to continue, or Ctrl-C to quit."
-
+pause "Press Enter to continue or Ctrl-C to quit."
 cd ~
 
 if [ ! -d ".dotfiles" ]; then
