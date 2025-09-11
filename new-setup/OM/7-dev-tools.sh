@@ -1,7 +1,8 @@
 #!/bin/sh
 
 sudo dnf -y install task-devel task-c-devel task-c++-devel clang llvm lrzip
-sudo dnf -y install lazarus nodejs lazygit podman podman-compose crun passt colordiff
+sudo dnf -y install lazarus nodejs lazygit
+sudo dnf -y install podman podman-compose crun passt colordiff
 sudo dnf -y install ant gradle
 sudo dnf -y ruby
 sudo dnf -y install 'dnf-command(config-manager)'
