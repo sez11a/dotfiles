@@ -34,8 +34,9 @@ alias t='todo.sh'
 alias to='todotxt-machine'
 alias sudo='sudo -E'
 alias ws='jstar -text_color white+bg_blue'
-alias wt='WordTsar'
-export QT_QPA_PLATFORMTHEME=appmenu-qt5
+alias wt='QT_QPA_PLATFORM=xcb WordTsar'
+alias docker='podman'
+# export QT_QPA_PLATFORMTHEME=appmenu-qt5
 JAVA_HOME=/usr/lib/jvm/default
 
 # Ant configured to build Liferay
