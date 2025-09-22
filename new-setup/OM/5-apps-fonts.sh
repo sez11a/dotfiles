@@ -18,7 +18,7 @@ sudo dnf -y install audacity borgbackup spamassassin calibre mc easytag handbrak
 # sudo dnf -y install vifm
 
 # Standard Flatpak stuff
-sudo flatpak -y install zoom freeplane Zotero
+sudo flatpak -y install us.zoom.Zoom org.freeplane.App org.zotero.Zotero
 
 # Pandoc (until it gets in the repos)
 curl -OL https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-linux-amd64.tar.gz
