@@ -1,9 +1,5 @@
 #!/bin/bash
 
-function pause() {
-	read -p "$*"
-}
-
 _rundir=$(pwd)
 
 # Set some colors for output messages
@@ -38,6 +34,7 @@ if [ -f /etc/mandriva-release ] ; then
   _isarch=false
   scriptsDir="OM"
   osName="OpenMandriva       "
+  sudo dnf -y install newt
 fi
 
 if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then
@@ -45,6 +42,7 @@ if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then
     _isarch=false
     scriptsDir="fedora"
 	osName="Fedora            "
+	sudo dnf -y install newt
 fi
 
 if grep -q "Debian" /etc/os-release; then
@@ -58,15 +56,22 @@ echo "${NOTE}╔═════════════════════�
 echo "${NOTE}║ Detected ${osName} ║"
 echo "${NOTE}╚══════════════════════════════╝"
 
-echo "${RESET} "
-echo "${YELLOW} ╔═════════════════════════════════════════════════╗"
-echo "${YELLOW} ║ Ready to begin? The next step will set up some  ║"
-echo "${YELLOW} ║ preliminary utilities and perform an update.    ║"
-echo "${YELLOW} ║ When that completes, you'll be asked several    ║"
-echo "${YELLOW} ║ questions about what you want to install.       ║"
-echo "${YELLOW} ╚═════════════════════════════════════════════════╝"
-echo "${RESET} "
-pause "Press Enter to continue or Ctrl-C to abort."
+whiptail --title "Welcome to Rich Sezov's Install Script" \
+	--msgbox "Welcome to Rich Sezov's setup script!\n\n\
+	This works with OpenMandriva Linux, Arch Linux, Fedora Linux,\n\n\
+	and to a lesser extent (CLI only) Debian.\n\n\
+	If you want to configure KDE Plasma, make sure it is installed first." \
+		15 80
+
+if ! whiptail --title "Proceed?" \
+	--yesno "The next step sets up some preliminary utilities and performs and update.\n\n\
+	When that completes, you're asked several questions about what you want to install.\n\n\
+	Do you want to proceed?" 7 50; then
+		echo -e "\n"
+		echo "You chose NOT to proceed."
+		echo -e "\n"
+		exit 1
+fi
 
 # Set up preliminary CLI/utilities
 source $scriptsDir/1-preliminary.sh
