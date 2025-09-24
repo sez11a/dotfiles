@@ -29,3 +29,4 @@ dotbot
 bin
 hybrid-bash-prompt-simple-git.yaml
 hybrid-bash-prompt.yaml
+install-dotfiles.sh
