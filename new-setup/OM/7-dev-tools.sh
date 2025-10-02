@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo dnf -y install task-devel task-c-devel task-c++-devel clang llvm lrzip
+sudo dnf -y install task-devel task-c-devel task-c++-devel clang llvm lrzip rpm-build packaging-tools
 sudo dnf -y install lazarus nodejs lazygit
 
 ## Java Environment

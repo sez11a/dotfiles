@@ -86,7 +86,11 @@ fi
 plasma=false
 say "Configure Plasma Desktop?"
 if $DIALOG --yesno "Configure Standard Plasma Desktop? Default is yes; if installing a lightweight system, answer no." 20 60; then
-  plasma=true; else echo "Nope."; fi
+  plasma=true
+  DIALOG=kdialog
+else
+	echo "Nope."
+fi
 
 DesktopApps=false
 say "Install standard desktop apps?"

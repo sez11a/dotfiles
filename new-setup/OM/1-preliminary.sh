@@ -12,7 +12,7 @@ echo -e "${NOTE} Adding extra spice in dnf.conf ... ${RESET}" 2>&1
 echo "max_parallel_downloads=10" | sudo tee -a /etc/dnf/dnf.conf
 echo -e "${CAT} dnf.conf spicing up completed ${RESET}" 2>&1
 
-sudo dnf clean all ; dnf clean all ; sudo dnf distro-sync --refresh --allowerasing 2>&1| tee dsync2-log.txt
+sudo dnf clean all ; dnf clean all ; sudo dnf distro-sync --refresh --allowerasing 2>&1| tee ~/dsync2-log.txt
 sudo dnf --refresh -y install newt stow
 
 DIALOG=whiptail
@@ -34,4 +34,4 @@ sudo dnf -y install flatdrake
 sudo dnf -y install flatseal
 
 # Install dnfdragora
-sudo dnf -y install dnfdragora
+# sudo dnf -y install dnfdragora

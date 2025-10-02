@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Fonts
-sudo dnf -y install texlive-gentium texlive-gentium-tug
 sudo dnf -y fonts-ttf-alegreya open-sans-fonts
 
 source common/fonts.sh

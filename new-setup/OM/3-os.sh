@@ -17,9 +17,6 @@ sudo systemctl disable syncthing --global
 systemctl --user enable syncthing
 # sudo flatpak -y install io.github.martchus.syncthingtray
 
-# Power
-sudo dnf -y install tlp
-
 # UI Fonts
 curl -OL https://github.com/alerque/libertinus/releases/download/v7.051/Libertinus-7.051.tar.zst
 mkdir ~/Downloads/Libertinus
