@@ -64,7 +64,7 @@ whiptail --title "Welcome to Rich Sezov's Install Script" \
 		15 80
 
 if ! whiptail --title "Proceed?" \
-	--yesno "The next step sets up some preliminary utilities and performs and update.\n\n\
+	--yesno "The next step sets up some preliminary utilities and performs an update.\n\n\
 	When that completes, you're asked several questions about what you want to install.\n\n\
 	Do you want to proceed?" 20 60; then
 		echo -e "\n"

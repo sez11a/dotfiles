@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo dnf -y install task-plasma6-wayland
-sudo dnf -y install krename krusader neovim-qt
+sudo dnf -y install krename neovim-qt
 
 ## Mouse cursors
 sudo tar xvfz packages/oxygen-cursors-extra-6.2.3-1-any.pkg.tar.xz -C /
@@ -16,4 +16,4 @@ sudo dnf -y install qt-theme-kvantum
 source common/configure-kdeplasma.sh
 
 # KDE Apps
-sudo dnf -y install krusader krename smb4k bibletime plasma6-kcharselect kamoso digikam falkon OpenColorIO kid3 plasma6-k3b 
+sudo dnf -y install bibletime plasma6-kcharselect kamoso digikam plasma6-falkon OpenColorIO kid3 plasma6-k3b
