@@ -28,7 +28,7 @@ rm Libertinus-7.051.tar.zst
 sudo mkdir /usr/share/fonts/custom
 sudo cp ~/Downloads/Libertinus/Libertinus-7.051/static/OTF/* /usr/share/fonts/custom
 
-sudo dnf -y install fonts-ttf-iosevka fonts-ttf-iosevkaterm fonts-ttf-iosevkatermslab
+sudo dnf -y install enablerepo=cooker-x86_64-extra fonts-ttf-iosevka fonts-ttf-iosevkaterm fonts-ttf-iosevkatermslab
 
 # Necessary for Rock 6.0
 # curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Iosevka.tar.xz
