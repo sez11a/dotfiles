@@ -10,7 +10,7 @@ sudo alternatives --install /usr/lib/jvm/jdk jdk /usr/lib/jvm/java-21-zulu-openj
 
 sudo dnf -y install podman podman-compose crun passt colordiff
 sudo dnf -y install ant gradle
-sudo dnf -y ruby
+sudo dnf -y install ruby
 
 ## GitHub CLI
 sudo dnf -y install 'dnf-command(config-manager)'
