@@ -14,7 +14,7 @@ sudo dnf -y install brave-browser
 sudo dnf -y install audacity borgbackup spamassassin calibre mc easytag handbrake scribus fontforge kdiff3 dvgrab dvdauthor inkscape keepassxc strawberry lha mplayer fzf ranger mpv smplayer smplayer-themes pstoedit yt-dlp atomicparsley aria2 cdrdao dvd+rw-tools joe lib64aacs0 lib64aacs-devel nextcloud-client hunspell hunspell-tools hyphen-en whois lib64dvdcss lib64projectm3 vpnc networkmanager-vpnc rust-ripgrep fuse fuse2 zip unzip 7zip
 
 # After UM
-# sudo dnf -y install vifm
+dnf -y install --enablerepo=cooker-x86_64-extra vifm
 
 # Standard Flatpak stuff
 sudo flatpak -y install us.zoom.Zoom org.freeplane.App org.zotero.Zotero
