@@ -85,4 +85,4 @@ echo " " >> ~/.config/kglobalshortcutsrc
 echo "[services][brave-browser.desktop]" >> ~/.config/kglobalshortcutsrc
 echo "_launch=Alt+B" >> ~/.config/kglobalshortcutsrc
 echo "[services][ranger.desktop]" >> ~/.config/kglobalshortcutsrc
-echo "_launch=Alt+R" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Meta+Return" >> ~/.config/kglobalshortcutsrc
