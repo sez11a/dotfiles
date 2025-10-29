@@ -6,6 +6,11 @@ cp kde/konsole/*.colorscheme ~/.local/share/konsole
 cp kde/color-schemes/*.colors ~/.local/share/color-schemes
 cp kde/yakuakerc ~/.config
 cp kde/yakuake.notifyrc ~/.config
+sudo cp kde/hybrid.jpg /usr/share/wallpapers
+kpackagetool6 -t Plasma/Applet -i kde/overview.plasmoid
+kpackagetool6 -t Plasma/Applet -i kde/fokus-v2.3.2.plasmoid
+kpackagetool6 -t Plasma/Applet -i kde/plasmusic-toolbar-v3.7.0.plasmoid
+
 
 mkdir -p ~/.local/share/plasma/look-and-feel
 # tar xvfz kde/hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
