@@ -10,6 +10,7 @@ cp kde/yakuake.notifyrc ~/.config
 mkdir -p ~/.local/share/plasma/look-and-feel
 # tar xvfz kde/hybrid-desktop-global-theme.tar.gz -C ~/.local/share/plasma/look-and-feel
 tar xvfz kde/com.richardsezov.hybrid-dark.tar.gz -C ~/.local/share/plasma/look-and-feel
+kpackagetool6 -t Plasma/Applet -i kde/overview.plasmoid
 # kwriteconfig6 --file kwinrc --group Windows --key BorderlessMaximizedWindows true
 kwriteconfig6 --file kwinrc --group Windows --key TitlebarDoubleClickCommand Shade
 kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft XMS
