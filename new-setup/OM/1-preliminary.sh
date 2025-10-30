@@ -17,6 +17,13 @@ sudo dnf --refresh -y install newt stow
 
 DIALOG=whiptail
 
+$DIALOG --title "Important Note" \
+  --msgbox "Currently, this script installs programs only available in Cooker.\n\n
+  I have placed these instructions on one line, so it shouldn't affect \n\n
+  the outcome of the install, but if you're installing on ROME or Rock, \n\n
+  you may see some installation errors." \
+    15 80
+
 # Dotfiles
 source common/dotfiles.sh
 mkdir -p ~/.local/bin
@@ -31,7 +38,6 @@ export -f say
 # Install Flatpak
 sudo dnf -y install flatpak
 sudo dnf -y install flatdrake
-sudo dnf -y install flatseal
 
 # Install dnfdragora
 # sudo dnf -y install dnfdragora
