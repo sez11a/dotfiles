@@ -13,7 +13,7 @@ cd ~
 
 if [ ! -d ".dotfiles" ]; then
   echo "Cloning dotfiles into ~/.dotfiles..."
-  git clone https://github.com/sez11a/dotfiles ~/.dotfiles
+  git clone --depth 1 --single-branch --branch master https://github.com/sez11a/dotfiles ~/.dotfiles
   cd ~/.dotfiles
   git submodule init
   git submodule update --recursive
