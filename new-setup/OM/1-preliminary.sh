@@ -1,7 +1,7 @@
 #!/bin/bash
 
-## Starship
-curl -sS https://starship.rs/install.sh | sh
+## oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
 
 sudo enable-repo extra
 sudo enable-repo restricted
