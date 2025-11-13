@@ -86,6 +86,11 @@ echo ___________________________________________________________________________
 }
 
 # Starship
-if command -v starship &> /dev/null; then
-  eval "$(starship init bash)"
+# if command -v starship &> /dev/null; then
+#   eval "$(starship init bash)"
+# fi
+
+# Oh-My-Posh
+if command -v oh-my-posh &> /dev/null; then
+  eval "$(oh-my-posh init bash --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
 fi
