@@ -1,2 +1,4 @@
 git: 
   autoFetch: false
+gui:
+  useHunkModeInStagingView: false
