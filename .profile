@@ -91,6 +91,6 @@ echo ___________________________________________________________________________
 # fi
 
 # Oh-My-Posh
-if command -v oh-my-posh &> /dev/null; then
+if [[ -f ~/.local/bin/oh-my-posh ]]; then
   eval "$(oh-my-posh init bash --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
 fi
