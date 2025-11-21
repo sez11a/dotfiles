@@ -24,4 +24,4 @@ mkdir ~/.npm-packages
 NPM_PACKAGES=~/.npm-packages
 echo prefix=~/.npm-packages >> ~/.npmrc
 
-flatpak -y install Gittyup squirrel_sql PodmanDesktop
+flatpak -y install com.github.Murmele.Gittyup squirrel_sql PodmanDesktop
