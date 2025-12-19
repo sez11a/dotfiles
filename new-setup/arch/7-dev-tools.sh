@@ -2,7 +2,7 @@
 
 yay -S --noconfirm squirrel-sql
 
-sudo pacman -S --noconfirm source-highlight lazarus-qt5 fpc gdb nodejs npm kdiff3 netbeans github-cli ruby rubygems gitui yarn
+sudo pacman -S --noconfirm source-highlight lazarus-qt6 fpc gdb nodejs npm kdiff3 netbeans github-cli ruby rubygems gitui yarn
 
 sudo pacman -S --noconfirm podman podman-compose podman-docker podman-desktop
 

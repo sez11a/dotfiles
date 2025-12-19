@@ -1,25 +1,21 @@
 #!/bin/sh
 
-# Email/PIM
-
-sudo pacman -S --noconfirm kde-pim-meta
-
 ## Mouse Cursors
-sudo pacman -U --noconfirm packages/breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz 
+sudo pacman -U --noconfirm packages/breeze-red-cursor-theme-1.0-3-any.pkg.tar.xz
 sudo pacman -U --noconfirm packages/oxygen-cursors-extra-6.2.3-1-any.pkg.tar.xz
 #yay -S --noconfirm  breeze-red-cursor-theme
 
 # yay -S --noconfirm syncthingtray-qt6
 
 # Theme Stuff
-sudo pacman -U --noconfirm packages/caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz 
+sudo pacman -U --noconfirm packages/caledonia-bundle-plasma5-2.0-5-any.pkg.tar.xz
 sudo pacman -U --noconfirm packages/caledonia-backgrounds-2.0-3-any.pkg.tar.xz
 sudo pacman -S --noconfirm kvantum
 sudo pacman -S --noconfirm libdbusmenu-glib libdbusmenu-gtk2 libdbusmenu-gtk3 libdbusmenu-qt5 appmenu-gtk-module plasma-sdk
 
 # sudo pacman -U --noconfirm kde/plasma6-applets-window-buttons-1:r183.7d9cb3e-1-x86_64.pkg.tar.xz
-# plasmapkg2 -i kde/Window-Button-Applet.plasmoid 
-# sudo mkdir -p /usr/lib/qt6/qml/org/kde/appletdecoration/ 
+# plasmapkg2 -i kde/Window-Button-Applet.plasmoid
+# sudo mkdir -p /usr/lib/qt6/qml/org/kde/appletdecoration/
 # sudo cp -r ~/.local/share/plasma/plasmoids/org.kde.windowbuttons/lib/* /usr/lib/qt6/qml/org/kde/appletdecoration/
 yay -S --noconfirm libdbusmenu-qtilities6-git
 # yay -S --noconfirm plasma6-applets-window-title
@@ -45,7 +41,10 @@ yay -S --noconfirm kora-icon-theme
 
 # KDE Desktop Configuration
 
-source common/configure-kdeplasma.sh 
+source common/configure-kdeplasma.sh
+
+# Email/PIM
+sudo pacman -S --noconfirm kde-pim-meta
 
 sudo pacman -S --noconfirm packagekit-qt6
 sudo pacman -S --noconfirm okular

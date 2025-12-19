@@ -40,7 +40,6 @@ sudo cp conf/fonts-local.conf /etc/fonts/local.conf
 
 sudo pacman -S --noconfirm cups
 sudo pacman -S --noconfirm system-config-printer python-pysmbc cups-pk-helper
-sudo pacman -S --noconfirm libjpeg6-turbo # for Canon driver below
-yay -S --noconfirm brother-mfc-9340cdw
-yay -S --noconfirm brother-hll6200dw 
-yay -S --noconfirm cnrdrvcups-lb
+# yay -S --noconfirm brother-mfc-9340cdw
+# yay -S --noconfirm brother-hll6200dw
+# yay -S --noconfirm cnrdrvcups-lb
