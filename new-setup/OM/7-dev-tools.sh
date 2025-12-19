@@ -26,7 +26,7 @@ sudo dnf -y install ant gradle
 sudo dnf install virt-manager qemu-img iptables
 
 # Containers
-sudo dnf -y install docker docker-cli docker-compose lazydocker
+sudo dnf -y install docker docker-cli docker-compose containerd lazydocker
 sudo systemctl enable docker
 sudo usermod -a -G docker $USER
 # sudo dnf -y install podman podman-compose crun passt

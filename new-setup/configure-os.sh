@@ -87,6 +87,9 @@ plasma=false
 say "Configure Plasma Desktop?"
 if $DIALOG --yesno "Configure Standard Plasma Desktop? Default is yes; if installing a lightweight system, answer no." 20 60; then
   plasma=true
+  if $_isarch ;then
+	  sudo pacman -S --noconfirm kdialog
+  fi
   DIALOG=kdialog
 else
 	echo "Nope."
