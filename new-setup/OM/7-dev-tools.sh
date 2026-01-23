@@ -17,13 +17,14 @@ sudo dnf -y install python-ensurepip python-virtualenv
 sudo dnf -y install lazarus
 
 ## Java Environment
-sudo dnf -y install https://cdn.azul.com/zulu/bin/zulu-repo-1.0.0-1.noarch.rpm
+# Add the Azul RPM repository
+sudo dnf install -y https://cdn.azul.com/zulu/bin/zulu-repo-1.0.0-2.noarch.rpm
 sudo dnf -y install zulu21-jdk
 sudo alternatives --install /usr/lib/jvm/jdk jdk /usr/lib/jvm/java-21-zulu-openjdk 1
 sudo dnf -y install ant gradle
 
 # Virtual Machines
-sudo dnf -y install virt-manager qemu-img iptables
+sudo dnf -y install virt-manager qemu-img firewalld
 
 # Containers
 sudo dnf -y install docker docker-cli docker-compose containerd lazydocker
