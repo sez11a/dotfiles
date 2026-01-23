@@ -24,7 +24,7 @@ sudo alternatives --install /usr/lib/jvm/jdk jdk /usr/lib/jvm/java-21-zulu-openj
 sudo dnf -y install ant gradle
 
 # Virtual Machines
-sudo dnf -y install virt-manager qemu-img firewalld
+sudo dnf -y install virt-manager qemu-img qemu-char-spice firewalld
 
 # Containers
 sudo dnf -y install docker docker-cli docker-compose containerd lazydocker
