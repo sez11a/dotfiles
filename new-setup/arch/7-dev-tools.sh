@@ -6,7 +6,7 @@ sudo pacman -S --noconfirm source-highlight lazarus-qt6 fpc gdb nodejs npm kdiff
 
 sudo pacman -S --noconfirm podman podman-compose podman-docker podman-desktop
 
-yay -S --noconfirm rbenv gitahead
+yay -S --noconfirm rbenv
 
 mkdir ~/.npm-packages
 NPM_PACKAGES=~/.npm-packages
