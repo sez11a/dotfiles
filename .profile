@@ -86,11 +86,17 @@ echo ___________________________________________________________________________
 }
 
 # Starship
-# if command -v starship &> /dev/null; then
-#   eval "$(starship init bash)"
-# fi
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
 
 # Oh-My-Posh
-if [[ -f ~/.local/bin/oh-my-posh ]]; then
-  eval "$(oh-my-posh init bash --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
-fi
+#if [[ -f ~/.local/bin/oh-my-posh ]]; then
+#  eval "$(oh-my-posh init bash --config ~/.dotfiles/hybrid-bash-prompt.yaml)"
+#fi
+
+# Liquidprompt
+#LP_THEME=unfold
+#[[ $- = *i* ]] && source ~/.liquidprompt/liquidprompt
+# [[ $- = *i* ]] && source ~/.liquidprompt-powerline/powerline.theme
+# lp_theme unfold
