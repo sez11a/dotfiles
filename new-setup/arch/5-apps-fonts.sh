@@ -1,20 +1,17 @@
 #!/bin/bash
 
-# Syncthing Integration
-yay -S --noconfirm syncthing-gtk
-
 ## Fonts
 
 sudo pacman -S --noconfirm ttf-gentium-plus
-yay -S --noconfirm  otf-fantasque-sans-mono 
-yay -S --noconfirm ttf-mplus 
-yay -S --noconfirm nerd-fonts-hermit 
-yay -S --noconfirm ttf-anonymice-powerline-git 
-yay -S --noconfirm ttf-carlito 
+yay -S --noconfirm  otf-fantasque-sans-mono
+yay -S --noconfirm ttf-mplus
+yay -S --noconfirm nerd-fonts-hermit
+yay -S --noconfirm ttf-anonymice-powerline-git
+yay -S --noconfirm ttf-carlito
 yay -S --noconfirm ttf-caladea
-yay -S --noconfirm ttf-gidole 
-yay -S --noconfirm otf-vegur 
-yay -S --noconfirm otf-tenderness 
+yay -S --noconfirm ttf-gidole
+yay -S --noconfirm otf-vegur
+yay -S --noconfirm otf-tenderness
 yay -S --noconfirm ttf-exljbris
 
 source common/fonts.sh
@@ -36,4 +33,3 @@ sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli audacity borg spamas
 # Apps in AUR
 
 yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus brave-bin joe zoom worker
-
