@@ -35,9 +35,8 @@ alias to='todotxt-machine'
 alias sudo='sudo -E'
 alias ws='jstar -text_color white+bg_blue'
 alias wt='QT_QPA_PLATFORM=xcb WordTsar'
-alias docker='podman'
 # export QT_QPA_PLATFORMTHEME=appmenu-qt5
-JAVA_HOME=/usr/lib/jvm/default
+JAVA_HOME=/usr/lib/jvm/zulu-21
 
 # Ant configured to build Liferay
 ANT_OPTS="-Xms2560m"
@@ -98,5 +97,5 @@ fi
 # Liquidprompt
 #LP_THEME=unfold
 #[[ $- = *i* ]] && source ~/.liquidprompt/liquidprompt
-# [[ $- = *i* ]] && source ~/.liquidprompt-powerline/powerline.theme
-# lp_theme unfold
+#[[ $- = *i* ]] && source ~/.liquidprompt-powerline/powerline.theme
+#lp_theme powerline

@@ -85,7 +85,7 @@ echo "[services][vifm.desktop]" >> ~/.config/kglobalshortcutsrc
 echo "_launch=Alt+Return" >> ~/.config/kglobalshortcutsrc
 echo " " >> ~/.config/kglobalshortcutsrc
 echo "[services][neovim-qt.desktop]" >> ~/.config/kglobalshortcutsrc
-echo "_launch=Alt+V" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Meta+N" >> ~/.config/kglobalshortcutsrc
 echo " " >> ~/.config/kglobalshortcutsrc
 echo "[services][brave-browser.desktop]" >> ~/.config/kglobalshortcutsrc
 echo "_launch=Alt+B" >> ~/.config/kglobalshortcutsrc
