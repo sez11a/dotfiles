@@ -20,6 +20,6 @@ dnf -y install vifm
 sudo flatpak -y install us.zoom.Zoom org.freeplane.App org.zotero.Zotero
 
 # Pandoc (until it gets in the repos)
-curl -OL https://github.com/jgm/pandoc/releases/download/3.8.2.1/pandoc-3.8.2.1-linux-amd64.tar.gz
-tar xvfz pandoc-3.8.2.1-linux-amd64.tar.gz --strip-components 1 -C $HOME/.local
-rm pandoc-3.8.2.1-linux-amd64.tar.gz
+curl -OL https://github.com/jgm/pandoc/releases/download/3.9.0.2/pandoc-3.9.0.2-linux-amd64.tar.gz
+tar xvfz pandoc-3.9.0.2-linux-amd64.tar.gz --strip-components 1 -C $HOME/.local
+rm pandoc-3.9.0.2-linux-amd64.tar.gz
