@@ -35,11 +35,3 @@ sudo pacman -S --noconfirm ttf-iosevkaterm-nerd
 sudo pacman -S --noconfirm ttf-iosevkatermslab-nerd
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo cp conf/fonts-local.conf /etc/fonts/local.conf
-
-# Printers
-
-sudo pacman -S --noconfirm cups
-sudo pacman -S --noconfirm system-config-printer python-pysmbc cups-pk-helper
-# yay -S --noconfirm brother-mfc-9340cdw
-# yay -S --noconfirm brother-hll6200dw
-# yay -S --noconfirm cnrdrvcups-lb

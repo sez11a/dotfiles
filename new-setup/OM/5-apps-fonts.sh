@@ -23,3 +23,6 @@ sudo flatpak -y install us.zoom.Zoom org.freeplane.App org.zotero.Zotero
 curl -OL https://github.com/jgm/pandoc/releases/download/3.9.0.2/pandoc-3.9.0.2-linux-amd64.tar.gz
 tar xvfz pandoc-3.9.0.2-linux-amd64.tar.gz --strip-components 1 -C $HOME/.local
 rm pandoc-3.9.0.2-linux-amd64.tar.gz
+
+# Printing
+sudo dnf -y install task-printing-scanning task-printing-epson task-printing-hp task-printing-lexmark task-printing-misc

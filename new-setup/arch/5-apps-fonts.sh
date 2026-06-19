@@ -33,3 +33,11 @@ sudo pacman -S --noconfirm xsel libdvdcss bottom pandoc-cli audacity borg spamas
 # Apps in AUR
 
 yay -S --noconfirm  todotxt freeplane todotxt-machine-git deb2targz moodbar boomaga libbdplus brave-bin joe zoom worker
+
+# Printers
+
+sudo pacman -S --noconfirm cups
+sudo pacman -S --noconfirm system-config-printer python-pysmbc cups-pk-helper
+# yay -S --noconfirm brother-mfc-9340cdw
+# yay -S --noconfirm brother-hll6200dw
+# yay -S --noconfirm cnrdrvcups-lb
