@@ -1,27 +1,43 @@
 #!/bin/bash
 
-sudo apt install -y alsa-utils
-sudo mkdir /usr/share/sounds/custom
-sudo cp conf/a1000.wav /usr/share/sounds/custom
-sudo cp conf/startup-sound.sh /usr/bin
-sudo cp conf/startupsound.service /etc/systemd/system
-sudo systemctl enable startupsound.service
+# Startup sound
+source common/startup-sound.sh
 
-## Editor
-sudo apt install -y neovim python3-pynvim xclip wl-clipboard jq
+# MOTD
+sudo bash -c $'echo "fastfetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
+
+# Editor
+sudo apt install -y neovim xsel wl-clipboard yarnpkg ripgrep jq
 curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimstar.sh | bash
+
+sudo apt install -y alsa-utils
 
 # Syncthing
 sudo apt install -y syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 
 # Syncthing Integration
-flatpak install -y --noninteractive flathub SyncThingy 
+flatpak install -y --noninteractive flathub SyncThingy
 flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-# UI Fonts
-sudo apt install -y fonts-league-mono 
-# No Iosevka fonts are in the repos; devise another way to install them. 
-# Fonts in Texlive wound up installing Texlive; don't want that either.
-sudo cp conf/fonts-local.conf /etc/fonts/local.conf
+# UI Fonts Iosevka nerd fonts aren't in the repos
+sudo apt install -y fonts-league-mono
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Iosevka.tar.xz
+mkdir ~/Downloads/Iosevka
+tar xvfz Iosevka.tar.xz -C ~/Downloads/Iosevka
+rm Iosevka.tar.xz
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/IosevkaTerm.tar.xz
+mkdir ~/Downloads/IosevkaTerm
+tar xvfz IosevkaTerm.tar.xz -C ~/Downloads/IosevkaTerm
+rm IosevkaTerm.tar.xz
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/IosevkaTermSlab.tar.xz
+mkdir ~/Downloads/IosevkaTermSlab
+tar xvfz IosevkaTermSlab.tar.xz -C ~/Downloads/IosevkaTermSlab
+rm IosevkaTermSlab.tar.xz
 
+sudo cp ~/Downloads/Iosevka/*.ttf /usr/share/fonts/custom
+sudo cp ~/Downloads/IosevkaTerm/*.ttf /usr/share/fonts/custom
+sudo cp ~/Downloads/IosevkaTermSlab/*.ttf /usr/share/fonts/custom
+
+sudo fc-cache -f -v
+sudo cp conf/fonts-local.conf /etc/fonts/local.conf

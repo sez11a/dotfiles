@@ -1,19 +1,14 @@
 #!/bin/bash
 
+# Starship
+sudo apt install -y starship stow
+
 DIALOG=whiptail
 
-sudo apt update -y 
+sudo apt update -y
 
-#Dotfiles
-sudo apt install -y stow
-
-zip old-config-files.zip ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-rm ~/.profile ~/.bash_profile ~/.bashrc ~/.bash_logout ~/.xprofile
-mv old-config-files.zip ~
-cd ..
-stow . 
-cd new-setup
-cp ./desktop/*.desktop ~/Desktop
+# Dotfiles
+source common/dotfiles.sh
 
 # Set up for installation
 sudo apt install -y festival festvox-us-slt-hts festvox-kallpc16k festvox-kdlpc16k rsync
@@ -23,5 +18,6 @@ export -f say
 # Run an update before doing anything
 sudo apt upgrade -y
 
+# May not do Flatpaks here; we have Snap
 # Install Flatpak
-sudo apt install -y flatpak
+# sudo apt install -y flatpak

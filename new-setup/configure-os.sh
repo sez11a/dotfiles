@@ -49,7 +49,7 @@ if grep -qE "Debian|Ubuntu" /etc/os-release; then
   _isdebian=true
   _isarch=false
   scriptsDir="debian"
-  osName="Debian             "
+  osName="Debian/Ubuntu      "
 fi
 
 echo "${NOTE}╔══════════════════════════════╗"
