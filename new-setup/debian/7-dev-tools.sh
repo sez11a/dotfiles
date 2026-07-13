@@ -15,7 +15,7 @@
 sudo apt install -y lazygit
 
 # Packaging
-sudo install -y build-essential
+sudo apt install -y build-essential
 sudo apt update && \
   sudo apt dist-upgrade -y && \
   sudo apt install -y \
@@ -35,7 +35,7 @@ sudo apt install -y python3-full
 sudo apt install -y lazarus
 
 ## Java Environment
-sudo apt install openjdk-21-jdk
+sudo apt install -y openjdk-21-jdk
 sudo apt install -y ant gradle
 
 # Virtual Machines
@@ -56,4 +56,4 @@ mkdir ~/.npm-packages
 NPM_PACKAGES=~/.npm-packages
 echo prefix=~/.npm-packages >> ~/.npmrc
 
-snap install squirrelsql
+sudo snap install squirrelsql

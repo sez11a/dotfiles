@@ -16,10 +16,6 @@ sudo apt install -y alsa-utils
 sudo apt install -y syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 
-# Syncthing Integration
-flatpak install -y --noninteractive flathub SyncThingy
-flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
 # UI Fonts Iosevka nerd fonts aren't in the repos
 sudo apt install -y fonts-league-mono
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Iosevka.tar.xz
