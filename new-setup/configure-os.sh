@@ -45,7 +45,7 @@ if [ -f /etc/fedora-release ] || grep -q "Fedora" /etc/os-release; then
 	sudo dnf -y install newt
 fi
 
-if grep -q "Debian" /etc/os-release; then
+if grep -qE "Debian|Ubuntu" /etc/os-release; then
   _isdebian=true
   _isarch=false
   scriptsDir="debian"

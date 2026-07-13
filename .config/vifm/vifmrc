@@ -8,6 +8,7 @@
 " ------------------------------------------------------------------------------
 
 set dotfiles
+nnoremap q :quit<CR>   
 
 " This is the actual command used to start vi.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
