@@ -49,7 +49,7 @@ if grep -qE "Debian|Ubuntu" /etc/os-release; then
   _isdebian=true
   _isarch=false
   scriptsDir="debian"
-  osName="Debian/Ubuntu      "
+  osName="Ubuntu/Debian     "
 fi
 
 echo "${NOTE}╔══════════════════════════════╗"
@@ -57,9 +57,8 @@ echo "${NOTE}║ Detected ${osName} ║"
 echo "${NOTE}╚══════════════════════════════╝"
 
 whiptail --title "Welcome to Rich Sezov's Install Script" \
-	--msgbox "Welcome to Rich Sezov's setup script!\n\n\
-	This works with OpenMandriva Linux, Arch Linux, Fedora Linux,\n\n\
-	and to a lesser extent (CLI only) Debian.\n\n\
+	--msgbox "Welcome to Rich Sezov's Linux setup script!\n\n\
+	This works with OpenMandriva, Arch, Kubuntu, and Fedora.\n\n\
 	If you want to configure KDE Plasma, make sure it is installed first." \
 		15 80
 

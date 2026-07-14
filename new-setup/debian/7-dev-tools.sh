@@ -51,7 +51,7 @@ curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/i
 sudo apt install -y ruby rbenv
 
 # Node
-sudo apt install -y nodejs
+sudo apt install -y nodejs npm
 mkdir ~/.npm-packages
 NPM_PACKAGES=~/.npm-packages
 echo prefix=~/.npm-packages >> ~/.npmrc
