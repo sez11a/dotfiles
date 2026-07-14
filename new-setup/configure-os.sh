@@ -48,7 +48,7 @@ fi
 if grep -qE "Debian|Ubuntu" /etc/os-release; then
   _isdebian=true
   _isarch=false
-  scriptsDir="debian"
+  scriptsDir="kubuntu"
   osName="Ubuntu/Debian     "
 fi
 
