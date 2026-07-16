@@ -31,6 +31,8 @@ mkdir ~/Downloads/IosevkaTermSlab
 tar xvf IosevkaTermSlab.tar.xz -C ~/Downloads/IosevkaTermSlab
 rm IosevkaTermSlab.tar.xz
 
+sudo mkdir -p /usr/share/fonts/custom
+
 sudo cp ~/Downloads/Iosevka/*.ttf /usr/share/fonts/custom
 sudo cp ~/Downloads/IosevkaTerm/*.ttf /usr/share/fonts/custom
 sudo cp ~/Downloads/IosevkaTermSlab/*.ttf /usr/share/fonts/custom
