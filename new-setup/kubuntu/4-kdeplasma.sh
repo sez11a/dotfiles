@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Mouse cursors
-sudo tar xvfz packages/oxygen-cursors-extra-6.2.3-1-any.pkg.tar.xz -C /
+sudo tar xvf packages/oxygen-cursors-extra-6.2.3-1-any.pkg.tar.xz -C /
 sudo rm /.BUILDINFO
 sudo rm /.MTREE
 sudo rm /.PKGINFO
