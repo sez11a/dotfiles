@@ -37,9 +37,9 @@ sudo dnf -y install ruby
 sudo dnf -y install rbenv
 
 # Node
-sudo dnf -y install nodejs
+sudo dnf -y install nodejs yarn
 mkdir ~/.npm-packages
 NPM_PACKAGES=~/.npm-packages
 echo prefix=~/.npm-packages >> ~/.npmrc
 
-flatpak -y install com.github.Murmele.Gittyup squirrel_sql
+flatpak -y install com.github.Murmele.Gittyup net.sourceforge.squirrel_sql
