@@ -11,10 +11,11 @@ sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf -y install brave-browser
 
 # Standard desktop stuff
-sudo dnf -y install audacity borgbackup spamassassin calibre mc easytag handbrake scribus fontforge kdiff3 dvgrab dvdauthor inkscape keepassxc strawberry lha mplayer fzf ranger mpv smplayer smplayer-themes pstoedit yt-dlp atomicparsley aria2 cdrdao dvd+rw-tools joe lib64aacs0 lib64aacs-devel nextcloud-client hunspell hunspell-tools hyphen-en whois lib64dvdcss lib64projectm3 vpnc networkmanager-vpnc rust-ripgrep fuse fuse2 zip unzip 7zip typst neovide --skip-broken
+sudo dnf -y install audacity borgbackup spamassassin calibre mc easytag handbrake scribus fontforge kdiff3 dvgrab dvdauthor inkscape keepassxc strawberry lha mplayer fzf ranger mpv smplayer smplayer-themes pstoedit yt-dlp atomicparsley aria2 cdrdao dvd+rw-tools joe lib64aacs0 lib64aacs-devel nextcloud-client hunspell hunspell-tools hyphen-en whois lib64dvdcss lib64projectm3 vpnc networkmanager-vpnc rust-ripgrep fuse fuse2 zip unzip 7zip typst --skip-broken
 
 # After UM
-dnf -y install vifm
+sudo dnf -y install vifm
+sudo dnf -y install neovide
 
 # Standard Flatpak stuff
 sudo flatpak -y install us.zoom.Zoom org.freeplane.App org.zotero.Zotero
