@@ -40,7 +40,7 @@ kwriteconfig6 --file kdeglobals --group General --key smallestReadableFont Sans\
 kwriteconfig6 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 kwriteconfig6 --file kdeglobals --group General --key shadeSortColumn true
 # kwriteconfig6 --file kdeglobals --group Icons --key Theme kora-light
-kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme CatppuccinMacchiatoBlue
+# kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme CatppuccinMacchiatoBlue
 kwriteconfig6 --file kdeglobals --group KDE --key SingleClick false
 # KSplash
 kwriteconfig6 --file ksplashrc --group KSplash --key Engine KSplashQML
@@ -58,7 +58,7 @@ kwriteconfig6 --file dolphinrc --group General --key ShowFullPathInTitlebar true
 kwriteconfig6 --file dolphinrc --group General --key ShowToolTips false
 
 # Konsole
-kwriteconfig6 --file konsolerc --group Desktop\ Entry --key DefaultProfile Catppuccin.profile
+kwriteconfig6 --file konsolerc --group Desktop\ Entry --key DefaultProfile Terminal.profile
 kwriteconfig6 --file konsolerc --group Favorite\ Profiles --key Favorites Amiga\ 3.profile,8086.profile,Commodore.profile,NewGray.profile,Old\ Text\ Mode.profile
 
 # Keyboard
