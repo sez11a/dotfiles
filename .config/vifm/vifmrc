@@ -400,6 +400,8 @@ set vifminfo=dhistory,chistory,state,tui,shistory,
 "
 " set viewcolumns=-{name}..,6{}.
 
+set viewcolumns=*{name}..,16{mtime},7{}
+
 " Filter-out build and temporary files
 "
 " filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/

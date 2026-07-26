@@ -16,3 +16,4 @@ sudo dnf -y install neovim-qt
 
 ## Theme Stuff
 sudo dnf -y install qt-theme-kvantum
+sudo dnf -y install lib64dbusmenu-qt6 lib64dbusmenu-qt5 libdbusmenu-tools --skip-broken
