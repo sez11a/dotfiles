@@ -16,6 +16,7 @@ function say { echo "$1" | festival --tts; }
 export -f say
 
 # Run an update before doing anything
+sudo apt update
 sudo apt upgrade -y
 
 # May not do Flatpaks here; we have Snap
