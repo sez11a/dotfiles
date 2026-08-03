@@ -38,8 +38,8 @@ sudo apt install -y lazarus
 sudo apt install -y openjdk-21-jdk
 sudo apt install -y ant gradle
 
-# Virtual Machines
-sudo apt install -y virt-manager qemu-system-modules-spice-hwe firewalld
+# Virtual Machines - Commented out because Kubuntu installer uses snap for this
+# sudo apt install -y virt-manager qemu-system-modules-spice-hwe firewalld
 
 # Containers
 sudo apt install -y docker.io
