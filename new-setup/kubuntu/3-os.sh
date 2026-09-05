@@ -13,6 +13,10 @@ curl -sLf https://raw.githubusercontent.com/sez11a/VimStar/master/install-vimsta
 sudo apt install -y alsa-utils
 
 # Syncthing
+sudo mkdir -p /etc/apt/keyrings
+sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable-v2" | sudo tee /etc/apt/sources.list.d/syncthing.list
+sudo apt update
 sudo apt install -y syncthing
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 
