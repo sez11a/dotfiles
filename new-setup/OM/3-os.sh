@@ -4,7 +4,7 @@
 source common/startup-sound.sh
 
 # MOTD
-sudo bash -c $'echo "fastfetch" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
+sudo bash -c $'echo "fastfetch --logo-padding-left 1 --logo-padding-right 0 --logo-padding-top 1 --key-padding-left 1 -l ~/config/logos/om-300.png" >> /etc/profile.d/mymotd.sh && chmod +x /etc/profile.d/mymotd.sh'
 
 # Editor
 sudo dnf -y install neovim xsel wl-clipboard jq rust-ripgrep
