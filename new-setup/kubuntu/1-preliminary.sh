@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
+
 # Starship
 sudo apt install -y starship stow
 
@@ -19,6 +21,7 @@ export -f say
 sudo apt update
 sudo apt upgrade -y
 
+sudo apt install -y snapd
 # May not do Flatpaks here; we have Snap
 # Install Flatpak
 # sudo apt install -y flatpak
