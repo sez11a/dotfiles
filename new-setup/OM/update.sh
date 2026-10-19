@@ -2,13 +2,13 @@
 
 if whiptail --title "Clean packages first?" \
   --yesno "Clean the packages first?" 20 60; then
-  
+
   echo -e "\033[0;31m╔════════════════════════════════╗\033[0m" # Red for root.
   echo -e "\033[0;31m║**Updating all System packages**║\033[0m" # Red for root.
   echo -e "\033[0;31m╚════════════════════════════════╝\033[0m" # Red for root.
   echo
-  sudo dnf clean all ; sudo dnf dsync --allowerasing 2>&1| tee dsync2-log.txt
-else 
+  sudo dnf clean all ; sudo dnf dsync --refresh --allowerasing 2>&1| tee dsync2-log.txt
+else
   sudo dnf dsync --allowerasing 2>&1| tee dsync2-log.txt
 fi
 
