@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=purify
+ColorScheme=Cyberdream
 Font=Monospace,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
 [General]

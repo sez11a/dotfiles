@@ -40,7 +40,7 @@ kwriteconfig6 --file kdeglobals --group General --key smallestReadableFont Sans\
 kwriteconfig6 --file kdeglobals --group General --key toolBarFont Sans\ Serif,11,-1,5,50,0,0,0,0,0
 kwriteconfig6 --file kdeglobals --group General --key shadeSortColumn true
 # kwriteconfig6 --file kdeglobals --group Icons --key Theme kora-light
-# kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme CatppuccinMacchiatoBlue
+kwriteconfig6 --file kdeglobals --group KDE --key ColorScheme Cyberdream
 kwriteconfig6 --file kdeglobals --group KDE --key SingleClick false
 # KSplash
 kwriteconfig6 --file ksplashrc --group KSplash --key Engine KSplashQML
@@ -82,7 +82,7 @@ kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Close" "Alt+F
 # done without it.
 echo " " >> ~/.config/kglobalshortcutsrc
 echo "[services][vifm.desktop]" >> ~/.config/kglobalshortcutsrc
-echo "_launch=Alt+Return" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Meta+Return" >> ~/.config/kglobalshortcutsrc
 echo " " >> ~/.config/kglobalshortcutsrc
 echo "[services][neovim-qt.desktop]" >> ~/.config/kglobalshortcutsrc
 echo "_launch=Meta+N" >> ~/.config/kglobalshortcutsrc
@@ -90,4 +90,4 @@ echo " " >> ~/.config/kglobalshortcutsrc
 echo "[services][brave-browser.desktop]" >> ~/.config/kglobalshortcutsrc
 echo "_launch=Alt+B" >> ~/.config/kglobalshortcutsrc
 echo "[services][ranger.desktop]" >> ~/.config/kglobalshortcutsrc
-echo "_launch=Meta+Return" >> ~/.config/kglobalshortcutsrc
+echo "_launch=Alt+Return" >> ~/.config/kglobalshortcutsrc
