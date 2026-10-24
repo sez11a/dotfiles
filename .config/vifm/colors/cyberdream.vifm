@@ -1,0 +1,64 @@
+" Cyberdream colorscheme for vifm
+" Based on https://github.com/scottmckendry/cyberdream.nvim (default/dark palette)
+" High-contrast, futuristic & vibrant
+
+highlight clear
+
+" Palette reference:
+" bg          #16181a
+" bg_alt      #1e2124
+" bg_highlight #3c4048
+" fg          #ffffff
+" grey        #7b8496
+" blue        #5ea1ff
+" green       #5eff6c
+" cyan        #5ef1ff
+" red         #ff6e5e
+" yellow      #f1ff5e
+" magenta     #ff5ef1
+" pink        #ff5ea0
+" orange      #ffbd5e
+" purple      #bd5eff
+
+" --- UI ---
+highlight Win          cterm=none ctermfg=255 ctermbg=233 guifg=#ffffff guibg=#16181a
+highlight OtherWin     cterm=none ctermfg=250 ctermbg=233 guifg=#d0d0d0 guibg=#16181a
+highlight AuxWin       cterm=none ctermfg=245 ctermbg=234 guifg=#b0b0b0 guibg=#1e2124
+
+highlight Border       cterm=none ctermfg=240 ctermbg=233 guifg=#7b8496 guibg=#16181a
+highlight TopLine      cterm=none ctermfg=255 ctermbg=234 guifg=#ffffff guibg=#1e2124
+highlight TopLineSel   cterm=bold ctermfg=233 ctermbg=111 guifg=#16181a guibg=#5ea1ff
+highlight TabLine      cterm=none ctermfg=245 ctermbg=234 guifg=#b0b0b0 guibg=#1e2124
+highlight TabLineSel   cterm=bold ctermfg=233 ctermbg=111 guifg=#16181a guibg=#5ea1ff
+
+highlight StatusLine   cterm=none ctermfg=255 ctermbg=234 guifg=#ffffff guibg=#1e2124
+highlight JobLine      cterm=bold ctermfg=81  ctermbg=236 guifg=#5ef1ff guibg=#3c4048
+highlight CmdLine      cterm=none ctermfg=255 ctermbg=233 guifg=#ffffff guibg=#16181a
+highlight ErrorMsg     cterm=bold ctermfg=203 ctermbg=233 guifg=#ff6e5e guibg=#16181a
+highlight WildMenu     cterm=bold ctermfg=233 ctermbg=141 guifg=#16181a guibg=#bd5eff
+
+highlight Selected     cterm=none ctermfg=255 ctermbg=238 guifg=#ffffff guibg=#3c4048
+highlight CurrLine     cterm=none ctermfg=255 ctermbg=236 guifg=#ffffff guibg=#2a2d30
+highlight OtherLine    cterm=none ctermfg=250 ctermbg=233 guifg=#d0d0d0 guibg=#16181a
+
+" --- File types ---
+highlight Directory    cterm=bold ctermfg=81  ctermbg=none guifg=#5ea1ff guibg=none
+highlight Link         cterm=none ctermfg=213 ctermbg=none guifg=#ff5ef1 guibg=none
+highlight BrokenLink   cterm=bold ctermfg=203 ctermbg=none guifg=#ff6e5e guibg=none
+highlight HardLink     cterm=none ctermfg=221 ctermbg=none guifg=#ffbd5e guibg=none
+highlight Executable   cterm=bold ctermfg=83  ctermbg=none guifg=#5eff6c guibg=none
+highlight Socket       cterm=none ctermfg=141 ctermbg=none guifg=#bd5eff guibg=none
+highlight Device       cterm=none ctermfg=221 ctermbg=none guifg=#ffbd5e guibg=none
+highlight Fifo         cterm=none ctermfg=81  ctermbg=none guifg=#5ef1ff guibg=none
+
+" Optional: extra file-type coloring (comment out if you prefer pure defaults)
+highlight {*.sh,*.bash,*.zsh,*.fish,*.py,*.rb,*.pl,*.lua,*.js,*.ts,*.go,*.rs}
+    \ cterm=none ctermfg=83  guifg=#5eff6c
+highlight {*.md,*.txt,*.rst,*.org,*.pdf,*.epub}
+    \ cterm=none ctermfg=111 guifg=#5ea1ff
+highlight {*.jpg,*.jpeg,*.png,*.gif,*.webp,*.svg,*.bmp,*.tiff}
+    \ cterm=none ctermfg=213 guifg=#ff5ef1
+highlight {*.mp3,*.flac,*.ogg,*.wav,*.m4a,*.mp4,*.mkv,*.avi,*.webm}
+    \ cterm=none ctermfg=221 guifg=#ffbd5e
+highlight {*.zip,*.tar,*.gz,*.bz2,*.xz,*.7z,*.rar,*.iso}
+    \ cterm=none ctermfg=203 guifg=#ff6e5e

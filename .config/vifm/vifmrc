@@ -7,6 +7,8 @@
 
 " ------------------------------------------------------------------------------
 
+only
+
 set dotfiles
 nnoremap q :quit<CR>   
 
@@ -73,8 +75,9 @@ set norunexec
 " colorscheme Default
 " colorscheme mc
 " colorscheme dracula
-colorscheme papercolor-dark
+" colorscheme papercolor-dark
 " colorscheme fargo
+colorscheme cyberdream
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -241,6 +244,8 @@ fileviewer *.[1-8] man ./%c | col -b
 
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+        \ {View in gwenview}
+        \ gwenview %f
         \ {View in sxiv}
         \ sxiv %f,
         \ {View in gpicview}
